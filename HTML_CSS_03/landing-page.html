@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khóa học Frontend - Specificity & Theme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Roboto", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /*HEADER*/
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /*SECTION*/
+        section {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        /* SPECIFICITY */
+        /* Tag Selector */
+        h2 {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* Class Selector */
+        .section-title {
+            color: #2980b9;
+        }
+
+        /* ID Selector */
+        #cta-title {
+            color: hsl(10, 80%, 50%);
+            text-align: center;
+        }
+
+        /* --- LIST & PSEUDO-ELEMENT --- */
+        .content-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .content-list li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Pseudo-element ::before */
+        .content-list li::before {
+            content: "✔";
+            margin-right: 10px;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /*CALL TO ACTION*/
+        .cta-section {
+            text-align: center;
+            background-color: #fff;
+            border: 2px solid #eee;
+        }
+
+        .cta-text {
+            margin-bottom: 25px;
+        }
+
+        .btn-register {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #2980b9;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(41, 128, 185, 0.4);
+        }
+
+        .btn-register:hover {
+            background-color: #1c6ea4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Khóa học Frontend Master</h1>
+        <p>Trở thành lập trình viên chuyên nghiệp từ con số 0</p>
+    </header>
+
+    <section class="intro">
+        <h2>Giới thiệu khóa học</h2>
+        <p>
+            Khóa học được thiết kế dành riêng cho người mới bắt đầu, tập trung vào tư duy lập trình và kỹ năng thực
+            chiến. Bạn sẽ được học cách xây dựng giao diện website chuẩn responsive và hiện đại.
+        </p>
+    </section>
+
+    <section>
+        <h2 class="section-title">Nội dung chính</h2>
+        <ul class="content-list">
+            <li>HTML5 & Semantic Web</li>
+            <li>CSS3, Flexbox & Grid System</li>
+            <li>JavaScript căn bản & nâng cao</li>
+            <li>ReactJS Library</li>
+            <li>Git & Github</li>
+        </ul>
+    </section>
+
+    <section class="cta-section">
+        <h2 id="cta-title" class="section-title">Đăng ký ngay hôm nay</h2>
+
+        <p class="cta-text">
+            Ưu đãi giảm giá 40% cho 50 học viên đăng ký sớm nhất. Đừng bỏ lỡ cơ hội thay đổi sự nghiệp của bạn!
+        </p>
+
+        <a href="#" class="btn-register">Đăng ký khóa học</a>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+/* ID Selector*/
+#main-title {
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/* Class selector*/
+.highlight {
+    color: rgb(255, 107, 107);
+    font-weight: bold;
+    background-color: rgb(240, 240, 240);
+}

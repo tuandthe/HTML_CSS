@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1: Tính điểm</title>
+</head>
+
+<body>
+    <h3>Bài 1: Tính điểm trung bình & Xếp loại</h3>
+
+    <label>Tên học viên:</label> <br>
+    <input type="text" id="name" placeholder="Nhập tên..."> <br><br>
+
+    <label>Điểm 3 môn:</label> <br>
+    <input type="number" id="s1" placeholder="Điểm môn 1">
+    <input type="number" id="s2" placeholder="Điểm môn 2">
+    <input type="number" id="s3" placeholder="Điểm môn 3"> <br><br>
+
+    <button onclick="tinhDiem()">Xem kết quả</button>
+
+    <div id="result" style="margin-top: 10px; border-top: 1px solid #ccc; padding-top: 10px;"></div>
+
+    <script>
+        function tinhDiem() {
+            let name = document.getElementById("name").value;
+            let s1 = Number(document.getElementById("s1").value);
+            let s2 = Number(document.getElementById("s2").value);
+            let s3 = Number(document.getElementById("s3").value);
+
+            let avg = (s1 + s2 + s3) / 3;
+            let rank = "";
+
+            if (avg >= 8) rank = "Giỏi";
+            else if (avg >= 6.5) rank = "Khá";
+            else if (avg >= 5) rank = "Trung bình";
+            else rank = "Yếu";
+
+            document.getElementById("result").innerHTML = `
+                <b>Tên:</b> ${name} <br>
+                <b>Điểm TB:</b> ${avg.toFixed(2)} <br>
+                <b>Xếp loại:</b> ${rank}
+            `;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3: Tính BMI</title>
+</head>
+
+<body>
+    <h3>Bài 3: Kiểm tra sức khỏe (BMI)</h3>
+
+    <input type="number" id="weight" placeholder="Cân nặng (kg)"> <br><br>
+    <input type="number" id="height" placeholder="Chiều cao (cm)"> <br><br>
+
+    <button onclick="tinhBMI()">Kiểm tra</button>
+
+    <p id="result"></p>
+
+    <script>
+        function tinhBMI() {
+            let w = Number(document.getElementById("weight").value);
+            let h = Number(document.getElementById("height").value);
+
+            if (h <= 0 || w <= 0) {
+                alert("Chiều cao và cân nặng phải lớn hơn 0");
+                return;
+            }
+
+            let bmi = w / ((h / 100) * (h / 100));
+            let status = "";
+
+            if (bmi < 18.5) status = "Gầy";
+            else if (bmi < 23) status = "Bình thường";
+            else if (bmi < 25) status = "Thừa cân";
+            else status = "Béo phì";
+
+            // switch (bmi) {
+            //     case bmi < 18.5:
+            //         status = "Gầy";
+            //         break;
+            //     case bmi < 23:
+            //         status = "Bình thường";
+            //         break;
+            //     case bmi < 25:
+            //         status = "Thừa cân";
+            //         break;
+            //     default:
+            //         status = "Béo phì";
+
+            // }
+
+            document.getElementById("result").innerHTML =
+                `BMI: <b>${bmi.toFixed(1)}</b> - Đánh giá: <b>${status}</b>`;
+        }
+    </script>
+</body>
+
+</html>

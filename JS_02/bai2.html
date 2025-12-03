@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2: Đơn hàng</title>
+</head>
+
+<body>
+    <h3>Bài 2: Bảng giá đơn hàng</h3>
+    <div id="output"></div>
+    <script>
+        const products = [
+            { name: "Áo thun", price: 150000, qty: 2 },
+            { name: "Quần Jean", price: 400000, qty: 1 },
+            { name: "Giày", price: 800000, qty: 1 }
+        ];
+
+        let html = "<table border='1' cellpadding='5' style='margin-top:10px; width:100%'>";
+        html += "<tr><th>Tên</th><th>Đơn giá</th><th>SL</th><th>Thành tiền</th></tr>";
+
+        let total = 0;
+        let maxVal = 0;
+        let maxName = "";
+
+        products.forEach(p => {
+            let money = p.price * p.qty;
+            total += money;
+
+            if (money > maxVal) {
+                maxVal = money;
+                maxName = p.name;
+            }
+
+            html += `<tr>
+                    <td>${p.name}</td>
+                    <td>${p.price}</td>
+                    <td>${p.qty}</td>
+                    <td>${money}</td>
+                </tr>`;
+        });
+
+        html += "</table>";
+        html += `<p>Tổng cộng: <b>${total} VNĐ</b></p>`;
+        html += `<p>Sản phẩm cao nhất: <b>${maxName}</b></p>`;
+
+        document.getElementById("output").innerHTML = html;
+    </script>
+</body>
+
+</html>

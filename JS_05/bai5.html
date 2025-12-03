@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 5: Thống kê</title>
+</head>
+
+<body>
+    <h3>Bài 5: Thống kê đơn hàng</h3>
+    <div id="list"></div>
+
+    <div id="statsResult" style="margin-top:20px; border:1px solid #333; padding:10px; white-space: pre-wrap;">
+
+    </div>
+
+    <script>
+        const orders = [
+            { id: 1, total: 150, status: "completed" },
+            { id: 2, total: 80, status: "pending" },
+            { id: 3, total: 200, status: "completed" },
+            { id: 4, total: 50, status: "cancelled" },
+            { id: 5, total: 300, status: "completed" }
+        ];
+
+        function calcRevenue(orders) {
+            return orders
+                .filter(o => o.status === "completed")
+                .reduce((sum, o) => sum + o.total, 0);
+        }
+
+        function countByStatus(orders) {
+            // return orders.reduce((acc, o) => {
+            //     acc[o.status] = (acc[o.status] || 0) + 1;
+            //     return acc;
+            // }, {});
+
+            let counts = {};
+            orders.forEach(o => {
+                if (counts[o.status]) counts[o.status]++;
+                else counts[o.status] = 1;
+            })
+            return counts;
+        }
+
+        function getMaxOrder(orders) {
+            let maxOrder = orders[0];
+
+            // for (let o of orders) {
+            //     if (o.total > maxOrder.total) {
+            //         maxOrder = o;
+            //     }
+            // }
+            // return maxOrder;
+
+            orders.forEach(o => {
+                if (o.total > maxOrder.total) {
+                    maxOrder = o;
+                }
+            })
+            return maxOrder;
+
+            // return orders.reduce((max, o) => max.total > o.total ? max : o);
+        }
+
+        let revenue = calcRevenue(orders);
+        let counts = countByStatus(orders);
+        let maxOrder = getMaxOrder(orders);
+        let output = "=== KẾT QUẢ THỐNG KÊ ===\n\n";
+        output += "1. Tổng doanh thu (Completed): " + revenue + "\n";
+        output += "2. Số lượng theo trạng thái: " + JSON.stringify(counts) + "\n";
+        output += "3. Đơn hàng lớn nhất: ID " + maxOrder.id + " (Giá: " + maxOrder.total + ")";
+
+        orders.forEach(o => {
+            document.getElementById("list").innerText += `\nID: ${o.id}, Tổng: ${o.total}, Trạng thái: ${o.status}`;
+        });
+        document.getElementById("statsResult").innerText = output;
+
+    </script>
+</body>
+
+</html>

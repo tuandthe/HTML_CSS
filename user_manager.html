@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini App: Quản lý Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1,
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Button styles */
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn.primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn.success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* List styles */
+        #user-list {
+            list-style: none;
+            padding: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+
+        #user-list li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        #user-list li strong {
+            display: block;
+            color: #007bff;
+        }
+
+        .empty-msg {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Notification styles */
+        .notification {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-msg {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error-msg {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="section form-section">
+            <h3>Thêm User Mới</h3>
+            <form id="form-create">
+                <div class="form-group">
+                    <input type="text" id="input-name" placeholder="Nhập tên user...">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="input-email" placeholder="Nhập email...">
+                </div>
+                <button type="submit" id="btn-create" class="btn success">Tạo User</button>
+            </form>
+        </div>
+        <div id="notification" class="notification hidden"></div>
+
+        <hr>
+
+        <h1>Quản lý Users</h1>
+
+
+        <div class="section list-section">
+            <button id="btn-load" class="btn primary">Tải danh sách user</button>
+            <div id="user-container">
+                <ul id="user-list">
+                    <li class="empty-msg">Chưa có dữ liệu. Vui lòng bấm nút tải.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let users = [];
+        const userList = document.getElementById('user-list');
+        const notification = document.getElementById('notification');
+        const btnLoad = document.getElementById('btn-load');
+        const formCreate = document.getElementById('form-create');
+        const inputName = document.getElementById('input-name');
+        const inputEmail = document.getElementById('input-email');
+        const API_URL = 'https://jsonplaceholder.typicode.com/users';
+
+        async function fetchUsers() {
+            try {
+                btnLoad.disabled = true;
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Lỗi khi tải dữ liệu');
+                users = await response.json();
+                renderUserList();
+            } catch (error) {
+                notification.textContent = error.message;
+                notification.className = 'notification error-msg';
+            } finally {
+                btnLoad.disabled = false;
+            }
+        }
+        function renderUserList() {
+            userList.innerHTML = '';
+            if (users.length === 0) {
+                return;
+            }
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${user.name}</strong> (${user.email})`;
+                userList.appendChild(li);
+            });
+        }
+
+        async function createUsers(name, email) {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email })
+                });
+                if (!response.ok) throw new Error('Lỗi khi tạo user');
+                const newUser = await response.json();
+                users.push(newUser);
+                renderUserList();
+                notification.textContent = 'Tạo user thành công!';
+                notification.className = 'notification success-msg';
+                formCreate.reset();
+
+            } catch (error) {
+                notification.textContent = error.message;
+                notification.className = 'notification error-msg';
+            }
+
+        }
+
+        btnLoad.addEventListener('click', event => {
+            notification.className = 'notification hidden';
+            fetchUsers();
+        });
+        formCreate.addEventListener('submit', function (e) {
+            e.preventDefault();
+            notification.className = 'notification hidden';
+            const name = inputName.value.trim();
+            const email = inputEmail.value.trim();
+            if (!name && !email) {
+                notification.textContent = 'Vui lòng nhập tên và email.';
+                notification.className = 'notification error-msg';
+            } else if (!name) {
+                notification.textContent = 'Vui lòng nhập tên.';
+                notification.className = 'notification error-msg';
+            } else if (!email) {
+                notification.textContent = 'Vui lòng nhập email.';
+                notification.className = 'notification error-msg';
+            } else if (!email.includes('@')) {
+                notification.textContent = 'Vui lòng nhập email hợp lệ.';
+                notification.className = 'notification error-msg';
+            } else {
+                createUsers(name, email);
+            }
+        });
+    </script>
+</body>
+
+</html>

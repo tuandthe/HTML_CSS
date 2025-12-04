@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_07: Random Quote Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .quote-box {
+            background: white;
+            width: 500px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 30px;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        #quote-text {
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.4;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #quote-author {
+            margin-top: 20px;
+            font-style: italic;
+            color: #777;
+            font-size: 1rem;
+        }
+
+        #new-quote-btn {
+            margin-top: 30px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        #new-quote-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        #new-quote-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quote-box">
+        <div class="quote-icon"><i class="fas fa-quote-left"></i>❝</div>
+
+        <div id="quote-content">
+            <p id="quote-text">Đang tải dữ liệu...</p>
+            <p id="quote-author"></p>
+        </div>
+
+        <button id="new-quote-btn">Quote Ngẫu Nhiên</button>
+    </div>
+    <script>
+        let apiQuote = [];
+        const quoteContent = document.getElementById('quote-content');
+        const quoteText = document.getElementById('quote-text');
+        const quoteAuthor = document.getElementById('quote-author');
+        const newQuoteBtn = document.getElementById('new-quote-btn');
+
+        async function fetchQuotes() {
+            try {
+                const response = await fetch('quotes.json');
+                apiQuote = await response.json();
+                displayRandomQuote();
+
+            } catch (error) {
+                quoteText.textContent = 'Không thể tải dữ liệu. Vui lòng thử lại sau.';
+                console.error('Lỗi khi lấy dữ liệu:', error);
+            }
+        }
+
+        function displayRandomQuote() {
+            if (apiQuote.length === 0) return;
+
+            const randomIndex = Math.floor(Math.random() * apiQuote.length);
+            const randomQuote = apiQuote[randomIndex];
+
+            quoteText.textContent = randomQuote.text;
+            quoteAuthor.textContent = randomQuote.author ? `- ${randomQuote.author}` : '- Unknown';
+        }
+
+        newQuoteBtn.addEventListener('click', displayRandomQuote);
+        fetchQuotes();
+    </script>
+
+</body>
+
+</html>

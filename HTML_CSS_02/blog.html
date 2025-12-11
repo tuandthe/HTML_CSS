@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài viết Blog - Typography & Units</title>
+    <style>
+        .article {
+            max-width: 800px;
+            width: 80%;
+            margin: 20px auto;
+
+            /* Typography */
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: justify;
+
+            /* Spacing */
+            letter-spacing: 0.3px;
+            word-spacing: 1px;
+
+            padding: 2vh 2vw;
+
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Units & Responsive */
+        h1 {
+            font-size: 2.5rem;
+            /* Đơn vị rem cho tiêu đề lớn */
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            /* Đơn vị em (dựa trên font-size của .article) */
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            width: 50vw;
+            background-color: rgba(255, 236, 179, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        /* Pseudo-class & Selector cho Link */
+        a {
+            color: blue;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="article">
+        <h1>Tầm Quan Trọng Của Typography Trong Thiết Kế Web</h1>
+
+        <h2>Tại sao Typography lại quan trọng?</h2>
+
+        <p>
+            Typography không chỉ là việc chọn font chữ đẹp, mà còn là nghệ thuật sắp xếp văn bản để người dùng có trải
+            nghiệm đọc tốt nhất. Một trang web có typography tốt sẽ giúp người đọc nắm bắt thông tin nhanh hơn, giảm mỏi
+            mắt và tạo cảm giác chuyên nghiệp.
+        </p>
+
+        <div class="highlight-box">
+            <strong>Ghi nhớ:</strong> Đừng bao giờ coi thường khoảng cách dòng (line-height). Một khoảng cách dòng hợp
+            lý (từ 1.5 đến 1.8) là chìa khóa để giữ chân người đọc lâu hơn trên trang web của bạn.
+        </div>
+
+        <p>
+            Bên cạnh đó, việc sử dụng các đơn vị đo lường hiện đại như <code>rem</code>, <code>em</code>,
+            <code>vh</code>, và <code>vw</code> giúp trang web linh hoạt hơn trên nhiều thiết bị khác nhau. Thay vì cố
+            định cứng nhắc bằng px, chúng ta cho phép các thành phần "thở" và co giãn theo kích thước màn hình người
+            dùng.
+        </p>
+
+        <p>
+            Hãy thử thay đổi kích thước trình duyệt của bạn để thấy tiêu đề, khoảng đệm (padding) và khối highlight thay
+            đổi như thế nào nhé. Đó chính là sức mạnh của Responsive Design cơ bản.
+        </p>
+
+        <a href="#">Đọc thêm về CSS Units &rarr;</a>
+    </div>
+
+</body>
+
+</html>

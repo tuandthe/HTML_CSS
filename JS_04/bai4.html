@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4-5 : Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 500px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 28px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        li {
+            padding: 10px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Bài 4 & 5: Todo List</h3>
+
+        <input type="text" id="inputJob" placeholder="Nhập công việc...">
+        <button id="btnAdd">Thêm</button>
+        <hr>
+
+        <button id="btnAll">Tất cả</button>
+        <button id="btnDone">Đã xong</button>
+        <button id="btnPending">Chưa xong</button>
+
+        <ul id="jobList"></ul>
+    </div>
+
+    <script>
+        let jobs = [
+            { id: 1, title: "Học JavaScript", done: true },
+            { id: 2, title: "Làm bài tập", done: false }
+        ];
+
+        let currentFilter = 'all';
+
+        // Lấy các element
+        const inputJob = document.getElementById("inputJob");
+        const jobList = document.getElementById("jobList");
+        const btnAdd = document.getElementById("btnAdd");
+        const btnAll = document.getElementById("btnAll");
+        const btnDone = document.getElementById("btnDone");
+        const btnPending = document.getElementById("btnPending");
+
+        // Gắn sự kiện
+        btnAdd.addEventListener("click", addJob);
+        btnAll.addEventListener("click", () => renderJob('all'));
+        btnDone.addEventListener("click", () => renderJob('done'));
+        btnPending.addEventListener("click", () => renderJob('pending'));
+        jobList.addEventListener("click", handleListClick);
+
+        function renderJob(filterType) {
+            currentFilter = filterType;
+            jobList.innerHTML = "";
+
+            let showData = jobs;
+            if (filterType === 'done') showData = jobs.filter(j => j.done);
+            if (filterType === 'pending') showData = jobs.filter(j => !j.done);
+
+            showData.forEach(j => {
+                let li = document.createElement("li");
+                let textStyle = j.done ? "text-decoration: line-through" : "";
+
+                li.innerHTML = `
+                    <span style="${textStyle}">${j.title}</span> 
+                    <button data-action="toggle" data-id="${j.id}">Đổi trạng thái</button> 
+                    <button data-action="delete" data-id="${j.id}">Xóa</button>
+                `;
+                jobList.appendChild(li);
+            });
+        }
+
+        function addJob() {
+            let val = inputJob.value.trim();
+            if (val) {
+                jobs.push({ id: Date.now(), title: val, done: false });
+                inputJob.value = "";
+                renderJob(currentFilter);
+            }
+        }
+
+        function handleListClick(e) {
+            if (e.target.tagName !== "BUTTON") return;
+
+            let action = e.target.dataset.action;
+            let id = Number(e.target.dataset.id);
+
+            if (action === "toggle") {
+                let job = jobs.find(j => j.id === id);
+                if (job) job.done = !job.done;
+            } else if (action === "delete") {
+                jobs = jobs.filter(j => j.id !== id);
+            }
+
+            renderJob(currentFilter);
+        }
+
+        renderJob('all');
+    </script>
+</body>
+
+</html>

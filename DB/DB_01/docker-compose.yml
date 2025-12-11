@@ -1,0 +1,72 @@
+services:
+  # Service 1: App
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: db-01-container
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:80"
+    networks:
+      - app-network
+
+  # Service 2: MySQL 
+  mysql:
+    image: mysql:8
+    container_name: db-01-mysql
+    env_file:
+      - .env
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+
+  # Service 3: PostgreSQL
+  postgres:
+    image: postgres:16-alpine
+    container_name: db-01-postgres
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  # Service 4: adminer
+  adminer:
+    image: adminer
+    container_name: db-01-adminer
+    env_file:
+      - .env
+    ports:
+      - "${ADMINER_PORT}:8080"
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+      - postgres
+
+# Volumes
+volumes:
+  mysql-data:
+  postgres-data:
+
+    # Networks
+networks:
+  app-network:
+    driver: bridge

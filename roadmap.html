@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lộ trình Fullstack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+        }
+
+        /*HEADER*/
+        header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        p.description {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /*GRID LAYOUT*/
+        .roadmap-grid {
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 20px;
+
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- CARD STYLE --- */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* display: flex; */
+            flex-direction: column;
+            border-left: 5px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .card .meta {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card .desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: auto;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .level-beginner {
+            border-left-color: #27ae60;
+        }
+
+        .level-beginner .badge {
+            background-color: #27ae60;
+        }
+
+        .level-intermediate {
+            border-left-color: #2980b9;
+        }
+
+        .level-intermediate .badge {
+            background-color: #2980b9;
+        }
+
+        .level-advanced {
+            border-left-color: #c0392b;
+        }
+
+        .level-advanced .badge {
+            background-color: #c0392b;
+        }
+
+        .level-special {
+            border-left-color: #8e44ad;
+            background-color: #fcfaff;
+        }
+
+        .level-special .badge {
+            background-color: #8e44ad;
+        }
+
+        .span-2 {
+            grid-column: span 2;
+        }
+
+        /*RESPONSIVE*/
+
+        @media (max-width: 650px) {
+            .roadmap-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .span-2 {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Lộ trình Fullstack Developer</h1>
+        <p class="description">
+            Hành trình từ con số 0 trở thành lập trình viên chuyên nghiệp.
+            Đi từ nền tảng Basic, chinh phục Backend, làm chủ Frontend và thực chiến Project.
+        </p>
+    </header>
+
+    <div class="roadmap-grid">
+
+        <div class="card level-special span-2">
+            <div class="meta">
+                <span class="badge">Tổng quan</span>
+                <span>Toàn bộ lộ trình</span>
+            </div>
+            <h3>Tư duy lập trình & Tổng quan hệ thống</h3>
+            <p class="desc">
+                Trước khi đi vào coding, bạn cần nắm vững cách máy tính hoạt động, cấu trúc dữ liệu giải thuật cơ bản,
+                mạng máy tính (HTTP/DNS) và cách các thành phần trong hệ thống web giao tiếp với nhau.
+            </p>
+        </div>
+
+        <div class="card level-beginner">
+            <div class="meta">
+                <span class="badge">Beginner</span>
+                <span>4 Tuần</span>
+            </div>
+            <h3>HTML5 & CSS3 Cơ bản</h3>
+            <p class="desc">
+                Xây dựng khung xương và giao diện website. Làm quen với Semantic HTML, Box Model, Flexbox và Responsive
+                Design.
+            </p>
+        </div>
+
+        <div class="card level-beginner">
+            <div class="meta">
+                <span class="badge">Beginner</span>
+                <span>6 Tuần</span>
+            </div>
+            <h3>JavaScript Nền tảng</h3>
+            <p class="desc">
+                Ngôn ngữ lập trình quan trọng nhất. Học về Biến, Hàm, DOM, ES6+, và xử lý bất đồng bộ (Async/Await).
+            </p>
+        </div>
+
+        <div class="card level-intermediate">
+            <div class="meta">
+                <span class="badge">Intermediate</span>
+                <span>8 Tuần</span>
+            </div>
+            <h3>ReactJS Frontend</h3>
+            <p class="desc">
+                Thư viện UI phổ biến nhất. Học về Component, State, Hooks, Redux và cách build Single Page Application
+                (SPA).
+            </p>
+        </div>
+
+        <div class="card level-intermediate">
+            <div class="meta">
+                <span class="badge">Intermediate</span>
+                <span>8 Tuần</span>
+            </div>
+            <h3>NodeJS & Express Backend</h3>
+            <p class="desc">
+                Xây dựng Server, thiết kế RESTful API, xác thực người dùng (JWT) và làm việc với Database (MongoDB/SQL).
+            </p>
+        </div>
+
+        <div class="card level-advanced">
+            <div class="meta">
+                <span class="badge">Advanced</span>
+                <span>4 Tuần</span>
+            </div>
+            <h3>DevOps & Deployment</h3>
+            <p class="desc">
+                Triển khai ứng dụng lên server thực tế (AWS/VPS), cấu hình Domain, SSL, Docker cơ bản và CI/CD.
+            </p>
+        </div>
+
+        <div class="card level-advanced">
+            <div class="meta">
+                <span class="badge">Advanced</span>
+                <span>6 Tuần</span>
+            </div>
+            <h3>Project Thực tế & Tốt nghiệp</h3>
+            <p class="desc">
+                Xây dựng một sản phẩm hoàn chỉnh (E-commerce hoặc Social Network) tích hợp đầy đủ các kiến thức đã học.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

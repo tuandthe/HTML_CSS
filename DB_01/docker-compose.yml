@@ -4,18 +4,18 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: docker-app-02
+    container_name: db-01-container
     env_file:
       - .env
     ports:
       - "${APP_PORT}:80"
     networks:
-      - profile-app
+      - app-network
 
   # Service 2: MySQL 
   mysql:
     image: mysql:8
-    container_name: docker-mysql-02
+    container_name: db-01-mysql
     env_file:
       - .env
     ports:
@@ -28,22 +28,45 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
-      - profile-app
-  # Service 3: adminer
+      - app-network
+
+  # Service 3: PostgreSQL
+  postgres:
+    image: postgres:16-alpine
+    container_name: db-01-postgres
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  # Service 4: adminer
   adminer:
     image: adminer
-    container_name: docker-adminer-02
+    container_name: db-01-adminer
     env_file:
       - .env
     ports:
       - "${ADMINER_PORT}:8080"
     networks:
-      - profile-app
+      - app-network
     depends_on:
       - mysql
+      - postgres
+
 # Volumes
 volumes:
-  mysql-data: # Networks
+  mysql-data:
+  postgres-data:
+
+    # Networks
 networks:
-  profile-app:
+  app-network:
     driver: bridge

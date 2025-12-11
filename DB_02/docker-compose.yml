@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: db-01-container
+    container_name: db-02-container
     env_file:
       - .env
     ports:
@@ -12,28 +12,10 @@ services:
     networks:
       - app-network
 
-  # Service 2: MySQL 
-  mysql:
-    image: mysql:8
-    container_name: db-01-mysql
-    env_file:
-      - .env
-    ports:
-      - "${MYSQL_PORT}:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-      - mysql-data:/var/lib/mysql
-    networks:
-      - app-network
-
-  # Service 3: PostgreSQL
+  # Service 2: PostgreSQL
   postgres:
     image: postgres:16-alpine
-    container_name: db-01-postgres
+    container_name: db-02-postgres
     env_file:
       - .env
     ports:
@@ -50,7 +32,7 @@ services:
   # Service 4: adminer
   adminer:
     image: adminer
-    container_name: db-01-adminer
+    container_name: db-02-adminer
     env_file:
       - .env
     ports:
@@ -58,12 +40,10 @@ services:
     networks:
       - app-network
     depends_on:
-      - mysql
       - postgres
 
 # Volumes
 volumes:
-  mysql-data:
   postgres-data:
 
     # Networks

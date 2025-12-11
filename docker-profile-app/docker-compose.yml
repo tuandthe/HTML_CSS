@@ -1,0 +1,49 @@
+services:
+  # Service 1: App
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docker-app-02
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:80"
+    networks:
+      - profile-app
+
+  # Service 2: MySQL 
+  mysql:
+    image: mysql:8
+    container_name: docker-mysql-02
+    env_file:
+      - .env
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - profile-app
+  # Service 3: adminer
+  adminer:
+    image: adminer
+    container_name: docker-adminer-02
+    env_file:
+      - .env
+    ports:
+      - "${ADMINER_PORT}:8080"
+    networks:
+      - profile-app
+    depends_on:
+      - mysql
+# Volumes
+volumes:
+  mysql-data: # Networks
+networks:
+  profile-app:
+    driver: bridge

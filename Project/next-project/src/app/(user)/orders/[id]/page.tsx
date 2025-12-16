@@ -13,7 +13,6 @@ export default async function OrderDetailsPage({
   const orderId = (await params).id || "ORD-001";
   return (
     <div className="space-y-6 w-full">
-
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">

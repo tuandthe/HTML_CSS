@@ -24,3 +24,19 @@ export interface StatItem {
   icon: LucideIcon; // Lucide icon type
   href?: string;
 }
+
+export interface Address {
+  id: number;
+  type: "Billing" | "Shipping";
+  isDefault: boolean;
+  firstName: string;
+  lastName: string;
+  company?: string;
+  addressLine1: string;
+  addressLine2?: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  country: string;
+  phone?: string;
+}

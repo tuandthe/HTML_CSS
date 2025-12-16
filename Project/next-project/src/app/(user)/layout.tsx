@@ -43,7 +43,7 @@ export default function AccountLayout({
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
+      <div className="flex-1 flex flex-col h-full overflow-y-auto">
         {/* HEADER MOBILE */}
         <header className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between md:hidden shrink-0">
           {/* Menu + Title */}
@@ -67,7 +67,7 @@ export default function AccountLayout({
           </Link>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50">
+        <main className="flex-1 p-4 md:p-8 bg-gray-50">
           {/* <div className="max-w-6xl mx-auto"> */}
           <div className="max-w-7xl">{children}</div>
         </main>

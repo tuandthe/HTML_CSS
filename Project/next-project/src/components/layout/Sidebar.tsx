@@ -43,7 +43,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
         <h1 className="text-2xl font-bold text-gray-900">My Account</h1>
         <Link
           href="/tickets"
-          className="hidden md:flex text-xs font-medium text-green-700 items-center gap-1 mt-1 hover:underline"
+          className="hidden md:flex text-base font-medium text-green-700 items-center gap-1 mt-3 hover:underline"
         >
           <Flag size={12} /> Tickets
         </Link>

@@ -1,0 +1,38 @@
+import { Product } from "@/types";
+
+export const recentProducts: Product[] = [
+  {
+    id: 1,
+    name: "Premium Leather Wallet",
+    price: 49.99,
+    originalPrice: 69.99,
+    rating: 4,
+    reviews: 128,
+    image:
+      "data:image/jpeg;base64,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",
+  },
+  {
+    id: 2,
+    name: "Wireless Charging Pad",
+    price: 29.99,
+    rating: 5,
+    reviews: 89,
+    image: "https://images-na.ssl-images-amazon.com/images/I/61srjyM7TFL.jpg",
+  },
+  {
+    id: 3,
+    name: "Coffee Mug Set",
+    price: 24.99,
+    rating: 4,
+    reviews: 256,
+    image: "https://images-na.ssl-images-amazon.com/images/I/61srjyM7TFL.jpg",
+  },
+  {
+    id: 4,
+    name: "Portable Phone Stand",
+    price: 19.99,
+    rating: 4.5,
+    reviews: 167,
+    image: "https://images-na.ssl-images-amazon.com/images/I/61srjyM7TFL.jpg",
+  },
+];

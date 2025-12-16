@@ -1,0 +1,123 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import styles from "./ForgotPassword.module.css";
+import { ArrowLeft, Mail, Lock } from "lucide-react";
+
+export default function ForgotPasswordPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [isResending, setIsResending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      setError("Email is required");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+    localStorage.setItem("resetEmail", email);
+    setIsResending(true);
+    setTimeout(() => {
+      setIsResending(false);
+      router.push("/check-email");
+    }, 2000);
+  };
+
+  return (
+    <div className={styles.container}>
+      {/* Logo */}
+      <div className={styles.logo}>W</div>
+
+      {/* Title */}
+      <h1 className={styles.title}>Forgot Password?</h1>
+      <p className={styles.subtitle}>
+        No worries, we&apos;ll send you reset instructions.
+      </p>
+
+      {/* Form Card */}
+      <div className={styles.card}>
+        <form onSubmit={handleSubmit}>
+          {/* Email */}
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Email Address</label>
+            <div
+              className={`${styles.inputWrapper} ${error ? styles.inputError : ""}`}
+            >
+              <Mail className={styles.inputIcon} size={20} />
+              <input
+                className={styles.input}
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError("");
+                }}
+              />
+            </div>
+            {error && <p className={styles.errorText}>{error}</p>}
+            <p className={styles.hint}>
+              We&apos;ll send a password reset link to this email address.
+            </p>
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            onClick={handleSubmit}
+          >
+            {isResending ? (
+              <>
+                <svg
+                  className={styles.spinner}
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                </svg>
+                Sending...
+              </>
+            ) : (
+              <>Reset Password</>
+            )}
+          </button>
+
+          {/* Back Link */}
+          <Link href="/login" className={styles.backLink}>
+            <ArrowLeft size={16} />
+            Back to Login
+          </Link>
+        </form>
+      </div>
+
+      {/* Security Notice Card */}
+      <div className={styles.noticeCard}>
+        <div className={styles.noticeIcon}>
+          <Lock size={20} />
+        </div>
+        <div className={styles.noticeContent}>
+          <h3 className={styles.noticeTitle}>Security Notice</h3>
+          <p className={styles.noticeText}>
+            For your security, the reset link will expire after 24 hours. If you
+            didn&apos;t request a password reset, please ignore this or contact
+            support.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

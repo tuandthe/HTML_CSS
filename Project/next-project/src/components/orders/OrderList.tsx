@@ -1,6 +1,6 @@
-import { Order } from "@/types";
+import { Order } from "@/types/order";
 import { Card } from "../ui/Card";
-import { Badge } from "../ui/Badge";
+import { OrderBadge } from "../ui/Badge";
 import Link from "next/link";
 import { Eye } from "lucide-react";
 
@@ -25,7 +25,7 @@ export default function OrderList({ orders }: { orders: Order[] }) {
               <span className="font-bold text-gray-900 text-lg">
                 {order.id}
               </span>
-              <Badge status={order.status} />
+              <OrderBadge status={order.status} />
             </div>
             <p className="text-sm text-gray-500 mb-1 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
               <span>📅 {order.date}</span>

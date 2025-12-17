@@ -18,6 +18,6 @@ export interface Product {
 export interface StatItem {
   label: string;
   value: string | number;
-  icon: LucideIcon; 
+  icon: LucideIcon;
   href?: string;
 }

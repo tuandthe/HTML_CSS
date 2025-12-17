@@ -31,6 +31,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname();
 
   return (
+    // Sidebar Container
     <aside className="w-64 bg-white border-r border-gray-200 flex flex-col h-full relative overflow-y-auto custom-scrollbar">
       <button
         onClick={onClose}
@@ -38,7 +39,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
       >
         <X size={20} />
       </button>
-
+      {/* Sidebar Header */}
       <div className="p-6 pb-2">
         <h1 className="text-2xl font-bold text-gray-900">My Account</h1>
         <Link
@@ -48,7 +49,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
           <Flag size={12} /> Tickets
         </Link>
       </div>
-
+      {/* Navigation Menu */}
       <nav className="flex-1 px-4 space-y-2 mt-4">
         {menuItems.map((item) => {
           const isActive =
@@ -73,7 +74,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
           );
         })}
       </nav>
-
+      {/* Sidebar Footer */}
       <div className="p-4 space-y-4">
         <div className="bg-[#00965E] rounded-xl p-4 text-white shadow-lg relative overflow-hidden">
           <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-10 rounded-full -mr-8 -mt-8"></div>

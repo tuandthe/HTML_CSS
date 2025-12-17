@@ -1,5 +1,5 @@
 import { Truck } from "lucide-react";
-import { Badge } from "../ui/Badge";
+import { OrderBadge } from "../ui/Badge";
 import { Card } from "../ui/Card";
 
 export default function OrderStatusCard() {
@@ -7,7 +7,7 @@ export default function OrderStatusCard() {
     <Card className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h3 className="font-bold text-gray-900">Order Status</h3>
-        <Badge status="Processing" />
+        <OrderBadge status="Processing" />
       </div>
       {/* Timeline */}
       <div className="relative pl-4 border-l-2 border-gray-100 space-y-8 ml-2">

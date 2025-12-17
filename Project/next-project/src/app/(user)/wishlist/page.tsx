@@ -1,4 +1,5 @@
 "use client";
+
 import WishlistCard from "@/components/wishlist/WishlistCard";
 import WishlistFilterBar from "@/components/wishlist/WishlistFilterBar";
 import { categories, recentProducts } from "@/data/products";
@@ -12,36 +13,43 @@ export default function Wishlist() {
   const [sortOption, setSortOption] = useState("newest");
 
   const handleDelete = (id: number) => {
-    if(confirm('Remove this item from wishlist?')) 
-      setItems(prev => prev.filter(items =>items.id !== id))
-  }
-  const getProcessItems = () =>{
-    {/* Filter */}
+    if (confirm("Remove this item from wishlist?"))
+      setItems((prev) => prev.filter((items) => items.id !== id));
+  };
+  const getProcessItems = () => {
+    // Filter
     let filtered = items;
-    
-    if(selectedCategory !== 'All Categories'){
-      filtered = filtered.filter(items => items.category === selectedCategory);
+
+    if (selectedCategory !== "All Categories") {
+      filtered = filtered.filter(
+        (items) => items.category === selectedCategory,
+      );
     }
-    {/* Sort */}
+    // Sort
+
     filtered.sort((a, b) => {
-      switch (sortOption){
-        case 'newest': 
-          return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
-        case 'oldest': 
-          return new Date(a.dateAdded).getTime() - new Date(b.dateAdded).getTime();
-        case 'price-low': 
+      switch (sortOption) {
+        case "newest":
+          return (
+            new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+          );
+        case "oldest":
+          return (
+            new Date(a.dateAdded).getTime() - new Date(b.dateAdded).getTime()
+          );
+        case "price-low":
           return a.price - b.price;
-        case 'price-high': 
+        case "price-high":
           return b.price - a.price;
-        case 'rating': 
+        case "rating":
           return b.rating - a.rating;
         default:
           return 0;
       }
-    })
+    });
     return filtered;
-  }
- const displayItems = getProcessItems();
+  };
+  const displayItems = getProcessItems();
 
   return (
     <div className="space-y-6 w-full">
@@ -69,9 +77,9 @@ export default function Wishlist() {
       {displayItems.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayItems.map((product) => (
-            <WishlistCard 
-              key={product.id} 
-              product={product} 
+            <WishlistCard
+              key={product.id}
+              product={product}
               onDelete={handleDelete}
             />
           ))}
@@ -79,10 +87,12 @@ export default function Wishlist() {
       ) : (
         // Empty State
         <div className="text-center py-20 bg-white rounded-xl border border-dashed border-gray-300">
-          <p className="text-gray-500 font-medium">No items found matching your filter.</p>
-          <button 
-             onClick={() => setSelectedCategory('All Categories')}
-             className="mt-2 text-[#007042] font-bold text-sm hover:underline"
+          <p className="text-gray-500 font-medium">
+            No items found matching your filter.
+          </p>
+          <button
+            onClick={() => setSelectedCategory("All Categories")}
+            className="mt-2 text-[#007042] font-bold text-sm hover:underline"
           >
             Clear Filters
           </button>

@@ -78,12 +78,15 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
           </span>
         </div>
         {/* 3. Action Button */}
-        {product.stockStatus === 'In Stock' ? (
+        {product.stockStatus === "In Stock" ? (
           <button className="w-full flex items-center justify-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white py-2.5 rounded-lg font-bold text-sm transition-colors">
             <ShoppingCart size={16} /> Add to Cart
           </button>
         ) : (
-          <button disabled className="w-full flex items-center justify-center gap-2 bg-gray-100 text-gray-400 py-2.5 rounded-lg font-bold text-sm cursor-not-allowed">
+          <button
+            disabled
+            className="w-full flex items-center justify-center gap-2 bg-gray-100 text-gray-400 py-2.5 rounded-lg font-bold text-sm cursor-not-allowed"
+          >
             <ShoppingCart size={16} /> Out of Stock
           </button>
         )}

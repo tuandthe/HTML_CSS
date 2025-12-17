@@ -26,27 +26,26 @@ export default function WishlistFilterBar({
           {/* <span className="font-medium text-sm">Filter:</span> */}
         </div>
         <div className="w-full sm:w-56">
-          <Select 
+          <Select
             label="Filter:"
             options={categories}
             value={selectedCategory}
             onChange={onCategoryChange}
           />
         </div>
-        
       </div>
       {/* Sort Options */}
       <div className="flex items-center gap-3">
         {/* <span className="font-medium text-sm text-gray-900">Sort by:</span> */}
         <div className="w-full sm:w-auto flex justify-end">
-        <Select 
-          label="Sort by:"
-          options={sortOptions}
-          value={sortOption}
-          onChange={onSortChange}
-          className="w-full sm:w-56" 
-        />
-      </div>
+          <Select
+            label="Sort by:"
+            options={sortOptions}
+            value={sortOption}
+            onChange={onSortChange}
+            className="w-full sm:w-56"
+          />
+        </div>
       </div>
     </Card>
   );

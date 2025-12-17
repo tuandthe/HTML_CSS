@@ -1,9 +1,9 @@
-export type status = "Processing" | "Completed" | "Cancelled";
+export type orderStatus = "Processing" | "Completed" | "Cancelled";
 
 export interface Order {
   id: string;
   date: string;
-  status: status;
+  status: orderStatus;
   items: string;
   total: string;
 }

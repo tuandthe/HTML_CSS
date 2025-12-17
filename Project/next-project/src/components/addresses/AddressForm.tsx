@@ -142,11 +142,13 @@ export default function AddressForm({
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">Country*</label>
-            <Select 
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              Country*
+            </label>
+            <Select
               options={countries}
               value={formData.country}
-              onChange={(val) => handleChange('country', val)}
+              onChange={(val) => handleChange("country", val)}
               placeholder="Select Country"
             />
           </div>

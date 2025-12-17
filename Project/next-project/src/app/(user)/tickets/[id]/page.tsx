@@ -66,16 +66,15 @@ export default function TicketDetailPage() {
     return notFound();
   }
   return (
-    <div className="flex flex-col h-[calc(100vh-theme(spacing.12))]">
+    <div className="p-2 lg:p-4">
       {/* Header */}
-      <div className="flex-shrink-0">
+      <div className="space-y-6">
         <TicketDetailHeader ticket={ticket} />
-      </div>
       {/* Main Layout */}
-      <div className="flex flex-col lg:flex-row gap-6 flex-1 min-h-0">
+      <div className="grid lg:grid-cols-3 gap-6">
 
         {/* Left Column: Conversation CARD */}
-        <Card className="flex-1 flex flex-col min-h-0 bg-white shadow-sm border-gray-200 overflow-hidden">
+        <Card className="lg:col-span-2 space-y-6 max-h-[140vh] flex flex-col">
           
           {/* Header Card Conversation */}
           <div className="p-4 border-b border-gray-100 flex-shrink-0">
@@ -83,7 +82,7 @@ export default function TicketDetailPage() {
             </div>
           
           {/* Messages Area (Scrollable) */}
-          <div className="flex-1 overflow-y-auto p-5 custom-scrollbar bg-white">
+          <div className="flex-1 p-3 overflow-y-scroll bg-white">
             {messages.length > 0 ? (
               messages.map((msg) => (
                 <ChatBubble
@@ -100,16 +99,17 @@ export default function TicketDetailPage() {
             <div ref={messagesEndRef} />
           </div>
           {/* Input Area (Fixed bottom) */}
-          <div className="p-5 bg-white border-t border-gray-100 flex-shrink-0">
+          <div className=" p-6 border-t border-woo-border bg-gray-50">
                 <div className="bg-transparent"> 
                     <MessageInput onSend={handleSendMessage} />
                 </div>
             </div>
         </Card>
         {/* Right Column: Info Sidebar (Fixed width on Desktop) */}
-        <div className="w-full lg:w-1/4 flex-shrink-0 space-y-6">
+        <div className="space-y-6">
           <TicketDetailInfo ticket={ticket} />
         </div>
+      </div>
       </div>
     </div>
   );

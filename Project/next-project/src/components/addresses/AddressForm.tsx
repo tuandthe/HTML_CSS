@@ -4,14 +4,16 @@ import { useState } from "react";
 import { MapPin } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
-import { Address } from "@/types";
+import { Address } from "@/types/address";
 import { cn } from "@/lib/utils";
+import { Select } from "../ui/Select";
+import { countries } from "@/data/addresses";
 
 interface AddressFormProps {
   initialData?: Address | null;
   onSave: (data: Omit<Address, "id">) => void;
   onCancel: () => void;
-  className?: string; 
+  className?: string;
 }
 
 export default function AddressForm({
@@ -140,17 +142,13 @@ export default function AddressForm({
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Country*
-            </label>
-            <select
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:ring-[#007042]"
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Country*</label>
+            <Select 
+              options={countries}
               value={formData.country}
-              onChange={(e) => handleChange("country", e.target.value)}
-            >
-              <option value="United States">United States</option>
-              <option value="Vietnam">Vietnam</option>
-            </select>
+              onChange={(val) => handleChange('country', val)}
+              placeholder="Select Country"
+            />
           </div>
           <Input
             label="Phone"

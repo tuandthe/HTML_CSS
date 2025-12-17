@@ -1,5 +1,5 @@
 import { Package, CheckCircle, Gift } from "lucide-react";
-import { StatItem } from "@/types";
+import { StatItem } from "@/types/product";
 
 export const statsData: StatItem[] = [
   { label: "Active Orders", value: 3, icon: Package, href: "/orders" },
@@ -7,7 +7,7 @@ export const statsData: StatItem[] = [
     label: "Completed Orders",
     value: 24,
     icon: CheckCircle,
-    href: "/orders?status=completed",
+    href: "/orders",
   },
   { label: "Reward Points", value: "1,240", icon: Gift },
 ];

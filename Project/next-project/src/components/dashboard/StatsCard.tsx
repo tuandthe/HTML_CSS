@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
-import { StatItem } from "@/types";
+import { StatItem } from "@/types/product";
 
 export default function StatsCard({ item }: { item: StatItem }) {
   const Icon = item.icon;

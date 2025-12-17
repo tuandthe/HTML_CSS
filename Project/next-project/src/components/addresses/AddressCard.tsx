@@ -1,4 +1,4 @@
-import { Address } from "@/types";
+import { Address } from "@/types/address";
 import { Card } from "../ui/Card";
 import { Edit, MapPin, Trash2 } from "lucide-react";
 

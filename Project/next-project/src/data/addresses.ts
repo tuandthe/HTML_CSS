@@ -1,4 +1,4 @@
-import { Address } from "@/types";
+import { Address } from "@/types/address";
 
 export const initialAddresses: Address[] = [
   {
@@ -30,4 +30,11 @@ export const initialAddresses: Address[] = [
     country: "United States",
     phone: "+1 (555) 123-4567",
   },
+];
+export const countries = [
+  "United States",
+  "Canada",
+  "United Kingdom",
+  "Australia",
+  "Vietnam",
 ];

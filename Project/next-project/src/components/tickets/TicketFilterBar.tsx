@@ -1,8 +1,8 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { Card } from "../ui/Card";
-import { cn } from "@/lib/utils";
+import { Card } from "../common/Card";
+import { cn } from "@/lib/utils/utils";
 
 interface TicketFilterBarProps {
   categories: string[];

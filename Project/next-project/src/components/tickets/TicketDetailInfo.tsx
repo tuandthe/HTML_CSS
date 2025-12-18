@@ -1,6 +1,6 @@
-import { Ticket } from "@/types/ticket";
+import { Ticket } from "@/lib/types/ticket";
 import { CheckCircle2, MessageSquare, XCircle } from "lucide-react";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/common/Card";
 
 export default function TicketDetailInfo({ ticket }: { ticket: Ticket }) {
   return (

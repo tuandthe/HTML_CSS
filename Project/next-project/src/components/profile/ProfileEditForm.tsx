@@ -1,11 +1,11 @@
-import { usersData } from "@/data/users";
-import { UserProfile } from "@/types/user";
+import { usersData } from "@/lib/data/users";
+import { UserProfile } from "@/lib/types/user";
 import { useState } from "react";
-import { Card } from "../ui/Card";
+import { Card } from "../common/Card";
 import { Save, X } from "lucide-react";
-import { Input } from "../ui/Input";
-import { Select } from "../ui/Select";
-import { countries } from "@/data/addresses";
+import { Input } from "../common/Input";
+import { Select } from "../common/Select";
+import { countries } from "@/lib/data/addresses";
 
 interface ProfileEditFormProps {
   initialData: UserProfile;

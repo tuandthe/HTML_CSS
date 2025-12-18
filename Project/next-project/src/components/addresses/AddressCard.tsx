@@ -1,5 +1,5 @@
-import { Address } from "@/types/address";
-import { Card } from "../ui/Card";
+import { Address } from "@/lib/types/address";
+import { Card } from "../common/Card";
 import { Edit, MapPin, Trash2 } from "lucide-react";
 
 interface AddressCardProps {

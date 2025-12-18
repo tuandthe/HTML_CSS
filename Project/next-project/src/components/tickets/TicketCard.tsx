@@ -1,5 +1,5 @@
-import { Ticket } from "@/types/ticket";
-import { TicketBadge, TicketPriorityBadge } from "../ui/Badge";
+import { Ticket } from "@/lib/types/ticket";
+import { TicketBadge, TicketPriorityBadge } from "../common/Badge";
 import { Info } from "lucide-react";
 import Link from "next/link";
 

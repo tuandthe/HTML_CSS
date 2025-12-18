@@ -1,4 +1,4 @@
-import { CATEGORIES_LIST, Ticket } from "@/types/ticket";
+import { CATEGORIES_LIST, Ticket } from "@/lib/types/ticket";
 
 export const ticketsData: Ticket[] = [
   {
@@ -68,7 +68,7 @@ export const ticketsData: Ticket[] = [
   },
 ];
 // data/tickets.ts (Thêm đoạn này vào cuối file)
-import { Message } from "@/types/ticket";
+import { Message } from "@/lib/types/ticket";
 
 export const mockTicketMessages: Record<string, Message[]> = {
   "TKT-001": [

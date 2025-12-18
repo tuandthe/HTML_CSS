@@ -1,5 +1,5 @@
 import { Calendar, Truck, MapPin } from "lucide-react";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/common/Card";
 
 export default function OrderInfoCards() {
   return (

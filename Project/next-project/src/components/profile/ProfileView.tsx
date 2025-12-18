@@ -1,5 +1,5 @@
-import { UserProfile } from "@/types/user";
-import { Card } from "../ui/Card";
+import { UserProfile } from "@/lib/types/user";
+import { Card } from "../common/Card";
 
 const InfoField = ({ label, value }: { label: string; value: string }) => (
   <div className="flex flex-col">

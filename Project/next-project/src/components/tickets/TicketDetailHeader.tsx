@@ -1,9 +1,9 @@
 "use client";
 
-import { Ticket } from "@/types/ticket";
+import { Ticket } from "@/lib/types/ticket";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { TicketBadge, TicketPriorityBadge } from "../ui/Badge";
+import { TicketBadge, TicketPriorityBadge } from "../common/Badge";
 
 export default function TicketDetailHeader({ ticket }: { ticket: Ticket }) {
   const router = useRouter();

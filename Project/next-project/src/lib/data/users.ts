@@ -1,4 +1,4 @@
-import { UserProfile } from "@/types/user";
+import { UserProfile } from "@/lib/types/user";
 
 export const usersData: UserProfile[] = [
   {

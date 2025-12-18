@@ -1,4 +1,4 @@
-import { Order } from "@/types/order";
+import { Order } from "@/lib/types/order";
 
 export const ordersData: Order[] = [
   {

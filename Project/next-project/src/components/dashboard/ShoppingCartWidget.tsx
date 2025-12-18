@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/Card";
-import { recentProducts } from "@/data/products";
+import { Card } from "@/components/common/Card";
+import { recentProducts } from "@/lib/data/products";
 import Image from "next/image";
 export default function ShoppingCartWidget() {
   return (

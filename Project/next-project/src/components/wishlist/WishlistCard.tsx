@@ -1,5 +1,5 @@
-import { Product } from "@/types/product";
-import { Card } from "../ui/Card";
+import { Product } from "@/lib/types/product";
+import { Card } from "../common/Card";
 import Image from "next/image";
 import { ShoppingCart, Star, Trash2 } from "lucide-react";
 interface WishlistCardProps {

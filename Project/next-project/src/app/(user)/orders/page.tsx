@@ -2,7 +2,7 @@
 
 import OrderFilter from "@/components/orders/OrderFilter";
 import OrderList from "@/components/orders/OrderList";
-import { ordersData } from "@/data/orders";
+import { ordersData } from "@/lib/data/orders";
 import { useState } from "react";
 
 export default function OrderPage() {

@@ -2,8 +2,8 @@
 
 import ProfileEditForm from "@/components/profile/ProfileEditForm";
 import ProfileView from "@/components/profile/ProfileView";
-import { usersData } from "@/data/users";
-import { UserProfile } from "@/types/user";
+import { usersData } from "@/lib/data/users";
+import { UserProfile } from "@/lib/types/user";
 import { User } from "lucide-react";
 import { useState } from "react";
 

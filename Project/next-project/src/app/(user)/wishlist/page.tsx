@@ -2,8 +2,8 @@
 
 import WishlistCard from "@/components/wishlist/WishlistCard";
 import WishlistFilterBar from "@/components/wishlist/WishlistFilterBar";
-import { categories, recentProducts } from "@/data/products";
-import { Product } from "@/types/product";
+import { categories, recentProducts } from "@/lib/data/products";
+import { Product } from "@/lib/types/product";
 import { Share2 } from "lucide-react";
 import { useState } from "react";
 

@@ -1,6 +1,6 @@
 import { ShoppingCart, Star } from "lucide-react";
-import { Card } from "@/components/ui/Card";
-import { Product } from "@/types/product";
+import { Card } from "@/components/common/Card";
+import { Product } from "@/lib/types/product";
 import Image from "next/image";
 export default function ProductCard({ product }: { product: Product }) {
   return (

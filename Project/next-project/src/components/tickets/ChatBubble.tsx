@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import { Message } from "@/types/ticket";
+import { cn } from "@/lib/utils/utils";
+import { Message } from "@/lib/types/ticket";
 import { Paperclip, User } from "lucide-react";
 
 interface ChatBubbleProps {

@@ -1,6 +1,6 @@
-import { Order } from "@/types/order";
-import { Card } from "../ui/Card";
-import { OrderBadge } from "../ui/Badge";
+import { Order } from "@/lib/types/order";
+import { Card } from "../common/Card";
+import { OrderBadge } from "../common/Badge";
 import Link from "next/link";
 import { Eye } from "lucide-react";
 

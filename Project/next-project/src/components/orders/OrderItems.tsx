@@ -1,4 +1,4 @@
-import { Card } from "../ui/Card";
+import { Card } from "../common/Card";
 
 export default function OrderItems() {
   return (

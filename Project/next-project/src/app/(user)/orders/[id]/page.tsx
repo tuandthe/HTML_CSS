@@ -1,7 +1,7 @@
 import OrderInfoCards from "@/components/orders/OrderInfoCards";
 import OrderItems from "@/components/orders/OrderItems";
 import OrderStatusCard from "@/components/orders/OrderStatusCard";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/common/Card";
 import { ArrowLeft, Download, MessageSquare } from "lucide-react";
 import Link from "next/link";
 

@@ -1,7 +1,7 @@
 import { Filter } from "lucide-react";
-import { Card } from "../ui/Card";
-import { Select } from "../ui/Select";
-import { sortOptions } from "@/data/products";
+import { Card } from "../common/Card";
+import { Select } from "../common/Select";
+import { sortOptions } from "@/lib/data/products";
 
 interface WishlistFilterBarProps {
   categories: string[];

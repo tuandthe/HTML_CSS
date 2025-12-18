@@ -3,9 +3,9 @@
 import NewTicketForm from "@/components/tickets/NewTicketForm";
 import TicketCard from "@/components/tickets/TicketCard";
 import TicketFilterBar from "@/components/tickets/TicketFilterBar";
-import { Card } from "@/components/ui/Card";
-import { ticketCategories, ticketsData } from "@/data/tickets";
-import { Ticket } from "@/types/ticket";
+import { Card } from "@/components/common/Card";
+import { ticketCategories, ticketsData } from "@/lib/data/tickets";
+import { Ticket } from "@/lib/types/ticket";
 import { MessageSquareOff, Plus } from "lucide-react";
 import { useState } from "react";
 

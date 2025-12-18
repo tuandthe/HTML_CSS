@@ -14,7 +14,7 @@ import {
   Flag,
   X,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/utils";
 
 const menuItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },

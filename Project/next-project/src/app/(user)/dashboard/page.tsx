@@ -1,8 +1,8 @@
 import StatsCard from "@/components/dashboard/StatsCard";
 import ProductCard from "@/components/dashboard/ProductCard";
 import ShoppingCartWidget from "@/components/dashboard/ShoppingCartWidget";
-import { statsData } from "@/data/stats";
-import { recentProducts } from "@/data/products";
+import { statsData } from "@/lib/data/stats";
+import { recentProducts } from "@/lib/data/products";
 
 export default function DashboardPage() {
   return (
@@ -10,7 +10,7 @@ export default function DashboardPage() {
       <div>
         <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
         <p className="text-gray-500">
-          Welcome back! Here &apos;s your account overview.
+          Welcome back! Here&apos;s your account overview.
         </p>
       </div>
 

@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Plus } from "lucide-react";
 import AddressForm from "@/components/addresses/AddressForm";
 import { AddressCard } from "@/components/addresses/AddressCard";
-import { initialAddresses } from "@/data/addresses";
-import { Address } from "@/types/address";
+import { initialAddresses } from "@/lib/data/addresses";
+import { Address } from "@/lib/types/address";
 
 export default function AddressPage() {
   const [addresses, setAddresses] = useState<Address[]>(initialAddresses);

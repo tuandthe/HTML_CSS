@@ -4,9 +4,9 @@ import ChatBubble from "@/components/tickets/ChatBubble";
 import MessageInput from "@/components/tickets/MessageInput";
 import TicketDetailHeader from "@/components/tickets/TicketDetailHeader";
 import TicketDetailInfo from "@/components/tickets/TicketDetailInfo";
-import { Card } from "@/components/ui/Card";
-import { mockTicketMessages, ticketsData } from "@/data/tickets";
-import { Message } from "@/types/ticket";
+import { Card } from "@/components/common/Card";
+import { mockTicketMessages, ticketsData } from "@/lib/data/tickets";
+import { Message } from "@/lib/types/ticket";
 import { notFound, useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 

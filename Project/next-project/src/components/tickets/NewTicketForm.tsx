@@ -1,11 +1,11 @@
 "use client";
 
-import { Ticket } from "@/types/ticket";
+import { Ticket } from "@/lib/types/ticket";
 import { useEffect, useState } from "react";
-import { Card } from "../ui/Card";
-import { Input } from "../ui/Input";
-import { Select } from "../ui/Select";
-import { ticketCategories } from "@/data/tickets";
+import { Card } from "../common/Card";
+import { Input } from "../common/Input";
+import { Select } from "../common/Select";
+import { ticketCategories } from "@/lib/data/tickets";
 import { Paperclip, Send } from "lucide-react";
 
 interface NewTicketFormProps {

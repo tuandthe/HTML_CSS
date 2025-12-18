@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { MapPin } from "lucide-react";
-import { Card } from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Address } from "@/types/address";
-import { cn } from "@/lib/utils";
-import { Select } from "../ui/Select";
-import { countries } from "@/data/addresses";
+import { Card } from "@/components/common/Card";
+import { Input } from "@/components/common/Input";
+import { Address } from "@/lib/types/address";
+import { cn } from "@/lib/utils/utils";
+import { Select } from "../common/Select";
+import { countries } from "@/lib/data/addresses";
 
 interface AddressFormProps {
   initialData?: Address | null;

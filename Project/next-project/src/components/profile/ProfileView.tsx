@@ -1,0 +1,57 @@
+import { UserProfile } from "@/types/user";
+import { Card } from "../ui/Card";
+
+const InfoField = ({ label, value }: { label: string; value: string }) => (
+  <div className="flex flex-col">
+    <span className="text-sm font-bold text-gray-900 mb-1">{label}</span>
+    <span className="text-sm text-gray-500 font-medium">{value}</span>
+  </div>
+);
+export default function ProfileView({ data }: { data: UserProfile }) {
+  return (
+    <Card className="p-8 bg-white shadow-sm border border-gray-200 rounded-xl">
+      <div className="space-y-8">
+        {/* Personal Information */}
+        <div>
+          <h3 className="text-lg font-bold text-gray-900 mb-4">
+            Personal Information
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+            <InfoField label="First Name*" value={data.firstName} />
+            <InfoField label="Last Name*" value={data.lastName} />
+          </div>
+        </div>
+        {/* Contact Information */}
+        <div>
+          <h3 className="text-lg font-bold text-gray-900 mb-4">
+            Contact Information
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+            <InfoField label="Email Address*" value={data.email} />
+            <InfoField label="Phone Number*" value={data.phone} />
+          </div>
+        </div>
+        {/* Address Information */}
+        <div>
+          <h3 className="text-lg font-bold text-gray-900 mb-4">
+            Address Information
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mb-6">
+            <InfoField label="Country" value={data.country} />
+            <InfoField label="City" value={data.city} />
+          </div>
+          <div className="grid grid-cols-1 gap-6 mb-6">
+            <InfoField label="Address Line 1" value={data.addressLine1} />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+            <InfoField
+              label="Address Line 2"
+              value={data.addressLine2 || "-"}
+            />
+            <InfoField label="ZIP/Postal Code" value={data.zipCode} />
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+}

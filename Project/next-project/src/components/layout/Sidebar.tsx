@@ -90,9 +90,12 @@ export default function Sidebar({ onClose }: SidebarProps) {
           </button>
         </div>
         <div className="space-y-1">
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-red-600 rounded-lg text-sm font-medium transition-colors">
+          <Link
+            href="/login"
+            className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-[#007042] rounded-lg text-sm font-medium transition-colors"
+          >
             <LogOut size={20} /> Logout
-          </button>
+          </Link>
           <Link
             href="/affiliate"
             className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-[#007042] rounded-lg text-sm font-medium transition-colors"

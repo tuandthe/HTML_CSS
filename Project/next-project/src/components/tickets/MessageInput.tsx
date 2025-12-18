@@ -23,14 +23,14 @@ export default function MessageInput({ onSend }: MessageInputProps) {
 
   return (
     <div>
-    <div className="bg-white p-2 mb-3 rounded-xl border border-gray-200">
-      <textarea
-        className="w-full resize-none outline-none text-gray-700 placeholder-gray-400 min-h-[60px] text-sm focus:ring-0"
-        placeholder="Type your message..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
+      <div className="bg-white p-2 mb-3 rounded-xl border border-gray-200">
+        <textarea
+          className="w-full resize-none outline-none text-gray-700 placeholder-gray-400 min-h-[60px] text-sm focus:ring-0"
+          placeholder="Type your message..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
       </div>
       <div className="flex items-center justify-between">
         <button className="flex items-center gap-2 px-3 py-1.5 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors text-sm font-medium">
@@ -51,7 +51,6 @@ export default function MessageInput({ onSend }: MessageInputProps) {
           <Send size={18} /> Send Message
         </button>
       </div>
-    
     </div>
   );
 }

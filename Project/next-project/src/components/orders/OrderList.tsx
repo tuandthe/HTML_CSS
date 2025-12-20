@@ -2,7 +2,7 @@ import { Order } from "@/lib/types/order";
 import { Card } from "../common/Card";
 import { OrderBadge } from "../common/Badge";
 import Link from "next/link";
-import { Eye } from "lucide-react";
+import { Calendar, Eye } from "lucide-react";
 
 export default function OrderList({ orders }: { orders: Order[] }) {
   if (orders.length === 0) {
@@ -22,21 +22,22 @@ export default function OrderList({ orders }: { orders: Order[] }) {
         >
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <span className="font-bold text-gray-900 text-lg">
+              <span className="font-semibold  text-gray-900 text-lg">
                 {order.id}
               </span>
               <OrderBadge status={order.status} />
             </div>
             <p className="text-sm text-gray-500 mb-1 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
-              <span>📅 {order.date}</span>
+              <Calendar size={14} className="inline-block mr-1" />
+              <span> {order.date}</span>
               <span className="hidden sm:inline mx-2">•</span>
-              <span className="text-gray-700 font-medium">{order.items}</span>
+              <span>{order.items}</span>
             </p>
-            <p className="font-bold text-gray-900 mt-2">{order.total}</p>
+            <p className="font-semibold text-gray-900 mt-2">{order.total}</p>
           </div>
           <Link
             href={`/orders/${order.id}`}
-            className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-white hover:border-gray-300 hover:shadow-sm transition-all bg-white"
+            className="flex items-center gap-2 px-4 py-2 border border-gray-200 bg-gray-100 rounded-3xl text-sm font-medium text-gray-700   hover:shadow-sm transition-all"
           >
             <Eye size={16} /> View Details
           </Link>

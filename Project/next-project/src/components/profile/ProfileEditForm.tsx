@@ -1,11 +1,10 @@
-import { usersData } from "@/lib/data/users";
 import { UserProfile } from "@/lib/types/user";
-import { useState } from "react";
 import { Card } from "../common/Card";
 import { Save, X } from "lucide-react";
 import { Input } from "../common/Input";
 import { Select } from "../common/Select";
 import { countries } from "@/lib/data/addresses";
+import { useProfileEdit } from "@/hooks/profile/useProfileEdit";
 
 interface ProfileEditFormProps {
   initialData: UserProfile;
@@ -17,14 +16,10 @@ export default function ProfileEditForm({
   onCancel,
   onSave,
 }: ProfileEditFormProps) {
-  const [formData, setFormData] = useState<UserProfile>(initialData);
-  const handleChange = (field: keyof UserProfile, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSave(formData);
-  };
+  const { formData, handleChange, handleSubmit } = useProfileEdit(
+    initialData,
+    onSave,
+  );
   return (
     <Card className="p-8 bg-white shadow-sm border border-gray-200 rounded-xl">
       <form onSubmit={handleSubmit} className="space-y-8">

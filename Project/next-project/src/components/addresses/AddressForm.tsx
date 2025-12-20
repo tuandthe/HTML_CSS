@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { MapPin } from "lucide-react";
+import { MapPin, Save, X } from "lucide-react";
 import { Card } from "@/components/common/Card";
 import { Input } from "@/components/common/Input";
 import { Address } from "@/lib/types/address";
 import { cn } from "@/lib/utils/utils";
 import { Select } from "../common/Select";
 import { countries } from "@/lib/data/addresses";
+import { useAddressForm } from "@/hooks/addresses/useAddressForm";
 
 interface AddressFormProps {
   initialData?: Address | null;
@@ -22,29 +22,10 @@ export default function AddressForm({
   onCancel,
   className,
 }: AddressFormProps) {
-  const [formData, setFormData] = useState({
-    type: initialData?.type || ("Billing" as "Billing" | "Shipping"),
-    firstName: initialData?.firstName || "",
-    lastName: initialData?.lastName || "",
-    company: initialData?.company || "",
-    addressLine1: initialData?.addressLine1 || "",
-    addressLine2: initialData?.addressLine2 || "",
-    city: initialData?.city || "",
-    state: initialData?.state || "",
-    zipCode: initialData?.zipCode || "",
-    country: initialData?.country || "United States",
-    phone: initialData?.phone || "",
-    isDefault: initialData?.isDefault || false,
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSave(formData);
-  };
-
-  const handleChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
+  const { formData, handleChange, handleSubmit } = useAddressForm(
+    initialData || null,
+    onSave,
+  );
 
   return (
     <Card
@@ -159,18 +140,20 @@ export default function AddressForm({
           />
         </div>
 
-        <div className="flex gap-3 pt-4 border-t border-gray-100 mt-4">
+        <div className="flex gap-3 pt-4">
           <button
             type="submit"
-            className="bg-[#007042] hover:bg-[#005c36] text-white px-4 py-2 rounded-lg font-bold text-sm transition-colors shadow-sm flex-1"
+            className="inline-flex items-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all shadow-sm hover:shadow active:scale-95"
           >
+            <Save size={18} strokeWidth={2.5} />
             {initialData ? "Save Changes" : "Save Address"}
           </button>
           <button
             type="button"
             onClick={onCancel}
-            className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-bold text-sm transition-colors flex-1"
+            className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-2.5 rounded-full font-semibold text-sm transition-all active:scale-95"
           >
+            <X size={18} strokeWidth={2.5} />
             Cancel
           </button>
         </div>

@@ -8,7 +8,7 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
+        <h2 className="text-3xl font-bold text-woo-text mb-2">Dashboard</h2>
         <p className="text-gray-500">
           Welcome back! Here&apos;s your account overview.
         </p>

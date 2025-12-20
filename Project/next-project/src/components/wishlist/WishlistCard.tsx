@@ -35,7 +35,7 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
         {/* Delete Button */}
         <button
           onClick={() => onDelete(product.id)}
-          className="absolute top-3 right-3 p-2 bg-white rounded-full text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors shadow-sm"
+          className="absolute top-3 right-3 p-2 bg-white rounded-full text-red-500  shadow-sm"
         >
           <Trash2 size={16} />
         </button>
@@ -79,7 +79,7 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
         </div>
         {/* 3. Action Button */}
         {product.stockStatus === "In Stock" ? (
-          <button className="w-full flex items-center justify-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white py-2.5 rounded-lg font-bold text-sm transition-colors">
+          <button className="w-full flex items-center justify-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white py-2.5 rounded-2xl font-bold text-sm transition-colors">
             <ShoppingCart size={16} /> Add to Cart
           </button>
         ) : (

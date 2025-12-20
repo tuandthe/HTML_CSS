@@ -34,20 +34,24 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className={styles.container}>
-      {/* Logo */}
-      <div className={styles.logo}>W</div>
+      <div className={styles.header}>
+        {/* Logo */}
+        <div className={styles.logo}>
+          <span className={styles.logoText}>W</span>
+        </div>
 
-      {/* Title */}
-      <h1 className={styles.title}>Forgot Password?</h1>
-      <p className={styles.subtitle}>
-        No worries, we&apos;ll send you reset instructions.
-      </p>
+        {/* Title */}
+        <h1 className={styles.title}>Forgot Password?</h1>
+        <p className={styles.subtitle}>
+          No worries, we&apos;ll send you reset instructions.
+        </p>
+      </div>
 
       {/* Form Card */}
       <div className={styles.card}>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.formGroup} onSubmit={handleSubmit}>
           {/* Email */}
-          <div className={styles.formGroup}>
+          <div>
             <label className={styles.label}>Email Address</label>
             <div
               className={`${styles.inputWrapper} ${error ? styles.inputError : ""}`}
@@ -95,13 +99,12 @@ export default function ForgotPasswordPage() {
               <>Reset Password</>
             )}
           </button>
-
-          {/* Back Link */}
-          <Link href="/login" className={styles.backLink}>
-            <ArrowLeft size={16} />
-            Back to Login
-          </Link>
         </form>
+        {/* Back Link */}
+        <Link href="/login" className={styles.backLink}>
+          <ArrowLeft size={16} />
+          Back to Login
+        </Link>
       </div>
 
       {/* Security Notice Card */}

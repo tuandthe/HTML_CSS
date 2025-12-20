@@ -6,61 +6,19 @@ import TicketDetailHeader from "@/components/tickets/TicketDetailHeader";
 import TicketDetailInfo from "@/components/tickets/TicketDetailInfo";
 import { Card } from "@/components/common/Card";
 import { mockTicketMessages, ticketsData } from "@/lib/data/tickets";
-import { Message } from "@/lib/types/ticket";
 import { notFound, useParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useTicketDetail } from "@/hooks/tickets/useTicketDetail";
 
 export default function TicketDetailPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
-
   const params = useParams();
+
   const ticketId = params.id as string;
 
-  const ticket = ticketsData.find((t) => t.id === ticketId);
-
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (ticket) {
-      const initialMessages = mockTicketMessages[ticketId] || [];
-      if (initialMessages.length === 0 && ticket.message) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setMessages([
-          {
-            id: "initial",
-            senderId: "user",
-            senderName: "You",
-            text: ticket.message,
-            timestamp: ticket.createdDate,
-          },
-        ]);
-      } else {
-        setMessages(initialMessages);
-      }
-    }
-  }, [ticket, ticketId]);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const handleSendMessage = (text: string) => {
-    const newMessage: Message = {
-      id: Date.now().toString(),
-      senderId: "user",
-      senderName: "You",
-      text: text,
-      timestamp: new Date().toLocaleString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      }),
-    };
-    setMessages((prev) => [...prev, newMessage]);
-  };
+  const { ticket, messages, handleSendMessage } = useTicketDetail(
+    ticketsData,
+    mockTicketMessages,
+    ticketId,
+  );
 
   if (!ticket) {
     return notFound();
@@ -94,7 +52,6 @@ export default function TicketDetailPage() {
                   No messages yet.
                 </div>
               )}
-              <div ref={messagesEndRef} />
             </div>
             {/* Input Area (Fixed bottom) */}
             <div className=" p-6 border-t border-woo-border bg-gray-50">

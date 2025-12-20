@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -12,7 +13,6 @@ export default function CheckEmailPage() {
   useEffect(() => {
     const storedEmail = localStorage.getItem("resetEmail");
     if (storedEmail) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setEmail(storedEmail);
     }
   }, []);

@@ -17,7 +17,7 @@ export default function AffiliateTabs({
     { id: "payments", label: "Payments" },
   ];
   return (
-    <div className="flex flex-wrap gap-2 mb-6 bg-gray-50 p-1.5 rounded-xl w-fit">
+    <div className="flex flex-wrap gap-2 bg-gray-50 p-1.5 rounded-xl w-fit">
       {tabs.map((tab) => (
         <button
           key={tab.id}

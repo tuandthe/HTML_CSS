@@ -5,6 +5,7 @@ interface DashboardViewProps {
   payment: PaymentOverview;
   performance: PerformanceItem[];
 }
+
 export default function DashboardView({
   payment,
   performance,
@@ -13,51 +14,61 @@ export default function DashboardView({
     <div className="space-y-6">
       {/* Payment Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="p-6 bg-white border border-gray-100 shadow-sm rounded-2xl flex flex-col items-center justify-center text-center py-10">
-          <h3 className="text-gray-600 font-medium mb-2">
-            Pending Commissions
-          </h3>
-          <div className="text-3xl font-bold text-gray-900 mb-2">
-            {payment.pending}
+        {/* Pending Commissions Card */}
+        <Card className=" bg-white border border-gray-100 shadow-sm rounded-2xl flex flex-col  gap-6">
+          <div className="grid auto-rows-min grid-rows-1 items-start gap-1.5 px-6 pt-6">
+            <h4>Pending Commissions</h4>
           </div>
-          <p className="text-sm text-gray-400 mb-6">
-            Will be paid on next payout date
-          </p>
-          <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
-            View Details
-          </button>
+          <div className="px-6 pb-6">
+            <div className="text-center py-4">
+              <div className="text-3xl font-bold text-gray-900 mb-2">
+                {payment.pending}
+              </div>
+
+              <p className="text-sm text-gray-500 mb-6">
+                Will be paid on next payout date
+              </p>
+              <button className="px-6 py-2.5 bg-gray-50 border border-gray-200  rounded-full text-sm font-semibold text-gray-700">
+                View Details
+              </button>
+            </div>
+          </div>
         </Card>
-        <Card className="p-6 bg-white border border-gray-100 shadow-sm rounded-2xl flex flex-col items-center justify-center text-center py-10">
-          <h3 className="text-gray-600 font-medium mb-2">
-            Available for Withdrawal
-          </h3>
-          <div className="text-3xl font-bold text-[#007042] mb-2">
-            {payment.available}
+
+        {/* Available for Withdrawal Card */}
+        <Card className=" bg-white border border-gray-100 shadow-sm rounded-2xl flex flex-col gap-6">
+          <div className="grid auto-rows-min grid-rows-1 items-start gap-1.5 px-6 pt-6">
+            <h4>Available for Withdrawal</h4>
           </div>
-          <p className="text-sm text-gray-400 mb-6">Ready to withdraw</p>
-          <button className="px-4 py-2 bg-[#007042] text-white rounded-lg text-sm font-semibold hover:bg-[#005c36] transition-colors">
-            Request Payout
-          </button>
+          <div className="px-6 pb-6">
+            <div className="text-center py-4">
+              <div className="text-3xl font-bold text-[#007042] mb-2">
+                {payment.available}
+              </div>
+              <p className="text-sm text-gray-500 mb-6">Ready to withdraw</p>
+              <button className="px-6 py-2.5 bg-[#007042] text-white rounded-full text-sm font-semibold hover:bg-[#005c36] transition-colors">
+                Request Payout
+              </button>
+            </div>
+          </div>
         </Card>
       </div>
+
       {/* Recent Performance Section */}
       <Card className="p-6 bg-white border border-gray-100 shadow-sm rounded-2xl">
-        <h3 className="text-gray-900 font-bold mb-4">Recent Performance</h3>
+        <h3 className="text-gray-900 font-medium text-lg mb-4">
+          Recent Performance
+        </h3>
         <div className="space-y-4">
           {performance.map((item) => (
-            <div
-              key={item.id}
-              className="bg-gray-50 p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-            >
-              <div>
-                <h4 className="font-semibold text-gray-900">{item.title}</h4>
-                <div className="flex items-center gap-3 text-sm text-gray-500 mt-1">
-                  <span>{item.clicks}</span>
-                  <span>{item.conversions}</span>
-                  <div className="font-bold text-[#007042]">
-                    {item.earnings}
-                  </div>
-                </div>
+            <div key={item.id} className="bg-gray-50 p-4 rounded-xl">
+              <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                <span>{item.clicks}</span>
+                <span>{item.conversions}</span>
+                <span className="font-bold text-[#007042]">
+                  {item.earnings}
+                </span>
               </div>
             </div>
           ))}

@@ -104,18 +104,20 @@ export default function RegisterPage() {
 
   return (
     <div className={styles.container}>
-      {/* Logo */}
-      <div className={styles.logo}>W</div>
-
-      {/* Title */}
-      <h1 className={styles.title}>Create Account</h1>
-      <p className={styles.subtitle}>Join us and start shopping</p>
-
+      <div className={styles.header}>
+        {/* Logo */}
+        <div className={styles.logo}>
+          <span className={styles.logoText}>W</span>
+        </div>
+        {/* Title */}
+        <h1 className={styles.title}>Create Account</h1>
+        <p className={styles.subtitle}>Join us and start shopping</p>
+      </div>
       {/* Form Card */}
       <div className={styles.card}>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.formGroup} onSubmit={handleSubmit}>
           {/* Full Name */}
-          <div className={styles.formGroup}>
+          <div>
             <label className={styles.label}>Full Name</label>
             <div
               className={`${styles.inputWrapper} ${errors.fullName ? styles.inputError : ""}`}
@@ -135,7 +137,7 @@ export default function RegisterPage() {
           </div>
 
           {/* Email */}
-          <div className={styles.formGroup}>
+          <div>
             <label className={styles.label}>Email Address</label>
             <div
               className={`${styles.inputWrapper} ${errors.email ? styles.inputError : ""}`}
@@ -153,7 +155,7 @@ export default function RegisterPage() {
           </div>
 
           {/* Password */}
-          <div className={styles.formGroup}>
+          <div>
             <label className={styles.label}>Password</label>
             <div
               className={`${styles.inputWrapper} ${errors.password ? styles.inputError : ""}`}
@@ -208,7 +210,7 @@ export default function RegisterPage() {
           </div>
 
           {/* Confirm Password */}
-          <div className={styles.formGroup}>
+          <div>
             <label className={styles.label}>Confirm Password</label>
             <div
               className={`${styles.inputWrapper} ${errors.confirmPassword ? styles.inputError : ""}`}

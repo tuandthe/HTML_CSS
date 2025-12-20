@@ -17,8 +17,10 @@ export default function ShoppingCartWidget() {
                 className="w-12 h-12 object-cover rounded-md"
               />
             </div>
-            <div className="flex-1">
-              <p className="text-sm font-medium">{recentProducts[0].name}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-woo-text truncate">
+                {recentProducts[0].name}
+              </p>
               <p className="text-xs text-gray-500">
                 1 x ${recentProducts[0].price}
               </p>
@@ -34,8 +36,10 @@ export default function ShoppingCartWidget() {
                 className="w-12 h-12 object-cover rounded-md"
               />
             </div>
-            <div className="flex-1">
-              <p className="text-sm font-medium">{recentProducts[1].name}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-woo-text truncate">
+                {recentProducts[1].name}
+              </p>
               <p className="text-xs text-gray-500">
                 1 x ${recentProducts[1].price}
               </p>
@@ -51,10 +55,10 @@ export default function ShoppingCartWidget() {
           </span>
         </div>
 
-        <button className="w-full bg-green-600 text-white py-2.5 rounded-lg font-medium hover:bg-green-700 mb-2 transition-colors">
+        <button className="w-full bg-green-800 text-white py-2.5 rounded-2xl font-medium hover:bg-green-900 mb-2 transition-colors">
           Checkout &rarr;
         </button>
-        <button className="w-full bg-gray-100 text-gray-700 py-2.5 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+        <button className="w-full bg-gray-100 text-gray-700 py-2.5 rounded-2xl font-medium hover:bg-gray-200 transition-colors">
           View Cart
         </button>
       </Card>

@@ -6,7 +6,7 @@ import DashboardView from "@/components/affiliate/DashboardView";
 import MarketingView from "@/components/affiliate/MarketingView";
 import PaymentsView from "@/components/affiliate/PaymentsView";
 import ReferralLinksView from "@/components/affiliate/ReferralLinksView";
-import { useAffiliate } from "@/hooks/useAffiliate";
+import { useAffiliate } from "@/hooks/affiliate/useAffiliate";
 
 export default function AffiliatePage() {
   const {
@@ -21,10 +21,10 @@ export default function AffiliatePage() {
   } = useAffiliate();
 
   return (
-    <div className="max-w-4xl space-y-6">
+    <div className="max-w-3xl space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-3xl font-bold text-gray-900">
           Affiliate Dashboard
         </h1>
         <p className="text-gray-500 mt-1">
@@ -38,7 +38,7 @@ export default function AffiliatePage() {
       <AffiliateTabs activeTab={activeTab} onChange={setActiveTab} />
 
       {/* Dynamic Content */}
-      <div className="animate-in fade-in duration-300 slide-in-from-bottom-2">
+      <div>
         {activeTab === "dashboard" && (
           <DashboardView payment={payment} performance={recentPerformance} />
         )}

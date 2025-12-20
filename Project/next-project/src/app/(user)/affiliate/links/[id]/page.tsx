@@ -5,7 +5,7 @@ import LinkInfoSidebar from "@/components/affiliate/link-detail/LinkInfoSidebar"
 import LinkPerformanceStats from "@/components/affiliate/link-detail/LinkPerformanceStats";
 import PerformanceChart from "@/components/affiliate/link-detail/PerformanceChart";
 import TrafficSources from "@/components/affiliate/link-detail/TrafficSources";
-import { useLinkDetail } from "@/hooks/useLinkDetail";
+import { useLinkDetail } from "@/hooks/affiliate/useLinkDetail";
 import { useParams } from "next/navigation";
 
 export default function LinkDetailPage() {
@@ -15,7 +15,7 @@ export default function LinkDetailPage() {
   return (
     <div className="max-w-6xl mx-auto space-y-6 pb-10">
       {/* 1. Header Section */}
-      <LinkDetailHeader link={link} />
+      <LinkDetailHeader link={link} id={linkId} />
 
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Left Column (Main Content) - Chiếm 2 phần */}

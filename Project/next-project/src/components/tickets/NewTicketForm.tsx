@@ -1,12 +1,12 @@
 "use client";
 
 import { Ticket } from "@/lib/types/ticket";
-import { useEffect, useState } from "react";
 import { Card } from "../common/Card";
 import { Input } from "../common/Input";
 import { Select } from "../common/Select";
 import { ticketCategories } from "@/lib/data/tickets";
 import { Paperclip, Send } from "lucide-react";
+import { useNewTicketForm } from "@/hooks/tickets/useNewTicketForm";
 
 interface NewTicketFormProps {
   onCancel: () => void;
@@ -16,37 +16,8 @@ export default function NewTicketForm({
   onCancel,
   onSubmit,
 }: NewTicketFormProps) {
-  const [isValid, setIsValid] = useState(false);
-
-  const [formData, setFormData] = useState<Ticket>({
-    id: "",
-    subject: "",
-    message: "",
-    status: "Open",
-    priority: "Medium Priority",
-    createdDate: new Date().toISOString(),
-    updatedDate: new Date().toISOString(),
-    messagesCount: 1,
-  });
-
-  useEffect(() => {
-    const { subject, category, message } = formData;
-    const isFormFilled =
-      subject.trim().length > 0 &&
-      (category?.trim().length ?? 0) > 0 &&
-      message.trim().length > 0;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsValid(isFormFilled);
-  }, [formData]);
-
-  const handleSubmit = () => {
-    if (isValid) {
-      onSubmit({
-        ...formData,
-        id: `TKT-${Math.floor(Math.random() * 1000)}`,
-      });
-    }
-  };
+  const { formData, isValid, handleChange, handleSubmit } =
+    useNewTicketForm(onSubmit);
   return (
     <Card className="p-6 mb-6 animate-in fade-in slide-in-from-top-4 duration-300">
       {/* Header Form */}
@@ -65,9 +36,7 @@ export default function NewTicketForm({
           label="Subject*"
           placeholder="Briefly describe your issue"
           value={formData.subject}
-          onChange={(e) =>
-            setFormData({ ...formData, subject: e.target.value })
-          }
+          onChange={(e) => handleChange("subject", e.target.value)}
         />
         {/* Row: Category + Order Number */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -80,12 +49,7 @@ export default function NewTicketForm({
                 (cat) => cat !== "All Categories",
               )}
               value={formData.category || ""}
-              onChange={(val) =>
-                setFormData({
-                  ...formData,
-                  category: val as Ticket["category"],
-                })
-              }
+              onChange={(val) => handleChange("category", val)}
               placeholder="Select category"
               className="border border-gray-300 rounded-lg"
             />
@@ -94,9 +58,7 @@ export default function NewTicketForm({
             label="Order Number (Optional)"
             placeholder="e.g., ORD-12345"
             value={formData.orderId}
-            onChange={(e) =>
-              setFormData({ ...formData, orderId: e.target.value })
-            }
+            onChange={(e) => handleChange("orderId", e.target.value)}
           />
         </div>
         {/* Message (Textarea) */}
@@ -109,9 +71,7 @@ export default function NewTicketForm({
             className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#007042] focus:border-transparent transition-all placeholder:text-gray-400 resize-none"
             placeholder="Describe your issue in detail..."
             value={formData.message}
-            onChange={(e) =>
-              setFormData({ ...formData, message: e.target.value })
-            }
+            onChange={(e) => handleChange("message", e.target.value)}
           />
         </div>
         {/* Attachments (Fake UI) */}

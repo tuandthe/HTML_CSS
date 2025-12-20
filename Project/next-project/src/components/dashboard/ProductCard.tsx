@@ -4,8 +4,8 @@ import { Product } from "@/lib/types/product";
 import Image from "next/image";
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <Card className="p-4">
-      <div className=" h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400 relative">
+    <Card className="p-4 ">
+      <div className="relative aspect-square bg-gray-100 rounded-xl mb-3 overflow-hidden">
         {/* Placeholder for Image */}
         <Image
           src={product.image}
@@ -15,7 +15,7 @@ export default function ProductCard({ product }: { product: Product }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Giúp tối ưu tải ảnh theo màn hình
         />
       </div>
-      <h4 className="font-semibold text-gray-900 line-clamp-1">
+      <h4 className="font-medium text-woo-text mb-2 line-clamp-2 leading-tight">
         {product.name}
       </h4>
       <div className="flex text-yellow-400 text-xs my-1">
@@ -39,7 +39,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </span>
           )}
         </div>
-        <button className="p-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+        <button className="p-2 bg-green-800 text-white rounded-xl hover:bg-green-900 transition-colors">
           <ShoppingCart size={16} />
         </button>
       </div>

@@ -13,15 +13,15 @@ import {
 export function OrderBadge({ status }: { status: orderStatus | string }) {
   const styles = {
     Processing: "bg-blue-100 text-blue-700",
-    Completed: "bg-yellow-100 text-yellow-800",
-    Cancelled: "bg-green-100 text-green-700",
+    Completed: "bg-green-100 text-green-700",
+    Cancelled: "bg-gray-100 text-gray-700",
   };
   const className =
     styles[status as orderStatus] || "bg-gray-100 text-gray-700";
   return (
     <span
       className={cn(
-        "px-2.5 py-0.5 rounded-full text-xs font-bold whitespace-nowrap",
+        "px-2.5 py-0.5 rounded-full text-xs font-medium whitespace-nowrap",
         className,
       )}
     >
@@ -43,7 +43,7 @@ export function TicketBadge({ status }: { status: TicketStatus | string }) {
   return (
     <span
       className={cn(
-        "px-2.5 py-0.5 rounded-full text-xs font-bold whitespace-nowrap",
+        "px-2.5 py-0.5 rounded-full text-xs font-medium whitespace-nowrap",
         className,
       )}
     >
@@ -98,7 +98,7 @@ export function AffiliateLinksBadge({ status }: { status: string }) {
         className,
       )}
     >
-      <div className="inline-flex gap-2">
+      <div className="inline-flex gap-2 items-center">
         {/* Render Icon */}
         <Icon size={14} strokeWidth={2.5} />
 

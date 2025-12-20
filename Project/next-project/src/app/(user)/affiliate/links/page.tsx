@@ -2,7 +2,7 @@
 import LinkFilterBar from "@/components/affiliate/links/LinkFilterBar";
 import LinkList from "@/components/affiliate/links/LinkList";
 import LinkStatsCards from "@/components/affiliate/links/LinkStats";
-import { useAffiliateLinks } from "@/hooks/useAffiliateLinks";
+import { useAffiliateLinks } from "@/hooks/affiliate/useAffiliateLinks";
 import { ArrowLeft, Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -29,7 +29,7 @@ export default function AffiliateDashboardPage() {
             <ArrowLeft size={20} />
           </button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Affiliate Links
             </h1>
             <p className="text-gray-500 text-sm mt-0.5">
@@ -37,7 +37,7 @@ export default function AffiliateDashboardPage() {
             </p>
           </div>
         </div>
-        <button className="flex items-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white px-4 py-2 rounded-lg font-bold text-sm shadow-sm transition-colors">
+        <button className="flex items-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white px-4 py-2 rounded-2xl font-medium text-sm shadow-sm transition-colors">
           <Plus size={18} /> Create Link
         </button>
       </div>

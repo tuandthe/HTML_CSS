@@ -1,27 +1,22 @@
 "use client";
-
 import ProfileEditForm from "@/components/profile/ProfileEditForm";
 import ProfileView from "@/components/profile/ProfileView";
+import { useProfile } from "@/hooks/profile/useProfile";
 import { usersData } from "@/lib/data/users";
-import { UserProfile } from "@/lib/types/user";
 import { User } from "lucide-react";
-import { useState } from "react";
 
 export default function EditProfilePage() {
-  const [isEditing, setIsEditing] = useState(false);
-  const [userData, setUserData] = useState<UserProfile>(usersData[0]);
-
-  const handleSave = (newData: UserProfile) => {
-    setUserData(newData);
-    setIsEditing(false);
-  };
+  const { userData, isEditing, setIsEditing, handleSave } =
+    useProfile(usersData);
 
   return (
     <div className="space-y-8 max-w-2xl">
       {/* Header Page */}
       <div className="flex items-center justify-between">
         <div className="mr-4">
-          <h1 className="text-2xl font-bold text-gray-900">Edit Profile</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Edit Profile
+          </h1>
           <p className="text-gray-500 mt-1 text-sm">
             Manage your personal information and preferences.
           </p>
@@ -30,7 +25,7 @@ export default function EditProfilePage() {
         {!isEditing && (
           <button
             onClick={() => setIsEditing(true)}
-            className="flex items-center justify-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white px-5 py-2 rounded-lg font-bold text-sm transition-colors shadow-sm whitespace-nowrap"
+            className="flex items-center justify-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white px-5 py-2 rounded-2xl font-medium text-sm transition-colors shadow-sm whitespace-nowrap"
           >
             <User size={18} />
             <span>Edit Profile</span>

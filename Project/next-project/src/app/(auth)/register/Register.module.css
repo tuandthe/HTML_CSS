@@ -1,66 +1,133 @@
 .container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f8fafc;
-  padding: 24px;
+  width: 100%;
+  max-width: 28rem;
+  color: #111827;
 }
-
+.header {
+  color: #111827;
+  line-height: 24px;
+  margin: 0px 0px 32px;
+  text-align: center;
+}
 /* Logo */
 .logo {
-  width: 48px;
-  height: 48px;
-  background-color: #166534;
-  border-radius: 12px;
+  width: 64px;
+  height: 64px;
+  background-color: #0d724f;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+  color: #111827;
+  text-align: center;
 }
-
+.logoText {
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  text-align: center;
+}
 /* Title */
 .title {
+  /* Kích thước chữ & Chiều cao dòng */
   font-size: 24px;
-  font-weight: 600;
+  line-height: 32px;
+
+  /* Độ đậm của chữ */
+  font-weight: 700;
+
+  /* Màu chữ */
   color: #111827;
-  margin: 0 0 8px 0;
+
+  /* Khoảng cách dưới */
+  margin-bottom: 8px;
+
+  /* Căn chỉnh & Font chữ (từ style đã tính toán) */
   text-align: center;
+  font-family: "SF Pro Display", sans-serif;
 }
 
 .subtitle {
-  font-size: 14px;
+  /* Màu chữ */
   color: #6b7280;
-  margin: 0 0 32px 0;
+
+  /* Chiều cao dòng (khoảng cách giữa các dòng) */
+  line-height: 24px;
+
+  /* Căn chỉnh văn bản */
   text-align: center;
+
+  /* Font chữ */
+  font-family: "SF Pro Display", sans-serif;
+
+  /* Kích thước chữ (Suy luận từ line-height) */
+  font-size: 16px;
 }
 
 /* Card */
 .card {
-  width: 100%;
-  max-width: 400px;
-  background: #ffffff;
+  /* Màu nền */
+  background-color: #ffffff;
+  /* bg-woo-card */
+
+  /* Viền (Border) */
+  border-width: 1px;
+  /* border (mặc định là 1px) */
+  border-style: solid;
+  /* border */
+  border-color: #e5e7eb;
+  /* border-woo-border */
   border-radius: 16px;
+  /* rounded-2xl */
+
+  /* Đổ bóng (Shadow) */
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.06);
+  /* shadow-woo */
+
+  /* Khoảng cách bên trong (Padding) */
   padding: 32px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  /* p-8 */
+
+  /* Màu chữ (Thừa hưởng) */
+  color: #111827;
 }
 
 /* Form */
 .formGroup {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  /* Xếp dọc các phần tử */
+  gap: 20px;
+  /* Khoảng cách giữa các phần tử là 24px */
+
+  /* Style khác */
+  color: #111827;
 }
 
 .label {
+  /* Hiển thị dạng khối (để nhận margin và xuống dòng) */
   display: block;
-  font-size: 14px;
+  /* block */
+
+  /* Màu chữ */
+  color: #111827;
+  /* text-woo-text */
+
+  /* Độ đậm */
   font-weight: 500;
-  color: #374151;
+  /* font-medium */
+
+  /* Khoảng cách dưới */
   margin-bottom: 8px;
+  /* mb-2 */
+
+  /* Các thuộc tính computed (được tính toán bởi trình duyệt) */
+  font-family: "SF Pro Display", sans-serif;
+  line-height: 24px;
 }
 
 .inputWrapper {
@@ -87,21 +154,41 @@
 
 .input {
   width: 100%;
-  padding: 12px 44px;
-  font-size: 14px;
-  color: #111827;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  outline: none;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+  /* w-full */
+  box-sizing: border-box;
+  /* Đảm bảo padding không làm vỡ layout */
+
+  /* Padding (Lưu ý: Padding trái lớn để chứa Icon) */
+  padding-left: 48px;
+  /* pl-12 (12 * 4px) */
+  padding-right: 16px;
+  /* pr-4 */
+  padding-top: 12px;
+  /* py-3 */
+  padding-bottom: 12px;
+  /* py-3 */
+
+  /* --- VIỀN & BO GÓC --- */
+  border-width: 1px;
+  /* border */
+  border-style: solid;
+  border-color: #e5e7eb;
+  /* border-woo-border (Màu xám nhạt) */
+  border-radius: 20px;
+  /* rounded-xl (Lưu ý: Chuẩn là 12px, nhưng dự án của bạn có thể config là 20px) */
+
+  /* --- HIỆU ỨNG CHUYỂN ĐỘNG --- */
+  transition: all 0.15s ease-in-out;
 }
 
 .input:focus {
-  border-color: #057a32;
-  box-shadow: 0 0 0 2px #057a32;
+  outline: none;
+  /* focus:outline-none (Xóa viền đen mặc định của trình duyệt) */
+
+  /* Tạo vòng Ring màu xanh bao quanh */
+  border-color: transparent;
+  /* focus:border-transparent (Ẩn viền xám đi) */
+  box-shadow: 0 0 0 2px #0d724f;
 }
 
 .input::placeholder {
@@ -180,7 +267,6 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 8px;
 }
 
 .checkbox {
@@ -216,24 +302,50 @@
 /* Submit Button */
 .submitBtn {
   width: 100%;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 600;
+  /* w-full */
+  display: inline-block;
+  /* Giúp nút nhận padding đúng cách */
+  padding-top: 12px;
+  /* py-3 (3 * 4px) */
+  padding-bottom: 12px;
+  /* py-3 */
+
+  /* --- MÀU SẮC --- */
+  background-color: #0d724f;
+  /* bg-woo-primary */
   color: #ffffff;
-  background-color: #166534;
+  /* text-white */
+
+  /* --- TYPOGRAPHY --- */
+  font-weight: 600;
+  /* font-semibold */
+  font-family: "SF Pro Display", sans-serif;
+  /* Từ computed style */
+  text-align: center;
+  /* Căn giữa chữ */
+  line-height: 24px;
+
+  /* --- VIỀN & GÓC --- */
   border: none;
-  border-radius: 8px;
+  /* Xóa viền mặc định */
+  border-radius: 20px;
+  /* rounded-xl (Custom config: hình hiển thị 20px) */
+
+  /* --- HIỆU ỨNG CƠ BẢN --- */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  /* shadow-sm */
   cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
+  /* Con trỏ thành hình bàn tay */
+
+  /* --- TRANSITION (CHUYỂN ĐỘNG MƯỢT) --- */
+  /* transition-all duration-200 */
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .submitBtn:hover:not(:disabled) {
-  background-color: #14532d;
+  background-color: #0a5c3f;
 }
 
 .submitBtn:disabled {

@@ -1,62 +1,33 @@
 "use client";
-
 import NewTicketForm from "@/components/tickets/NewTicketForm";
 import TicketCard from "@/components/tickets/TicketCard";
 import TicketFilterBar from "@/components/tickets/TicketFilterBar";
 import { Card } from "@/components/common/Card";
 import { ticketCategories, ticketsData } from "@/lib/data/tickets";
-import { Ticket } from "@/lib/types/ticket";
 import { MessageSquareOff, Plus } from "lucide-react";
-import { useState } from "react";
+import { useTickets } from "@/hooks/tickets/useTickets";
 
 export default function TicketsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [isCreating, setIsCreating] = useState(false);
-  const [tickets, setTickets] = useState<Ticket[]>(ticketsData);
+  const {
+    searchQuery,
+    selectedCategory,
+    isCreating,
+    filteredTickets,
+    counts,
+    setSearchQuery,
+    setSelectedCategory,
+    setIsCreating,
+    handleCreateTicket,
+  } = useTickets(ticketsData, ticketCategories);
 
-  const filteredTickets = tickets.filter((ticket) => {
-    // Filter by category
-    const matchCategory =
-      selectedCategory === "All Categories" ||
-      ticket.category === selectedCategory;
-
-    //Search
-    const query = searchQuery.toLowerCase();
-    const matchSearch =
-      ticket.subject.toLowerCase().includes(query) ||
-      ticket.id.toLowerCase().includes(query) ||
-      ticket.subject.toLowerCase().includes(query) ||
-      ticket.priority.toLowerCase().includes(query) ||
-      ticket.status.toLowerCase().includes(query) ||
-      ticket.category?.toLowerCase().includes(query) ||
-      ticket.orderId?.toLowerCase().includes(query);
-
-    return matchCategory && matchSearch;
-  });
-  const counts = ticketCategories.reduce(
-    (acc, cat) => {
-      if (cat === "All Categories") {
-        acc[cat] = tickets.length;
-      } else {
-        acc[cat] = tickets.filter((t) => t.category === cat).length;
-      }
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
-  const handleCreateTicket = (newTicketData: Ticket) => {
-    setTickets([newTicketData, ...tickets]);
-    setIsCreating(false);
-    setSelectedCategory("All Categories");
-    setSearchQuery("");
-  };
   return (
     <div className="space-y-6 w-full">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Support Tickets</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            Support Tickets
+          </h2>
           <p className="text-gray-500">
             Get help with your orders and account.
           </p>
@@ -65,7 +36,7 @@ export default function TicketsPage() {
         <button
           onClick={() => setIsCreating(true)}
           disabled={isCreating}
-          className="flex items-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-colors shadow-sm"
+          className="flex items-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white px-5 py-2.5 rounded-2xl font-bold text-sm transition-colors shadow-sm"
         >
           <Plus size={18} />
           <span className="hidden sm:inline">New Ticket</span>
@@ -92,7 +63,9 @@ export default function TicketsPage() {
       <Card className="overflow-hidden border-gray-200">
         {/* Header */}
         <div className="px-6 py-4 border-b border-gray-100 bg-white">
-          <h3 className="font-bold text-gray-900 text-base">Your Tickets</h3>
+          <h3 className="font-semibold text-gray-900 text-base">
+            Your Tickets
+          </h3>
         </div>
 
         <div className="bg-white">
@@ -107,7 +80,7 @@ export default function TicketsPage() {
               <div className="bg-gray-50 p-4 rounded-full mb-4">
                 <MessageSquareOff size={32} className="text-gray-400" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-1">
+              <h3 className="text-lg font-semibold text-gray-900 mb-1">
                 No tickets found
               </h3>
               <p className="text-gray-500 text-center max-w-md mb-2">

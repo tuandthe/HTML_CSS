@@ -10,7 +10,7 @@ export default function LinkCard({ link }: { link: ReferralLinkDetail }) {
       <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
         <div className="flex-1 space-y-3">
           <div className="flex flex-wrap items-center gap-3">
-            <h4 className="text-lg font-bold text-gray-900">{link.name}</h4>
+            <h4 className="text-lg font-medium text-gray-900">{link.name}</h4>
             <AffiliateLinksBadge status={link.status} />
             <span className="px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-bold rounded-full border border-gray-200">
               {link.category}
@@ -28,7 +28,7 @@ export default function LinkCard({ link }: { link: ReferralLinkDetail }) {
         </div>
         <Link
           href={`/affiliate/links/${link.id}`}
-          className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-bold text-gray-700 hover:bg-gray-50 transition-colors self-start whitespace-nowrap"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-2xl text-sm font-semibold text-gray-700 self-start whitespace-nowrap"
         >
           <Eye size={16} /> View Details
         </Link>
@@ -39,31 +39,25 @@ export default function LinkCard({ link }: { link: ReferralLinkDetail }) {
           <div className="text-xs text-gray-500 font-medium uppercase tracking-wide">
             Clicks
           </div>
-          <div className="text-lg font-bold text-gray-900">{link.clicks}</div>
+          <div className="font-semibold text-gray-900">{link.clicks}</div>
         </div>
         <div className="text-left">
           <div className="text-xs text-gray-500 font-medium uppercase tracking-wide">
             Conversions
           </div>
-          <div className="text-lg font-bold text-gray-900">
-            {link.conversions}
-          </div>
+          <div className="font-semibold text-gray-900">{link.conversions}</div>
         </div>
         <div className="text-left">
           <div className="text-xs text-gray-500 font-medium uppercase tracking-wide">
             Earnings
           </div>
-          <div className="text-lg font-bold text-[#007042]">
-            {link.earnings}
-          </div>
+          <div className="font-semibold text-[#007042]">{link.earnings}</div>
         </div>
         <div className="text-left">
           <div className="text-xs text-gray-500 font-medium uppercase tracking-wide">
             Created
           </div>
-          <div className="text-lg font-bold text-gray-900">
-            {link.createdAt}
-          </div>
+          <div className="font-semibold text-gray-900">{link.createdAt}</div>
         </div>
       </div>
     </div>

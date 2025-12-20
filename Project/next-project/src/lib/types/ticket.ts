@@ -19,7 +19,7 @@ export const CATEGORIES_LIST = [
 export type TicketCategory = (typeof CATEGORIES_LIST)[number];
 
 export interface Ticket {
-  id: string; // TKT-001
+  id: string;
   subject: string;
   message: string;
   category?: TicketCategory;

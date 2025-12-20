@@ -14,7 +14,7 @@ export default function LinkList({ links }: { links: ReferralLinkDetail[] }) {
   return (
     <Card className="overflow-hidden border border-gray-200">
       <div className="px-6 py-4 border-b border-gray-100 bg-white">
-        <h3 className="font-bold text-gray-900">Your Affiliate Links</h3>
+        <h3 className="font-medium text-gray-900">Your Affiliate Links</h3>
       </div>
       <div className="divide-y divide-gray-100">
         {links.map((link) => (

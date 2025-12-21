@@ -1,7 +1,7 @@
-import { AffiliateLinksBadge } from "@/components/common/Badge";
 import { LinkDetailFull } from "@/lib/types/affiliate";
 import { ArrowLeft, CheckCircle2, Copy, LinkIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { AffiliateLinksBadge } from "../AffiliateLinksBadge";
 
 export default function LinkDetailHeader({
   link,

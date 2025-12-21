@@ -1,28 +1,12 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./CheckEmail.module.css";
 import { CircleCheckBig, Send } from "lucide-react";
+import { useCheckEmail } from "@/hooks/checkEmail/useCheckEmail";
 
 export default function CheckEmailPage() {
-  const [email, setEmail] = useState("");
-  const [isResending, setIsResending] = useState(false);
-
-  useEffect(() => {
-    const storedEmail = localStorage.getItem("resetEmail");
-    if (storedEmail) {
-      setEmail(storedEmail);
-    }
-  }, []);
-  const handleResend = () => {
-    setIsResending(true);
-
-    setTimeout(() => {
-      setIsResending(false);
-    }, 2000);
-  };
+  const { email, isResending, handleResend } = useCheckEmail();
 
   return (
     <div className={styles.container}>

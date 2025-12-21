@@ -1,8 +1,8 @@
 import { Order } from "@/lib/types/order";
 import { Card } from "../common/Card";
-import { OrderBadge } from "../common/Badge";
 import Link from "next/link";
 import { Calendar, Eye } from "lucide-react";
+import { OrderBadge } from "./OrderBadge";
 
 export default function OrderList({ orders }: { orders: Order[] }) {
   if (orders.length === 0) {

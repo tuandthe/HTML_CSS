@@ -2,12 +2,11 @@
 import ProfileEditForm from "@/components/profile/ProfileEditForm";
 import ProfileView from "@/components/profile/ProfileView";
 import { useProfile } from "@/hooks/profile/useProfile";
-import { usersData } from "@/lib/data/users";
 import { User } from "lucide-react";
 
 export default function EditProfilePage() {
   const { userData, isEditing, setIsEditing, handleSave } =
-    useProfile(usersData);
+    useProfile();
 
   return (
     <div className="space-y-8 max-w-2xl">

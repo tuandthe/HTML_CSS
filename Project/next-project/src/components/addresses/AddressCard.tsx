@@ -5,7 +5,7 @@ import { Edit, MapPin, Trash2 } from "lucide-react";
 interface AddressCardProps {
   address: Address;
   onEdit: (address: Address) => void;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 }
 export function AddressCard({ address, onEdit, onDelete }: AddressCardProps) {
   return (

@@ -1,8 +1,8 @@
-import { Address } from "@/lib/types/address";
+import { Address, addressType } from "@/lib/types/address";
 import { useState } from "react";
 
 const defaultValues = {
-  type: "Billing" as "Billing" | "Shipping",
+  type: "Billing" as addressType,
   firstName: "",
   lastName: "",
   company: "",
@@ -18,7 +18,7 @@ const defaultValues = {
 
 export function useAddressForm(
   initialData: Address | null,
-  onSave: (data: Omit<Address, "id">) => void,
+  onSave: (data: Omit<Address, "id">) => Promise<void> | void,
 ) {
   const [formData, setFormData] = useState({
     type: initialData?.type || defaultValues.type,
@@ -34,12 +34,25 @@ export function useAddressForm(
     phone: initialData?.phone || defaultValues.phone,
     isDefault: initialData?.isDefault || defaultValues.isDefault,
   });
+
+
   const handleChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(formData);
+
+    try {
+
+      if (!formData.firstName || !formData.addressLine1) {
+        throw new Error("Please fill in required fields");
+      }
+      await onSave(formData); 
+
+    } catch (err) {
+      console.error("Submit error:", err);
+    } 
   };
   return {
     formData,

@@ -1,10 +1,28 @@
-"use client";
-
+import { useState, useEffect, useMemo } from "react";
 import { Order } from "@/lib/types/order";
-import { useMemo, useState } from "react";
+import { orderApi } from "@/lib/api-client/orderApi";
 
-export function useOrders(orders: Order[]) {
+export function useOrders() {
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
   const [activeTab, setActiveTab] = useState<string>("All");
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      setIsLoading(true);
+      try {
+        const data = await orderApi.getAll();
+        setOrders(data);
+      } catch (error) {
+        console.error("Failed to fetch orders:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, []);
 
   const filteredOrders = useMemo(() => {
     return activeTab === "All"
@@ -20,10 +38,12 @@ export function useOrders(orders: Order[]) {
       Cancelled: orders.filter((o) => o.status === "Cancelled").length,
     };
   }, [orders]);
+
   return {
-    filteredOrders,
+    filteredOrders, 
     activeTab,
     setActiveTab,
     counts,
+    isLoading,      
   };
 }

@@ -1,20 +1,24 @@
 import { Card } from "@/components/common/Card";
 import { recentProducts } from "@/lib/data/products";
+import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 export default function ShoppingCartWidget() {
   return (
     <div>
-      <h3 className="text-lg font-bold text-gray-900 mb-4">Shopping Cart</h3>
-      <Card className="p-4">
+      <Card className="p-6">
+        <div className="flex items-center gap-2 mb-4">
+          <ShoppingCart size={20} className="text-green-800" />
+          <h3 className="font-semibold text-black">Shopping Cart</h3>
+        </div>
         <div className="space-y-4 mb-4">
           {/* Mock Cart Items */}
-          <div className="flex gap-3">
-            <div className="w-12 h-12 bg-gray-100 rounded-md relative">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 object-cover rounded-lg border border-white relative">
               <Image
                 src={recentProducts[0].image}
                 alt={recentProducts[0].name}
                 fill
-                className="w-12 h-12 object-cover rounded-md"
+                className="w-12 h-12 object-cover rounded-2xl"
               />
             </div>
             <div className="flex-1 min-w-0">

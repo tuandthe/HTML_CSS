@@ -1,11 +1,20 @@
+
 export type TabType = "dashboard" | "referral-links" | "marketing" | "payments";
 export type LinkStatus = "Active" | "Pending" | "Paused" | "Rejected";
+export type PaymentStatus = "Paid" | "Pending";
+export type MarketingAction = "copy" | "download";
+export type MarketingLinkType = "text" | "email";
+export type BannerType = "banner";
+export type StatIconType = "dollar" | "chart" | "users" | "target";
+export type SocialIconType = "instagram" | "facebook" | "twitter" | "direct" | "other";
+
 export interface AffiliateStat {
   label: string;
   value: string;
   trendValue?: string;
-  icon: "dollar" | "chart" | "users" | "target";
+  icon: StatIconType;
 }
+
 export interface ReferralLink {
   id: string;
   title: string;
@@ -14,10 +23,12 @@ export interface ReferralLink {
   conversions: number;
   earnings: string;
 }
+
 export interface PaymentOverview {
   pending: string;
   available: string;
 }
+
 export interface PerformanceItem {
   id: string;
   title: string;
@@ -25,19 +36,20 @@ export interface PerformanceItem {
   conversions: string;
   earnings: string;
 }
+
 export interface MarketingBanner {
   id: string;
   size: string;
   colorClass: string;
-  type: "banner";
+  type: BannerType;
 }
 
 export interface MarketingTextLink {
   id: string;
   title: string;
   description: string;
-  action: "copy" | "download";
-  type: "text" | "email";
+  action: MarketingAction;
+  type: MarketingLinkType;
 }
 
 export interface PaymentHistoryItem {
@@ -45,8 +57,9 @@ export interface PaymentHistoryItem {
   date: string;
   method: string;
   amount: string;
-  status: "Paid" | "Pending";
+  status: PaymentStatus;
 }
+
 export interface ReferralLinkDetail {
   id: string;
   name: string;
@@ -64,11 +77,12 @@ export interface LinkStats {
   conversions: number;
   earnings: string;
 }
+
 export interface TrafficSource {
   source: string;
   clicks: number;
   conversions: number;
-  icon: "instagram" | "facebook" | "twitter" | "direct" | "other";
+  icon: SocialIconType;
 }
 
 export interface ChartDataPoint {
@@ -87,4 +101,17 @@ export interface LinkDetailFull extends ReferralLinkDetail {
   originalUrl: string;
   chartData: ChartDataPoint[];
   trafficSources: TrafficSource[];
+}
+
+
+export interface DashboardData {
+  stats: AffiliateStat[];
+  referralLinks: ReferralLink[];
+  payment: PaymentOverview;
+  recentPerformance: PerformanceItem[];
+  marketingAssets: {
+    banners: MarketingBanner[];
+    links: MarketingTextLink[];
+  };
+  paymentHistory: PaymentHistoryItem[];
 }

@@ -3,19 +3,20 @@
 import WishlistCard from "@/components/wishlist/WishlistCard";
 import WishlistFilterBar from "@/components/wishlist/WishlistFilterBar";
 import { useWishlist } from "@/hooks/wishlist/useWishlist";
-import { categories, recentProducts } from "@/lib/data/products";
 import { Share2 } from "lucide-react";
 
 export default function Wishlist() {
   const {
     items,
+    categories,
     processedItems,
     selectedCategory,
     sortOption,
+    
     setSelectedCategory,
     setSortOption,
     handleDelete,
-  } = useWishlist(recentProducts);
+  } = useWishlist();
 
   return (
     <div className="space-y-6 w-full">

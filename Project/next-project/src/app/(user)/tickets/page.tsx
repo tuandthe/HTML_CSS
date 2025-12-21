@@ -3,7 +3,6 @@ import NewTicketForm from "@/components/tickets/NewTicketForm";
 import TicketCard from "@/components/tickets/TicketCard";
 import TicketFilterBar from "@/components/tickets/TicketFilterBar";
 import { Card } from "@/components/common/Card";
-import { ticketCategories, ticketsData } from "@/lib/data/tickets";
 import { MessageSquareOff, Plus } from "lucide-react";
 import { useTickets } from "@/hooks/tickets/useTickets";
 
@@ -11,6 +10,7 @@ export default function TicketsPage() {
   const {
     searchQuery,
     selectedCategory,
+    categories,
     isCreating,
     filteredTickets,
     counts,
@@ -18,7 +18,7 @@ export default function TicketsPage() {
     setSelectedCategory,
     setIsCreating,
     handleCreateTicket,
-  } = useTickets(ticketsData, ticketCategories);
+  } = useTickets();
 
   return (
     <div className="space-y-6 w-full">
@@ -45,7 +45,7 @@ export default function TicketsPage() {
       </div>
       {/* Search & Filter Bar */}
       <TicketFilterBar
-        categories={ticketCategories}
+        categories={categories}
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
         searchQuery={searchQuery}

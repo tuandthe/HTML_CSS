@@ -3,7 +3,7 @@
 import { Ticket } from "@/lib/types/ticket";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { TicketBadge, TicketPriorityBadge } from "../common/Badge";
+import { TicketPriorityBadge, TicketStatusBadge } from "./TicketBadges";
 
 export default function TicketDetailHeader({ ticket }: { ticket: Ticket }) {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function TicketDetailHeader({ ticket }: { ticket: Ticket }) {
         <h2 className="text-2xl font-bold text-gray-900">{ticket.subject}</h2>
         <div className="flex items-center gap-3 mt-2 text-sm text-gray-500">
           <span className="font-mono font-medium">{ticket.id}</span>
-          <TicketBadge status={ticket.status} />
+          <TicketStatusBadge status={ticket.status} />
           <TicketPriorityBadge priority={ticket.priority} />
         </div>
       </div>

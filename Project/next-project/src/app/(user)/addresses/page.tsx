@@ -2,10 +2,10 @@
 import { Plus } from "lucide-react";
 import AddressForm from "@/components/addresses/AddressForm";
 import { AddressCard } from "@/components/addresses/AddressCard";
-import { initialAddresses } from "@/lib/data/addresses";
 import { useAddresses } from "@/hooks/addresses/useAddresses";
 
 export default function AddressPage() {
+
   const {
     addresses,
     isAdding,
@@ -15,7 +15,7 @@ export default function AddressPage() {
     editAddress,
     saveAddress,
     cancelAction,
-  } = useAddresses(initialAddresses);
+  } = useAddresses();
 
   return (
     <div className="space-y-6 max-w-2xl">

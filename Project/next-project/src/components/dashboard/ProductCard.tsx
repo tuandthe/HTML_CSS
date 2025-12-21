@@ -10,9 +10,9 @@ export default function ProductCard({ product }: { product: Product }) {
         <Image
           src={product.image}
           alt={product.name}
-          fill // 👈 Tự động dãn full chiều rộng/cao của thẻ cha (thay thế w-full h-full)
+          fill 
           className="object-cover opacity-80"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Giúp tối ưu tải ảnh theo màn hình
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
         />
       </div>
       <h4 className="font-medium text-woo-text mb-2 line-clamp-2 leading-tight">

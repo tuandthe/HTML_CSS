@@ -11,7 +11,7 @@ import { useAddressForm } from "@/hooks/addresses/useAddressForm";
 
 interface AddressFormProps {
   initialData?: Address | null;
-  onSave: (data: Omit<Address, "id">) => void;
+  onSave: (data: Omit<Address, "id">) => Promise<void> | void;
   onCancel: () => void;
   className?: string;
 }

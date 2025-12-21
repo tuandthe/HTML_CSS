@@ -1,65 +1,103 @@
-"use client";
+import { useState, useEffect, useMemo } from "react";
+import { Ticket, CreateTicketDTO } from "@/lib/types/ticket";
+import { ticketCategories } from "@/lib/data/tickets";
+import { ticketApi } from "@/lib/api-client/ticketApi";
 
-import { Ticket } from "@/lib/types/ticket";
-import { useMemo, useState } from "react";
-
-export function useTickets(initialTickets: Ticket[], categories: string[]) {
+export function useTickets() {
+  // --- STATE ---
+  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isCreating, setIsCreating] = useState(false); // Loading khi tạo mới
+  
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [tickets, setTickets] = useState<Ticket[]>(initialTickets);
-  const [isCreating, setIsCreating] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All Categories");
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
+  // --- EFFECTS ---
+  useEffect(() => {
+    fetchTickets();
+  }, []);
+
+  const fetchTickets = async () => {
+    setIsLoading(true);
+    try {
+      const data = await ticketApi.getAll();
+      setTickets(data);
+    } catch (error) {
+      console.error("Failed to fetch tickets:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // --- ACTIONS ---
+  const handleCreateTicket = async (data: CreateTicketDTO) => {
+    setIsCreating(true);
+    try {
+      await ticketApi.create(data);
+      await fetchTickets(); 
+      setIsCreateModalOpen(false); 
+    } catch (error) {
+      console.error("Failed to create ticket:", error);
+      alert("Failed to create ticket");
+    } finally {
+      setIsCreating(false);
+    }
+  };
+  
   const filteredTickets = useMemo(() => {
     return tickets.filter((ticket) => {
-      const matchCategory =
-        selectedCategory === "All Categories" ||
-        ticket.category === selectedCategory;
-
+      // 1. Logic Search
       const query = searchQuery.toLowerCase();
 
-      const matchSearch =
+      const matchesSearch =
         ticket.subject.toLowerCase().includes(query) ||
         ticket.id.toLowerCase().includes(query) ||
         ticket.priority.toLowerCase().includes(query) ||
         ticket.status.toLowerCase().includes(query) ||
         ticket.category?.toLowerCase().includes(query) ||
         ticket.orderId?.toLowerCase().includes(query);
-      return matchCategory && matchSearch;
+
+      // 2. Logic Category
+      const matchesCategory =
+        selectedCategory === "All Categories" ||
+        ticket.category === selectedCategory;
+
+      return matchesSearch && matchesCategory;
     });
-  }, [tickets, selectedCategory, searchQuery]);
+  }, [tickets, searchQuery, selectedCategory]);
 
   const counts = useMemo(() => {
-    return categories.reduce(
-      (acc, cat) => {
-        if (cat === "All Categories") {
-          acc[cat] = tickets.length;
-        } else {
-          acc[cat] = tickets.filter((t) => t.category === cat).length;
-        }
-        return acc;
-      },
-      {} as Record<string, number>,
-    );
-  }, [tickets, categories]);
+    return {
+      "All Categories": tickets.length,
+      Payments: tickets.filter((t) => t.category === "Payments").length,
+      Refunds: tickets.filter((t) => t.category === "Refunds").length,
+      "Order Tracking": tickets.filter((t) => t.category === "Order Tracking").length,
+      Technical: tickets.filter((t) => t.category === "Technical").length,
+      General: tickets.filter((t) => t.category === "General").length,
+    };
+  }, [tickets]);
 
-  const handleCreateTicket = (newTicketData: Ticket) => {
-    setTickets([newTicketData, ...tickets]);
-    setIsCreating(false);
-    setSelectedCategory("All Categories");
-    setSearchQuery("");
-  };
   return {
-    // State
-    searchQuery,
-    selectedCategory,
-    isCreating,
-    // Derived Data
+    // Data
     filteredTickets,
     counts,
-    // Actions
+    categories: ticketCategories, 
+    
+    // UI States
+    isLoading,
+    isCreating,
+    searchQuery,
+    selectedCategory,
+    isCreateModalOpen,
+
+    // Setters
     setSearchQuery,
     setSelectedCategory,
-    setIsCreating,
+    setIsCreating, 
+
+    // Actions
     handleCreateTicket,
+    refetch: fetchTickets,
   };
 }

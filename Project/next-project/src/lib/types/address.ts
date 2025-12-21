@@ -1,7 +1,7 @@
 export type addressType = "Billing" | "Shipping";
 
 export interface Address {
-  id: number;
+  id: string;
   type: addressType;
   isDefault: boolean;
   firstName: string;

@@ -3,11 +3,10 @@
 import OrderFilter from "@/components/orders/OrderFilter";
 import OrderList from "@/components/orders/OrderList";
 import { useOrders } from "@/hooks/orders/useOrders";
-import { ordersData } from "@/lib/data/orders";
 
 export default function OrderPage() {
   const { filteredOrders, activeTab, setActiveTab, counts } =
-    useOrders(ordersData);
+    useOrders();
   return (
     <div className="space-y-8 max-w-xl">
       {/* Header */}

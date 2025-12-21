@@ -1,6 +1,6 @@
 import { Truck } from "lucide-react";
-import { OrderBadge } from "../common/Badge";
 import { Card } from "../common/Card";
+import { OrderBadge } from "./OrderBadge";
 
 export default function OrderStatusCard() {
   return (

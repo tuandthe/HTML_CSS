@@ -1,7 +1,7 @@
-import { AffiliateLinksBadge } from "@/components/common/Badge";
 import { ReferralLinkDetail } from "@/lib/types/affiliate";
 import { Eye, Link2 } from "lucide-react";
 import Link from "next/link";
+import { AffiliateLinksBadge } from "../AffiliateLinksBadge";
 
 export default function LinkCard({ link }: { link: ReferralLinkDetail }) {
   return (

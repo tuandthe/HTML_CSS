@@ -1,36 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./ForgotPassword.module.css";
 import { ArrowLeft, Mail, Lock } from "lucide-react";
+import { useForgotPassword } from "@/hooks/forgotPassword/useForgotPassword";
 
 export default function ForgotPasswordPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [isResending, setIsResending] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!email.trim()) {
-      setError("Email is required");
-      return;
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError("Please enter a valid email address");
-      return;
-    }
-    localStorage.setItem("resetEmail", email);
-    setIsResending(true);
-    setTimeout(() => {
-      setIsResending(false);
-      router.push("/check-email");
-    }, 2000);
-  };
+  const { email, setEmail, error, setError, isResending, handleSubmit } =
+    useForgotPassword();
 
   return (
     <div className={styles.container}>

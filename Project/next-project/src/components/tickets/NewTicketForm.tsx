@@ -1,6 +1,6 @@
 "use client";
 
-import { Ticket } from "@/lib/types/ticket";
+import { CreateTicketDTO } from "@/lib/types/ticket";
 import { Card } from "../common/Card";
 import { Input } from "../common/Input";
 import { Select } from "../common/Select";
@@ -10,7 +10,7 @@ import { useNewTicketForm } from "@/hooks/tickets/useNewTicketForm";
 
 interface NewTicketFormProps {
   onCancel: () => void;
-  onSubmit: (data: Ticket) => void;
+  onSubmit: (data: CreateTicketDTO) => void;
 }
 export default function NewTicketForm({
   onCancel,

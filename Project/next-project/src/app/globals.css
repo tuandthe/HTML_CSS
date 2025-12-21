@@ -2,14 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  :root {
+    /* Nền chung của trang (đang là gray-50) */
+    --woo-bg: #f9fafb;
+
+    /* Nền của các thẻ Card/Header/Sidebar (đang là white) */
+    --woo-card: #ffffff;
+
+    /* Màu chữ chính (đang là gray-900) */
+    --woo-text: #111827;
+
+    /* Màu chữ phụ (đang là gray-500) */
+    --woo-text-secondary: #6b7280;
+
+    /* Màu viền (đang là gray-200) */
+    --woo-border: #e5e7eb;
+
+    /* Màu chính thương hiệu (Green) */
+    --woo-primary: #00965E;
+    --woo-primary-hover: #007042;
+  }
+
+  /* --- DARK MODE (Tự động kích hoạt khi class="dark" ở thẻ html) --- */
+  .dark {
+    --woo-bg: #0f172a;
+    /* Nền tối thẫm */
+    --woo-card: #1e293b;
+    /* Card màu tối nhẹ hơn */
+    --woo-text: #f8fafc;
+    /* Chữ trắng */
+    --woo-text-secondary: #94a3b8;
+    --woo-border: #334155;
+    /* Viền tối */
+    --woo-primary: #00b371;
+    /* Màu xanh sáng hơn chút để nổi trên nền tối */
+    --woo-primary-hover: #00965E;
+  }
 }
 
 body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
+  background-color: var(--woo-bg);
+  color: var(--woo-text);
 }

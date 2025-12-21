@@ -1,42 +1,20 @@
 "use client";
 import Link from "next/link";
 import styles from "./Login.module.css";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { useLogin } from "@/hooks/login/useLogin";
 
 export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-    {},
-  );
-
-  const router = useRouter();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const newError: { email?: string; password?: string } = {};
-    if (!email.trim()) {
-      newError.email = "Email is required";
-    }
-    if (email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-      newError.email = "Email is invalid";
-    }
-    if (!password) {
-      newError.password = "Password is required";
-    }
-    if (password && password.length < 6) {
-      newError.password = "Password must be at least 6 characters";
-    }
-    setErrors(newError);
-
-    if (Object.keys(newError).length === 0) {
-      router.push("/dashboard");
-    }
-  };
+  const {
+    showPassword,
+    setShowPassword,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    errors,
+    handleSubmit,
+  } = useLogin();
 
   return (
     <div className={styles.container}>

@@ -1,12 +1,5 @@
-export type TicketStatus =
-  | "Open"
-  | "Waiting for Customer"
-  | "Resolved"
-  | "Closed";
-export type TicketPriority =
-  | "High Priority"
-  | "Medium Priority"
-  | "Low Priority";
+export type TicketStatus = "Open" | "Waiting for Customer" | "Resolved" | "Closed";
+export type TicketPriority = "High Priority" | "Medium Priority" | "Low Priority";
 
 export const CATEGORIES_LIST = [
   "Payments",
@@ -30,6 +23,7 @@ export interface Ticket {
   updatedDate: string;
   messagesCount: number;
 }
+
 export interface Message {
   id: string;
   senderId: string;
@@ -37,4 +31,12 @@ export interface Message {
   text: string;
   timestamp: string;
   attachment?: string;
+}
+
+export interface CreateTicketDTO {
+  subject: string;
+  category?: TicketCategory;
+  message: string;
+  priority: TicketPriority;
+  orderId?: string;
 }

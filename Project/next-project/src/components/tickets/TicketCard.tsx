@@ -1,7 +1,7 @@
 import { Ticket } from "@/lib/types/ticket";
-import { TicketBadge, TicketPriorityBadge } from "../common/Badge";
 import { Info } from "lucide-react";
 import Link from "next/link";
+import { TicketPriorityBadge, TicketStatusBadge } from "./TicketBadges";
 
 export default function TicketCard({ ticket }: { ticket: Ticket }) {
   return (
@@ -14,7 +14,7 @@ export default function TicketCard({ ticket }: { ticket: Ticket }) {
             <h3 className="font-semibold text-gray-900 text-base">
               {ticket.subject}
             </h3>
-            <TicketBadge status={ticket.status} />
+            <TicketStatusBadge status={ticket.status} />
           </div>
           {/* Meta Info Row */}
           <div className="flex items-center gap-4 text-sm text-woo-text-secondary mb-2">
@@ -24,7 +24,7 @@ export default function TicketCard({ ticket }: { ticket: Ticket }) {
               <span>{ticket.id}</span>
             </div>
             {/* Category Tag */}
-            <div>{ticket.category}</div>
+            <div className="bg-gray-100 px-2 py-1 rounded text-xs">{ticket.category}</div>
             {/* Order ID (Optional) */}
             {ticket.orderId && (
               <div className="flex items-center gap-1">

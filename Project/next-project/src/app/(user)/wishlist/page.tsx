@@ -12,21 +12,22 @@ export default function Wishlist() {
     processedItems,
     selectedCategory,
     sortOption,
-    
     setSelectedCategory,
     setSortOption,
     handleDelete,
   } = useWishlist();
 
   return (
-    <div className="space-y-6 w-full">
+    <div className="lg:ml-64 !w-full max-w-7xl">
+    <div className="p-4 lg:p-8 ">
+    <div className="space-y-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900">My Wishlist</h2>
-          <p className="text-gray-500">{items.length} items saved for later</p>
+          <h2 className="text-3xl font-bold text-woo-text">My Wishlist</h2>
+          <p className="text-woo-text-secondary">{items.length} items saved for later</p>
         </div>
-        <button className="flex items-center gap-2  border border-gray-200 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg font-medium text-sm transition-colors shadow-sm">
+        <button className="flex items-center gap-2 border border-woo-border hover:bg-woo-bg text-woo-text px-4 py-2 rounded-lg font-medium text-sm transition-colors shadow-sm">
           <Share2 size={16} /> Share Wishlist
         </button>
       </div>
@@ -52,19 +53,19 @@ export default function Wishlist() {
           ))}
         </div>
       ) : (
-        // Empty State
-        <div className="text-center py-20 bg-white rounded-xl border border-dashed border-gray-300">
-          <p className="text-gray-500 font-medium">
+        <div className="text-center py-20 bg-woo-card rounded-xl border border-dashed border-woo-border">
+          <p className="text-woo-text-secondary font-medium">
             No items found matching your filter.
           </p>
           <button
             onClick={() => setSelectedCategory("All Categories")}
-            className="mt-2 text-[#007042] font-bold text-sm hover:underline"
+            className="mt-2 text-woo-primary font-bold text-sm hover:underline"
           >
             Clear Filters
           </button>
         </div>
       )}
     </div>
+    </div></div>
   );
 }

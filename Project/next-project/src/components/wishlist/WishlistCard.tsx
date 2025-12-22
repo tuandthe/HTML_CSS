@@ -2,15 +2,18 @@ import { Product } from "@/lib/types/product";
 import { Card } from "../common/Card";
 import Image from "next/image";
 import { ShoppingCart, Star, Trash2 } from "lucide-react";
+
 interface WishlistCardProps {
   product: Product;
   onDelete: (id: number) => void;
 }
+
 export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
   return (
-    <Card className="overflow-hidden group flex flex-col h-full">
+    <Card className="overflow-hidden group flex flex-col h-full bg-woo-card border border-woo-border">
+      
       {/* Product Image */}
-      <div className="relative h-56 bg-gray-100 flex items-center justify-center overflow-hidden">
+      <div className="relative h-56 bg-woo-bg flex items-center justify-center overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
@@ -24,27 +27,31 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
             {product.discountLabel}
           </span>
         )}
+        
         {/* Badges: Out of Stock */}
         {product.stockStatus === "Out of Stock" && (
-          <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
+          <div className="absolute inset-0 bg-woo-card/60 flex items-center justify-center">
             <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
               Out of Stock
             </span>
           </div>
         )}
+        
         {/* Delete Button */}
         <button
           onClick={() => onDelete(product.id)}
-          className="absolute top-3 right-3 p-2 bg-white rounded-full text-red-500  shadow-sm"
+          className="absolute top-3 right-3 p-2 bg-woo-card rounded-full text-red-500 shadow-sm hover:bg-red-50 transition-colors"
         >
           <Trash2 size={16} />
         </button>
       </div>
-      {/* 2. Content Area */}
+
+      {/* Content Area */}
       <div className="p-4 flex-1 flex flex-col">
-        <h3 className="font-bold text-gray-900 mb-1 line-clamp-1">
+        <h3 className="font-bold text-woo-text mb-1 line-clamp-1">
           {product.name}
         </h3>
+        
         {/* Rating */}
         <div className="flex items-center gap-1 mb-3">
           <div className="flex text-yellow-400">
@@ -59,33 +66,35 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
               />
             ))}
           </div>
-          <span className="text-xs text-gray-400">({product.reviews})</span>
+          <span className="text-xs text-woo-text-muted">({product.reviews})</span>
         </div>
+        
         {/* Price & Category */}
         <div className="flex items-center justify-between mb-4 mt-auto">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-lg text-gray-900">
+            <span className="font-bold text-lg text-woo-text">
               ${product.price}
             </span>
             {product.originalPrice && (
-              <span className="text-sm text-gray-400 line-through">
+              <span className="text-sm text-woo-text-muted line-through">
                 ${product.originalPrice}
               </span>
             )}
           </div>
-          <span className="text-xs text-gray-500 font-medium">
+          <span className="text-xs text-woo-text-secondary font-medium">
             {product.category}
           </span>
         </div>
-        {/* 3. Action Button */}
+        
+        {/* Action Button */}
         {product.stockStatus === "In Stock" ? (
-          <button className="w-full flex items-center justify-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white py-2.5 rounded-2xl font-bold text-sm transition-colors">
+          <button className="w-full flex items-center justify-center gap-2 bg-woo-primary hover:bg-woo-primary-hover text-white py-2.5 rounded-2xl font-bold text-sm transition-colors">
             <ShoppingCart size={16} /> Add to Cart
           </button>
         ) : (
           <button
             disabled
-            className="w-full flex items-center justify-center gap-2 bg-gray-100 text-gray-400 py-2.5 rounded-lg font-bold text-sm cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-2 bg-woo-bg text-woo-text-muted py-2.5 rounded-lg font-bold text-sm cursor-not-allowed"
           >
             <ShoppingCart size={16} /> Out of Stock
           </button>

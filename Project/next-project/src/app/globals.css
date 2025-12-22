@@ -4,44 +4,57 @@
 
 @layer base {
   :root {
-    /* Nền chung của trang (đang là gray-50) */
+    /* --- Base Colors --- */
     --woo-bg: #f9fafb;
-
-    /* Nền của các thẻ Card/Header/Sidebar (đang là white) */
     --woo-card: #ffffff;
-
-    /* Màu chữ chính (đang là gray-900) */
     --woo-text: #111827;
-
-    /* Màu chữ phụ (đang là gray-500) */
+    /* Gray 900 */
     --woo-text-secondary: #6b7280;
+    /* Gray 500 */
+    --woo-text-muted: #9ca3af;
+    /* Gray 400 - Dùng cho icon/placeholder */
+    --woo-text-inverse: #ffffff;
+    /* Chữ trắng trên nền màu */
 
-    /* Màu viền (đang là gray-200) */
     --woo-border: #e5e7eb;
+    /* Gray 200 */
+    --woo-border-hover: #d1d5db;
+    /* Gray 300 */
 
-    /* Màu chính thương hiệu (Green) */
-    --woo-primary: #00965E;
-    --woo-primary-hover: #007042;
+    /* --- Brand Colors --- */
+    --woo-primary: #0d724f;
+    --woo-primary-hover: #01653b;
+    --woo-primary-light: #d1fae5;
+    /* Nền nhạt cho icon/active */
+
+    /* --- Status Colors --- */
+    --woo-error: #ef4444;
+    /* Red 500 */
+    --woo-success: #22c55e;
+    /* Green 500 */
   }
 
-  /* --- DARK MODE (Tự động kích hoạt khi class="dark" ở thẻ html) --- */
+  /* Dark Mode Support */
   .dark {
     --woo-bg: #0f172a;
-    /* Nền tối thẫm */
     --woo-card: #1e293b;
-    /* Card màu tối nhẹ hơn */
     --woo-text: #f8fafc;
-    /* Chữ trắng */
-    --woo-text-secondary: #94a3b8;
+    --woo-text-secondary: #6b7280;
+    --woo-text-muted: #64748b;
+    --woo-text-inverse: #ffffff;
+
     --woo-border: #334155;
-    /* Viền tối */
+    --woo-border-hover: #475569;
+
     --woo-primary: #00b371;
-    /* Màu xanh sáng hơn chút để nổi trên nền tối */
     --woo-primary-hover: #00965E;
+    --woo-primary-light: #00965e20;
+
+    --woo-error: #f87171;
+    --woo-success: #4ade80;
   }
 }
 
 body {
-  background-color: var(--woo-bg);
-  color: var(--woo-text);
+  @apply bg-woo-bg;
 }

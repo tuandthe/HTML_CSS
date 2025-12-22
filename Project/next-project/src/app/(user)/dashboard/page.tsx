@@ -6,12 +6,17 @@ import { recentProducts } from "@/lib/data/products";
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-3xl font-bold text-woo-text mb-2">Dashboard</h2>
-        <p className="text-gray-500">
-          Welcome back! Here&apos;s your account overview.
-        </p>
+    <div className="lg:ml-64">
+    <div className="p-4 lg:p-8">
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="mb-8">
+        <div>
+          <h2 className="text-3xl font-bold text-woo-text mb-2 tracking-tight">Dashboard</h2>
+          <p className="text-woo-text-secondary">
+            Welcome back! Here&apos;s your account overview.
+          </p>
+        </div>
       </div>
 
       {/* Stats Section */}
@@ -23,8 +28,9 @@ export default function DashboardPage() {
 
       {/* Main Content */}
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
+        {/* Left Column (Products) */}
         <div className="xl:col-span-3">
-          <h3 className="text-lg font-bold text-gray-900 mb-4">
+          <h3 className="text-lg font-bold text-woo-text mb-4">
             Recently Viewed
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -33,8 +39,13 @@ export default function DashboardPage() {
             ))}
           </div>
         </div>
-        <ShoppingCartWidget />
+        
+        {/* Right Column (Cart Widget) */}
+        <div className="xl:col-span-1">
+           <ShoppingCartWidget />
+        </div>
       </div>
     </div>
+    </div></div>
   );
 }

@@ -18,9 +18,11 @@ export default function AddressPage() {
   } = useAddresses();
 
   return (
-    <div className="space-y-6 max-w-2xl">
+    <div className="lg:ml-64">
+    <div className="p-4 lg:p-8">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between max-w-3xl">
+      <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Addresses</h2>
           <p className="text-gray-500 mt-1">
@@ -78,6 +80,8 @@ export default function AddressPage() {
           </p>
         )}
       </div>
+    </div>
+    </div>
     </div>
   );
 }

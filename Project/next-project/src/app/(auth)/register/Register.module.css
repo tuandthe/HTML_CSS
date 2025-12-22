@@ -1,19 +1,21 @@
-.container {
+/* --- BLOCK: Register --- */
+.register__container {
   width: 100%;
   max-width: 28rem;
-  color: #111827;
 }
-.header {
-  color: #111827;
+
+/* --- Header --- */
+.register__header {
+  color: var(--woo-text);
   line-height: 24px;
   margin: 0px 0px 32px;
   text-align: center;
 }
-/* Logo */
-.logo {
+
+.register__logo {
   width: 64px;
   height: 64px;
-  background-color: #0d724f;
+  background-color: var(--woo-primary);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -21,386 +23,251 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 16px;
-  color: #111827;
+  color: var(--woo-text);
   text-align: center;
 }
-.logoText {
-  color: #ffffff;
+
+.register__logo-text {
+  color: var(--woo-text-inverse);
   font-size: 24px;
   line-height: 32px;
   font-weight: 700;
   text-align: center;
 }
-/* Title */
-.title {
-  /* Kích thước chữ & Chiều cao dòng */
+
+.register__title {
   font-size: 24px;
   line-height: 32px;
-
-  /* Độ đậm của chữ */
   font-weight: 700;
-
-  /* Màu chữ */
-  color: #111827;
-
-  /* Khoảng cách dưới */
+  color: var(--woo-text);
   margin-bottom: 8px;
-
-  /* Căn chỉnh & Font chữ (từ style đã tính toán) */
   text-align: center;
-  font-family: "SF Pro Display", sans-serif;
 }
 
-.subtitle {
-  /* Màu chữ */
-  color: #6b7280;
-
-  /* Chiều cao dòng (khoảng cách giữa các dòng) */
+.register__subtitle {
+  color: var(--woo-text-secondary);
   line-height: 24px;
-
-  /* Căn chỉnh văn bản */
   text-align: center;
-
-  /* Font chữ */
-  font-family: "SF Pro Display", sans-serif;
-
-  /* Kích thước chữ (Suy luận từ line-height) */
   font-size: 16px;
 }
 
-/* Card */
-.card {
-  /* Màu nền */
-  background-color: #ffffff;
-  /* bg-woo-card */
-
-  /* Viền (Border) */
-  border-width: 1px;
-  /* border (mặc định là 1px) */
-  border-style: solid;
-  /* border */
-  border-color: #e5e7eb;
-  /* border-woo-border */
+/* --- Card --- */
+.register__card {
+  background-color: var(--woo-card);
+  border: 1px solid var(--woo-border);
   border-radius: 16px;
-  /* rounded-2xl */
-
-  /* Đổ bóng (Shadow) */
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.06);
-  /* shadow-woo */
-
-  /* Khoảng cách bên trong (Padding) */
   padding: 32px;
-  /* p-8 */
-
-  /* Màu chữ (Thừa hưởng) */
-  color: #111827;
+  color: var(--woo-text);
 }
 
-/* Form */
-.formGroup {
+.register__form {
   display: flex;
   flex-direction: column;
-  /* Xếp dọc các phần tử */
   gap: 20px;
-  /* Khoảng cách giữa các phần tử là 24px */
-
-  /* Style khác */
-  color: #111827;
+  color: var(--woo-text);
 }
 
-.label {
-  /* Hiển thị dạng khối (để nhận margin và xuống dòng) */
+/* --- Input --- */
+.register__label {
   display: block;
-  /* block */
-
-  /* Màu chữ */
-  color: #111827;
-  /* text-woo-text */
-
-  /* Độ đậm */
+  color: var(--woo-text);
   font-weight: 500;
-  /* font-medium */
-
-  /* Khoảng cách dưới */
   margin-bottom: 8px;
-  /* mb-2 */
-
-  /* Các thuộc tính computed (được tính toán bởi trình duyệt) */
-  font-family: "SF Pro Display", sans-serif;
   line-height: 24px;
 }
 
-.inputWrapper {
+.register__input-group {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-/* Error state for input */
-.inputWrapper.inputError .input {
-  border-color: #ef4444;
-  /* background-color: #fef2f2; */
-}
-
-.inputIcon {
+.register__icon {
   position: absolute;
   left: 14px;
   display: flex;
   align-items: center;
-  color: #9ca3af;
+  color: var(--woo-text-muted);
   pointer-events: none;
   transition: color 0.2s ease;
 }
 
-.input {
+.register__input {
   width: 100%;
-  /* w-full */
   box-sizing: border-box;
-  /* Đảm bảo padding không làm vỡ layout */
-
-  /* Padding (Lưu ý: Padding trái lớn để chứa Icon) */
-  padding-left: 48px;
-  /* pl-12 (12 * 4px) */
-  padding-right: 16px;
-  /* pr-4 */
-  padding-top: 12px;
-  /* py-3 */
-  padding-bottom: 12px;
-  /* py-3 */
-
-  /* --- VIỀN & BO GÓC --- */
-  border-width: 1px;
-  /* border */
-  border-style: solid;
-  border-color: #e5e7eb;
-  /* border-woo-border (Màu xám nhạt) */
+  padding: 12px 16px 12px 48px;
+  border: 1px solid var(--woo-border);
   border-radius: 20px;
-  /* rounded-xl (Lưu ý: Chuẩn là 12px, nhưng dự án của bạn có thể config là 20px) */
-
-  /* --- HIỆU ỨNG CHUYỂN ĐỘNG --- */
   transition: all 0.15s ease-in-out;
+  background-color: var(--woo-card);
+  color: var(--woo-text);
 }
 
-.input:focus {
+.register__input:focus {
   outline: none;
-  /* focus:outline-none (Xóa viền đen mặc định của trình duyệt) */
-
-  /* Tạo vòng Ring màu xanh bao quanh */
   border-color: transparent;
-  /* focus:border-transparent (Ẩn viền xám đi) */
-  box-shadow: 0 0 0 2px #0d724f;
+  box-shadow: 0 0 0 2px var(--woo-primary);
 }
 
-.input::placeholder {
-  color: #9ca3af;
+.register__input::placeholder {
+  color: var(--woo-text-muted);
 }
 
-.eyeBtn {
+/* Error */
+.register__input-group--error .register__input {
+  border-color: var(--woo-error);
+}
+
+.register__error-text {
+  font-size: 13px;
+  color: var(--woo-error);
+  margin: 8px 0 0 0;
+}
+
+/* Toggle */
+.register__eye-btn {
   position: absolute;
   right: 14px;
   background: none;
   border: none;
-  color: #9ca3af;
+  color: var(--woo-text-muted);
   cursor: pointer;
   padding: 0;
   display: flex;
 }
 
-.eyeBtn:hover {
-  color: #6b7280;
+.register__eye-btn:hover {
+  color: var(--woo-text-secondary);
 }
 
-/* Error Text */
-.errorText {
-  font-size: 13px;
-  color: #ef4444;
-  margin: 8px 0 0 0;
-}
-
-/* Password Strength */
-.strengthContainer {
+/* --- Password Strength --- */
+.register__strength-container {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-top: 8px;
 }
 
-.strengthBar {
+.register__strength-bar {
   flex: 1;
   height: 4px;
-  background-color: #e5e7eb;
+  background-color: var(--woo-border);
   border-radius: 2px;
   overflow: hidden;
 }
 
-.strengthFill {
+.register__strength-fill {
   height: 100%;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-.strengthLabel {
+.register__strength-label {
   font-size: 12px;
   font-weight: 500;
   min-width: 50px;
   text-align: right;
+  color: var(--woo-text-secondary);
 }
-/* Password Match */
-.matchText {
+
+.register__requirement-text {
+  font-size: 12px;
+  color: var(--woo-text-secondary);
+  margin: 6px 0 0 0;
+}
+
+.register__match-text {
   display: flex;
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: #22c55e;
+  color: var(--woo-success);
   margin: 6px 0 0 0;
 }
 
-/* Password Requirements */
-.requirementText {
-  font-size: 12px;
-  color: #6b7280;
-  margin: 6px 0 0 0;
-}
-
-/* Terms */
-.termsRow {
+/* --- Terms --- */
+.register__terms-row {
   display: flex;
   align-items: flex-start;
   gap: 10px;
 }
 
-.checkbox {
+.register__checkbox {
   width: 18px;
   height: 18px;
   margin-top: 2px;
-  accent-color: #166534;
+  accent-color: var(--woo-primary);
   cursor: pointer;
   flex-shrink: 0;
 }
 
-.checkbox.checkboxError {
-  outline: 2px solid #ef4444;
-  outline-offset: 1px;
-}
-
-.termsText {
+.register__terms-text {
   font-size: 14px;
-  color: #374151;
+  color: var(--woo-text-secondary);
   line-height: 1.5;
 }
 
-.termsLink {
-  color: #166534;
+.register__terms-link {
+  color: var(--woo-primary);
   text-decoration: none;
   font-weight: 500;
 }
 
-.termsLink:hover {
+.register__terms-link:hover {
   text-decoration: underline;
 }
 
-/* Submit Button */
-.submitBtn {
+/* --- Buttons --- */
+.register__submit-btn {
   width: 100%;
-  /* w-full */
-  display: inline-block;
-  /* Giúp nút nhận padding đúng cách */
-  padding-top: 12px;
-  /* py-3 (3 * 4px) */
-  padding-bottom: 12px;
-  /* py-3 */
-
-  /* --- MÀU SẮC --- */
-  background-color: #0d724f;
-  /* bg-woo-primary */
-  color: #ffffff;
-  /* text-white */
-
-  /* --- TYPOGRAPHY --- */
+  padding: 12px;
+  background-color: var(--woo-primary);
+  color: var(--woo-text-inverse);
   font-weight: 600;
-  /* font-semibold */
-  font-family: "SF Pro Display", sans-serif;
-  /* Từ computed style */
   text-align: center;
-  /* Căn giữa chữ */
   line-height: 24px;
-
-  /* --- VIỀN & GÓC --- */
   border: none;
-  /* Xóa viền mặc định */
   border-radius: 20px;
-  /* rounded-xl (Custom config: hình hiển thị 20px) */
-
-  /* --- HIỆU ỨNG CƠ BẢN --- */
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  /* shadow-sm */
   cursor: pointer;
-  /* Con trỏ thành hình bàn tay */
-
-  /* --- TRANSITION (CHUYỂN ĐỘNG MƯỢT) --- */
-  /* transition-all duration-200 */
-  transition-property: all;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.submitBtn:hover:not(:disabled) {
-  background-color: #0a5c3f;
+.register__submit-btn:hover {
+  background-color: var(--woo-primary-hover);
 }
 
-.submitBtn:disabled {
-  cursor: not-allowed;
-}
-
-.submitBtn.loading {
-  background-color: #86efac;
-  color: #166534;
-}
-
-.spinner {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Divider */
-.divider {
+/* --- Divider --- */
+.register__divider {
   display: flex;
   align-items: center;
   margin: 24px 0;
 }
 
-.divider::before,
-.divider::after {
+.register__divider::before,
+.register__divider::after {
   content: "";
   flex: 1;
   height: 1px;
-  background-color: #e5e7eb;
+  background-color: var(--woo-border);
 }
 
-.divider span {
+.register__divider span {
   padding: 0 16px;
   font-size: 13px;
-  color: #9ca3af;
+  color: var(--woo-text-muted);
   white-space: nowrap;
 }
 
-/* Social Buttons */
-.socialButtons {
+/* --- Social --- */
+.register__social-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-.socialBtn {
+.register__social-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -408,49 +275,43 @@
   padding: 12px 16px;
   font-size: 14px;
   font-weight: 500;
-  color: #374151;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  color: var(--woo-text-secondary);
+  background: var(--woo-card);
+  border: 1px solid var(--woo-border);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.socialBtn:hover:not(:disabled) {
-  background-color: #f9fafb;
-  border-color: #d1d5db;
+.register__social-btn:hover {
+  background-color: var(--woo-bg);
+  border-color: var(--woo-border-hover);
 }
 
-.socialBtn:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* Footer */
-.footer {
+/* --- Footer --- */
+.register__footer {
   margin-top: 24px;
   font-size: 14px;
-  color: #6b7280;
+  color: var(--woo-text-secondary);
   text-align: center;
 }
 
-.link {
-  color: #166534;
+.register__link {
+  color: var(--woo-primary);
   font-weight: 600;
   text-decoration: none;
 }
 
-.link:hover {
+.register__link:hover {
   text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 480px) {
-  .card {
+  .register__card {
     padding: 24px;
   }
 
-  .socialButtons {
+  .register__social-group {
     grid-template-columns: 1fr;
   }
 }

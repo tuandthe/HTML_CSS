@@ -1,60 +1,62 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Menu, MessageSquare } from "lucide-react";
-import SidebarDesktop from "@/components/layout/SidebarDesktop";
-import SidebarMobile from "@/components/layout/SidebarMobile";
+import Link from "next/link";
+import SidebarDesktopWrapper from "@/components/layout/sidebar/SidebarDesktopWrapper";
+import SidebarMobileWrapper from "@/components/layout/sidebar/SidebarMobileWrapper";
+import UserSidebar from "@/components/layout/sidebar/contents/UserSidebar";
 
-export default function AccountLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+export default function AccountLayout({ children }: { children: React.ReactNode }) {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const closeMobile = () => setIsMobileOpen(false);
 
   return (
-    <div className="min-h-screen bg-woo-bg font-sans transition-colors duration-300">
-        {/* 1. Desktop Sidebar */}
-      <SidebarDesktop />
-
-      {/* 2. Mobile Sidebar */}
-      <SidebarMobile
-        isOpen={isMobileSidebarOpen}
-        onClose={() => setIsMobileSidebarOpen(false)}
-      />
-
-      {/* 3. Main Content Wrapper */}
-      <div className="lg:ml-64 min-h-screen">
-        {/* Mobile Header */}
-        <header className="bg-woo-card border-b border-woo-border px-4 py-4 flex items-center justify-between lg:hidden sticky top-0 z-40 shadow-sm">
+    // 1. Root Container
+    <div className="min-h-screen bg-woo-bg">
+      
+      {/* 2. Mobile Header */}
+      <div className="lg:hidden">
+        <header className="bg-woo-card border-b border-woo-border px-4 py-4 flex items-center justify-between sticky top-0 z-40 shadow-sm">
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setIsMobileSidebarOpen(true)}
-              className="size-9 flex items-center justify-center text-woo-text hover:bg-woo-bg rounded-md transition-all"
-              aria-label="Open menu"
+              onClick={() => setIsMobileOpen(true)}
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all outline-none size-9 rounded-md text-woo-text hover:bg-gray-100"
             >
-              <Menu size={24} />
+              <Menu size={20} />
             </button>
-            <span className="text-xl font-semibold text-woo-text">
-              My Account
-            </span>
+            <h1 className="text-xl font-semibold text-woo-text">My Account</h1>
           </div>
-
-          <Link
+          
+          <Link 
             href="/tickets"
-            className="h-8 px-3 inline-flex items-center gap-1.5 text-sm font-medium text-woo-primary bg-woo-primary/10 hover:bg-woo-primary/20 rounded-md transition-colors"
+            className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-8 rounded-md gap-1.5 px-3 text-woo-primary hover:text-woo-primary-hover hover:bg-woo-primary/10"
           >
-            <MessageSquare size={18} />
-            Tickets
+             <MessageSquare size={16} className="mr-2"/>
+             Tickets
           </Link>
         </header>
-
-        {/* Page Content */}
-        <div className="p-4 lg:p-8">
-          <div className="space-y-6">{children}</div>
-        </div>
       </div>
+
+      {/* 3. Main Flex Container (Chứa Desktop Sidebar & Content) */}
+      <div className="lg:flex">
+        
+        {/* A. Sidebar Desktop (Fixed) */}
+        <SidebarDesktopWrapper>
+          <UserSidebar />
+        </SidebarDesktopWrapper>
+
+        {/* B. Main Content Wrapper */}
+              {/* <div className="space-y-6"> */}
+                  {children}
+              {/* </div> */}
+
+      </div>
+
+      {/* 4. Mobile Sidebar (Nằm ngoài luồng flex) */}
+      <SidebarMobileWrapper isOpen={isMobileOpen} onClose={closeMobile}>
+        <UserSidebar onLinkClick={closeMobile}/>
+      </SidebarMobileWrapper>
     </div>
   );
 }

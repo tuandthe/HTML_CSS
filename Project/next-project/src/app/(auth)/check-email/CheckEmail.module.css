@@ -1,110 +1,134 @@
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f8fafc;
-  padding: 24px;
-}
-
-/* Logo */
-.logo {
-  width: 48px;
-  height: 48px;
-  background-color: #166534;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 24px;
-}
-
-/* Card */
-.card {
+/* --- BLOCK: Check Email --- */
+.check-email__container {
   width: 100%;
-  max-width: 400px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  max-width: 28rem;
+}
+
+/* --- Header --- */
+.check-email__header {
+  color: var(--woo-text);
+  line-height: 24px;
+  margin: 0px 0px 32px;
   text-align: center;
 }
 
-/* Success Icon */
-.iconWrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.successIcon {
+/* --- Logo --- */
+.check-email__logo {
   width: 64px;
   height: 64px;
-  background-color: #dcfce7;
+  background-color: var(--woo-primary);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+  color: var(--woo-text);
+  text-align: center;
+}
+
+.check-email__logo-text {
+  color: var(--woo-text-inverse);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* --- Card --- */
+.check-email__card {
+  background-color: var(--woo-card);
+  border: 1px solid var(--woo-border);
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.06);
+  padding: 32px;
+  color: var(--woo-text);
+}
+
+/* --- Icon Wrapper --- */
+.check-email__icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background-color: var(--woo-primary-light);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #166534;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
 }
 
-/* Title */
-.title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #111827;
-  margin: 0 0 8px 0;
+.check-email__success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--woo-primary);
+  background-color: var(--woo-primary-light);
 }
 
-.subtitle {
+/* --- Typography --- */
+.check-email__text-content {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.check-email__title {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--woo-text);
+  margin-bottom: 12px;
+}
+
+.check-email__subtitle {
+  line-height: 24px;
+  color: var(--woo-text-secondary);
+  margin: 0px 0px 8px 0;
+}
+
+.check-email__email-text {
   font-size: 14px;
-  color: #6b7280;
-  margin: 0 0 4px 0;
-}
-
-.email {
-  font-size: 14px;
   font-weight: 600;
-  color: #111827;
+  color: var(--woo-text);
   margin: 0 0 12px 0;
 }
 
-.description {
+.check-email__description {
   font-size: 13px;
-  color: #6b7280;
+  color: var(--woo-text-secondary);
   margin: 0 0 24px 0;
   line-height: 1.5;
 }
 
-/* Divider */
-.divider {
+/* --- Divider --- */
+.check-email__divider {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
 }
 
-.divider::before,
-.divider::after {
+.check-email__divider::before,
+.check-email__divider::after {
   content: "";
   flex: 1;
   height: 1px;
-  background-color: #e5e7eb;
+  background-color: var(--woo-border);
 }
 
-.divider span {
+.check-email__divider span {
   padding: 0 16px;
   font-size: 13px;
-  color: #9ca3af;
+  color: var(--woo-text-muted);
   white-space: nowrap;
 }
 
-/* Resend Button */
-.resendBtn {
+/* --- Buttons --- */
+.check-email__resend-btn {
   width: 100%;
   display: flex;
   align-items: center;
@@ -113,31 +137,82 @@
   padding: 12px 24px;
   font-size: 14px;
   font-weight: 500;
-  color: #374151;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  color: var(--woo-text-secondary);
+  background: var(--woo-card);
+  border: 1px solid var(--woo-border);
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-bottom: 12px;
 }
 
-.resendBtn:hover:not(:disabled) {
-  background-color: #f9fafb;
-  border-color: #d1d5db;
+.check-email__resend-btn:hover:not(:disabled) {
+  background-color: var(--woo-bg);
+  border-color: var(--woo-border-hover);
 }
 
-.resendBtn:disabled {
+.check-email__resend-btn:disabled {
   cursor: not-allowed;
   opacity: 0.7;
 }
 
-.resendBtn.loading {
-  color: #6b7280;
+.check-email__spinner {
+  animation: spin 1s linear infinite;
 }
 
-.spinner {
-  animation: spin 1s linear infinite;
+.check-email__back-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--woo-text-inverse);
+  background-color: var(--woo-primary);
+  border: none;
+  border-radius: 16px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.check-email__back-btn:hover {
+  background-color: var(--woo-primary-hover);
+}
+
+/* --- Note Box --- */
+.check-email__note-box {
+  background-color: var(--woo-primary-light);
+  border-radius: 16px;
+  padding: 12px 16px;
+  border: 1px solid var(--woo-primary-light);
+}
+
+.check-email__note-text {
+  font-size: 13px;
+  color: var(--woo-primary-hover);
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* --- Footer --- */
+.check-email__footer {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--woo-text-secondary);
+  text-align: center;
+}
+
+.check-email__footer-link {
+  color: var(--woo-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.check-email__footer-link:hover {
+  text-decoration: underline;
 }
 
 @keyframes spin {
@@ -150,64 +225,8 @@
   }
 }
 
-/* Back Button */
-.backBtn {
-  display: block;
-  /* width: 100%; */
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #ffffff;
-  background-color: #166534;
-  border: none;
-  border-radius: 16px;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.2s ease;
-  margin-bottom: 20px;
-}
-
-.backBtn:hover {
-  background-color: #14532d;
-}
-
-/* Note Box */
-.noteBox {
-  background-color: oklch(0.932 0.032 255.585);
-  border-radius: 16px;
-  padding: 12px 16px;
-  border: 1px solid oklch(0.932 0.032 255.585);
-}
-
-.noteText {
-  font-size: 13px;
-  color: oklch(0.532 0.032 255.585);
-  margin: 0;
-  line-height: 1.5;
-  text-align: left;
-}
-
-/* Footer */
-.footer {
-  margin-top: 24px;
-  font-size: 14px;
-  color: #6b7280;
-  text-align: center;
-}
-
-.link {
-  color: #166534;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
-/* Responsive */
 @media (max-width: 480px) {
-  .card {
+  .check-email__card {
     padding: 24px;
   }
 }

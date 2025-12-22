@@ -12,7 +12,7 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
     <div
       className={cn(
         "flex gap-4 mb-6 w-full",
-        isMe ? "flex-row-reverse" : "flex-row",
+        isMe ? "flex-row-reverse" : "flex-row"
       )}
     >
       {/* Avatar */}
@@ -21,8 +21,8 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
           className={cn(
             "w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border",
             isMe
-              ? "bg-[#007042] text-white border-[#007042]"
-              : "bg-gray-100 text-gray-500 border-gray-200",
+              ? "bg-woo-primary text-white border-woo-primary"
+              : "bg-woo-bg text-woo-text-secondary border-woo-border"
           )}
         >
           <User size={20} />
@@ -33,19 +33,19 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
       <div
         className={cn(
           "flex flex-col max-w-[85%] sm:max-w-[75%]",
-          isMe && "items-end",
+          isMe && "items-end"
         )}
       >
         <div
           className={cn(
             "flex items-center gap-2 mb-1.5",
-            isMe && "flex-row-reverse",
+            isMe && "flex-row-reverse"
           )}
         >
-          <span className="font-bold text-sm text-gray-900">
+          <span className="font-bold text-sm text-woo-text">
             {message.senderName}
           </span>
-          <span className="text-xs text-gray-400 font-medium">
+          <span className="text-xs text-woo-text-muted font-medium">
             {message.timestamp}
           </span>
         </div>
@@ -54,8 +54,8 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
           className={cn(
             "p-4 text-sm leading-relaxed shadow-sm whitespace-pre-wrap break-words",
             isMe
-              ? "bg-[#007042] text-white rounded-2xl rounded-tr-none"
-              : "bg-[#F3F4F6] text-gray-800 rounded-2xl rounded-tl-none",
+              ? "bg-woo-primary text-white rounded-2xl rounded-tr-none"
+              : "bg-woo-bg text-woo-text rounded-2xl rounded-tl-none border border-woo-border"
           )}
         >
           <p>{message.text}</p>
@@ -66,13 +66,13 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
               className={cn(
                 "mt-3 flex items-center gap-2 p-2.5 rounded-lg cursor-pointer transition-colors border",
                 isMe
-                  ? "bg-[#005c36] border-[#005c36] hover:bg-[#004b2c] text-white"
-                  : "bg-white border-gray-200 hover:bg-gray-50 text-gray-700",
+                  ? "bg-woo-primary-hover/20 border-white/20 hover:bg-woo-primary-hover/30 text-white"
+                  : "bg-woo-card border-woo-border hover:bg-gray-50 text-woo-text"
               )}
             >
               <Paperclip
                 size={16}
-                className={isMe ? "text-white/80" : "text-gray-500"}
+                className={isMe ? "text-white/80" : "text-woo-text-muted"}
               />
               <span className="font-medium text-xs truncate max-w-[200px]">
                 {message.attachment}

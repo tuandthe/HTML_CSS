@@ -10,32 +10,36 @@ export default function ForgotPasswordPage() {
     useForgotPassword();
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        {/* Logo */}
-        <div className={styles.logo}>
-          <span className={styles.logoText}>W</span>
+    <div className={styles['forgot-password__container']}>
+      
+      {/* Header */}
+      <div className={styles['forgot-password__header']}>
+        <div className={styles['forgot-password__logo']}>
+          <span className={styles['forgot-password__logo-text']}>W</span>
         </div>
 
-        {/* Title */}
-        <h1 className={styles.title}>Forgot Password?</h1>
-        <p className={styles.subtitle}>
+        <h1 className={styles['forgot-password__title']}>Forgot Password?</h1>
+        <p className={styles['forgot-password__subtitle']}>
           No worries, we&apos;ll send you reset instructions.
         </p>
       </div>
 
       {/* Form Card */}
-      <div className={styles.card}>
-        <form className={styles.formGroup} onSubmit={handleSubmit}>
-          {/* Email */}
+      <div className={styles['forgot-password__card']}>
+        <form className={styles['forgot-password__form']} onSubmit={handleSubmit}>
+          
+          {/* Email Input */}
           <div>
-            <label className={styles.label}>Email Address</label>
+            <label className={styles['forgot-password__label']}>Email Address</label>
             <div
-              className={`${styles.inputWrapper} ${error ? styles.inputError : ""}`}
+              className={`
+                ${styles['forgot-password__input-wrapper']} 
+                ${error ? styles['forgot-password__input-wrapper--error'] : ""}
+              `}
             >
-              <Mail className={styles.inputIcon} size={20} />
+              <Mail className={styles['forgot-password__input-icon']} size={20} />
               <input
-                className={styles.input}
+                className={styles['forgot-password__input']}
                 type="email"
                 placeholder="Enter your email address"
                 value={email}
@@ -45,8 +49,12 @@ export default function ForgotPasswordPage() {
                 }}
               />
             </div>
-            {error && <p className={styles.errorText}>{error}</p>}
-            <p className={styles.hint}>
+            
+            {error && (
+              <p className={styles['forgot-password__error-text']}>{error}</p>
+            )}
+            
+            <p className={styles['forgot-password__hint']}>
               We&apos;ll send a password reset link to this email address.
             </p>
           </div>
@@ -54,13 +62,13 @@ export default function ForgotPasswordPage() {
           {/* Submit Button */}
           <button
             type="submit"
-            className={styles.submitBtn}
-            onClick={handleSubmit}
+            className={styles['forgot-password__submit-btn']}
+            disabled={isResending}
           >
             {isResending ? (
               <>
                 <svg
-                  className={styles.spinner}
+                  className={styles['forgot-password__spinner']}
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
@@ -77,21 +85,22 @@ export default function ForgotPasswordPage() {
             )}
           </button>
         </form>
+
         {/* Back Link */}
-        <Link href="/login" className={styles.backLink}>
+        <Link href="/login" className={styles['forgot-password__back-link']}>
           <ArrowLeft size={16} />
           Back to Login
         </Link>
       </div>
 
       {/* Security Notice Card */}
-      <div className={styles.noticeCard}>
-        <div className={styles.noticeIcon}>
+      <div className={styles['forgot-password__notice-card']}>
+        <div className={styles['forgot-password__notice-icon']}>
           <Lock size={20} />
         </div>
-        <div className={styles.noticeContent}>
-          <h3 className={styles.noticeTitle}>Security Notice</h3>
-          <p className={styles.noticeText}>
+        <div className={styles['forgot-password__notice-content']}>
+          <h3 className={styles['forgot-password__notice-title']}>Security Notice</h3>
+          <p className={styles['forgot-password__notice-text']}>
             For your security, the reset link will expire after 24 hours. If you
             didn&apos;t request a password reset, please ignore this or contact
             support.

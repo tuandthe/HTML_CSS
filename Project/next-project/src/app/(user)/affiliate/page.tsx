@@ -21,7 +21,9 @@ export default function AffiliatePage() {
   } = useAffiliate();
 
   return (
-    <div className="max-w-3xl space-y-6">
+     <div className="lg:ml-64 !w-full">
+    <div className="p-4 lg:p-8">
+    <div className=" space-y-6">
       {/* Page Header */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">
@@ -54,5 +56,6 @@ export default function AffiliatePage() {
         {activeTab === "payments" && <PaymentsView history={paymentHistory} />}
       </div>
     </div>
+    </div></div>
   );
 }

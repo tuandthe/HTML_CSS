@@ -13,6 +13,8 @@ export default function LinkDetailPage() {
   const linkId = params.id as string;
   const { link } = useLinkDetail(linkId);
   return (
+    <div className="lg:ml-64 !w-full">
+      <div className="p-4 lg:p-8">
     <div className="max-w-6xl mx-auto space-y-6 pb-10">
       {/* 1. Header Section */}
       <LinkDetailHeader link={link} id={linkId} />
@@ -31,6 +33,6 @@ export default function LinkDetailPage() {
           <LinkInfoSidebar link={link} />
         </div>
       </div>
-    </div>
+    </div></div></div>
   );
 }

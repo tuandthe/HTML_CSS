@@ -22,13 +22,13 @@ export default function TicketFilterBar({
   counts,
 }: TicketFilterBarProps) {
   return (
-    <Card className="p-4 flex flex-col xl:flex-row gap-4 xl:items-center justify-between">
-      <div className="flex flex-col lg:flex-row gap-4">
+    <Card className="p-4 flex flex-col xl:flex-row gap-4 xl:items-center justify-between bg-woo-card border border-woo-border">
+      <div className="flex flex-col lg:flex-row gap-4 w-full">
         {/* Search Input */}
         <div className="flex-1">
           <div className="relative">
             <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-woo-text-muted"
               size={18}
             />
             <input
@@ -36,7 +36,7 @@ export default function TicketFilterBar({
               placeholder="Search tickets by subject or ID"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#007042] focus:bg-white transition-all"
+              className="w-full pl-10 pr-4 py-2 rounded-lg text-sm bg-woo-bg text-woo-text focus:outline-none focus:ring-2 focus:ring-woo-primary focus:bg-woo-card transition-all border border-transparent focus:border-transparent placeholder:text-woo-text-muted"
             />
           </div>
         </div>
@@ -49,8 +49,8 @@ export default function TicketFilterBar({
               className={cn(
                 "px-4 py-1.5 rounded-full text-sm font-medium transition-colors border",
                 selectedCategory === cat
-                  ? "bg-[#007042] text-white border-[#007042]"
-                  : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50",
+                  ? "bg-woo-primary text-white border-woo-primary"
+                  : "bg-woo-card text-woo-text-secondary border-woo-border hover:bg-woo-bg"
               )}
             >
               {cat}

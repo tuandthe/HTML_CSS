@@ -4,7 +4,8 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-inter", // Tạo biến CSS để Tailwind dùng
 });
 
 export const metadata: Metadata = {
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen">{children}</body>
+      <body className={`${inter.variable} font-sans antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }

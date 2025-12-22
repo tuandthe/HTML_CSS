@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: oklch(0.985 0.002 247.839);
-  color: #111827;
+  background-color: var(--woo-bg);
+  color: var(--woo-text);
   display: flex;
   justify-content: center;
   padding: 16px;

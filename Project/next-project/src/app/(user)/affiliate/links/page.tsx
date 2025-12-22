@@ -18,7 +18,9 @@ export default function AffiliateDashboardPage() {
     counts,
   } = useAffiliateLinks();
   return (
-    <div className="max-w-4xl space-y-6">
+     <div className="lg:ml-64 !w-full">
+    <div className="p-4 lg:p-8">
+    <div className="space-y-6">
       {/* Header Block */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -55,5 +57,6 @@ export default function AffiliateDashboardPage() {
       {/* 4. List Block */}
       <LinkList links={links} />
     </div>
+    </div></div>
   );
 }

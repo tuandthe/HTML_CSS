@@ -15,7 +15,7 @@ export default function OrderFilter({
   counts,
 }: OrderFilterProps) {
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-2">
       {tabs.map((tab) => (
         <button
           key={tab}
@@ -23,8 +23,8 @@ export default function OrderFilter({
           className={cn(
             "px-4 py-2 rounded-3xl text-sm font-medium transition-colors border",
             activeTab === tab
-              ? "bg-[#007042] text-white border-[#007042]"
-              : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50",
+              ? "bg-woo-primary text-white border-woo-primary"
+              : "bg-woo-card text-woo-text-secondary border-woo-border hover:bg-woo-bg"
           )}
         >
           {tab === "All"

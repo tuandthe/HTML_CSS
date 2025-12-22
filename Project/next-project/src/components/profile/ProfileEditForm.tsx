@@ -11,6 +11,7 @@ interface ProfileEditFormProps {
   onCancel: () => void;
   onSave: (newData: UserProfile) => void;
 }
+
 export default function ProfileEditForm({
   initialData,
   onCancel,
@@ -20,12 +21,16 @@ export default function ProfileEditForm({
     initialData,
     onSave,
   );
+
   return (
-    <Card className="p-8 bg-white shadow-sm border border-gray-200 rounded-xl">
+    // bg-white -> bg-woo-card, border-gray-200 -> border-woo-border
+    <Card className="p-8 bg-woo-card shadow-sm border border-woo-border rounded-xl">
       <form onSubmit={handleSubmit} className="space-y-8">
+        
         {/* Personal Information */}
         <div>
-          <h3 className="text-lg font-bold text-gray-900 mb-4">
+          {/* text-gray-900 -> text-woo-text */}
+          <h3 className="text-lg font-bold text-woo-text mb-4">
             Personal Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -44,7 +49,7 @@ export default function ProfileEditForm({
 
         {/* Contact Information */}
         <div>
-          <h3 className="text-lg font-bold text-gray-900 mb-4">
+          <h3 className="text-lg font-bold text-woo-text mb-4">
             Contact Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -63,20 +68,21 @@ export default function ProfileEditForm({
 
         {/* Address Information */}
         <div>
-          <h3 className="text-lg font-bold text-gray-900 mb-4">
+          <h3 className="text-lg font-bold text-woo-text mb-4">
             Address Information
           </h3>
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="w-full">
-                <label className="block text-sm font-bold text-gray-900 mb-2">
+                <label className="block text-sm font-bold text-woo-text mb-2">
                   Country
                 </label>
                 <Select
                   options={countries}
                   value={formData.country}
                   onChange={(val) => handleChange("country", val)}
-                  className="border border-gray-200"
+                  // border-gray-200 -> border-woo-border
+                  className="border border-woo-border"
                 />
               </div>
               <Input
@@ -106,10 +112,11 @@ export default function ProfileEditForm({
         </div>
 
         {/* Action Buttons */}
-        <div className="pt-6 border-t border-gray-100 flex items-center gap-4">
+        {/* border-gray-100 -> border-woo-border */}
+        <div className="pt-6 border-t border-woo-border flex items-center gap-4">
           <button
             type="submit"
-            className="flex items-center gap-2 bg-[#007042] hover:bg-[#005c36] text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm"
+            className="flex items-center gap-2 bg-woo-primary hover:bg-woo-primary-hover text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm"
           >
             <Save size={18} />
             Save Changes
@@ -118,7 +125,8 @@ export default function ProfileEditForm({
           <button
             type="button"
             onClick={onCancel}
-            className="flex items-center gap-2 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm"
+            // text-gray-700 -> text-woo-text, border-gray-200 -> border-woo-border, hover:bg-gray-50 -> hover:bg-woo-bg
+            className="flex items-center gap-2 bg-woo-card border border-woo-border text-woo-text hover:bg-woo-bg px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm"
           >
             <X size={18} />
             Cancel

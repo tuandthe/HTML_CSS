@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { DashboardData, TabType } from "@/lib/types/affiliate";
 import { affiliateApi } from "@/lib/api-client/affiliateApi";
+import { NotFoundError } from "@/lib/errors/NotFoundError";
 
 const initialData: DashboardData = {
   stats: [],
@@ -15,7 +16,6 @@ export function useAffiliate() {
   const [activeTab, setActiveTab] = useState<TabType>("dashboard");
   const [data, setData] = useState<DashboardData>(initialData);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +24,14 @@ export function useAffiliate() {
         const dashboardData = await affiliateApi.getDashboardData();
         setData(dashboardData);
       } catch (err) {
-        console.error("Failed to fetch affiliate data", err);
-        setError("Failed to load dashboard data.");
+        if (err instanceof NotFoundError) {
+          return Response.json({ message: err.message }, { status: 404 });
+        }
+        console.error(err);
+        return Response.json(
+          { message: "Internal Server Error" },
+          { status: 500 },
+        );
       } finally {
         setIsLoading(false);
       }
@@ -37,14 +43,13 @@ export function useAffiliate() {
   return {
     activeTab,
     setActiveTab,
-    ...data, 
+    ...data,
     isLoading,
-    error,
     refetch: async () => {
-        setIsLoading(true);
-        const newData = await affiliateApi.getDashboardData();
-        setData(newData);
-        setIsLoading(false);
-    }
+      setIsLoading(true);
+      const newData = await affiliateApi.getDashboardData();
+      setData(newData);
+      setIsLoading(false);
+    },
   };
 }

@@ -1,3 +1,4 @@
+import { NotFoundError } from "@/lib/errors";
 import { Address, addressType } from "@/lib/types/address";
 import { useState } from "react";
 
@@ -35,7 +36,6 @@ export function useAddressForm(
     isDefault: initialData?.isDefault || defaultValues.isDefault,
   });
 
-
   const handleChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
@@ -44,15 +44,20 @@ export function useAddressForm(
     e.preventDefault();
 
     try {
-
       if (!formData.firstName || !formData.addressLine1) {
         throw new Error("Please fill in required fields");
       }
-      await onSave(formData); 
-
-    } catch (err) {
-      console.error("Submit error:", err);
-    } 
+      await onSave(formData);
+    } catch (error) {
+      if (error instanceof NotFoundError) {
+        return Response.json({ message: error.message }, { status: 404 });
+      }
+      console.error(error);
+      return Response.json(
+        { message: "Internal Server Error" },
+        { status: 500 },
+      );
+    }
   };
   return {
     formData,

@@ -12,7 +12,7 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
     <div
       className={cn(
         "flex gap-4 mb-6 w-full",
-        isMe ? "flex-row-reverse" : "flex-row"
+        isMe ? "flex-row-reverse" : "flex-row",
       )}
     >
       {/* Avatar */}
@@ -22,7 +22,7 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
             "w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border",
             isMe
               ? "bg-woo-primary text-white border-woo-primary"
-              : "bg-woo-bg text-woo-text-secondary border-woo-border"
+              : "bg-woo-bg text-woo-text-secondary border-woo-border",
           )}
         >
           <User size={20} />
@@ -33,13 +33,13 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
       <div
         className={cn(
           "flex flex-col max-w-[85%] sm:max-w-[75%]",
-          isMe && "items-end"
+          isMe && "items-end",
         )}
       >
         <div
           className={cn(
             "flex items-center gap-2 mb-1.5",
-            isMe && "flex-row-reverse"
+            isMe && "flex-row-reverse",
           )}
         >
           <span className="font-bold text-sm text-woo-text">
@@ -55,7 +55,7 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
             "p-4 text-sm leading-relaxed shadow-sm whitespace-pre-wrap break-words",
             isMe
               ? "bg-woo-primary text-white rounded-2xl rounded-tr-none"
-              : "bg-woo-bg text-woo-text rounded-2xl rounded-tl-none border border-woo-border"
+              : "bg-woo-bg text-woo-text rounded-2xl rounded-tl-none border border-woo-border",
           )}
         >
           <p>{message.text}</p>
@@ -67,7 +67,7 @@ export default function ChatBubble({ message, isMe }: ChatBubbleProps) {
                 "mt-3 flex items-center gap-2 p-2.5 rounded-lg cursor-pointer transition-colors border",
                 isMe
                   ? "bg-woo-primary-hover/20 border-white/20 hover:bg-woo-primary-hover/30 text-white"
-                  : "bg-woo-card border-woo-border hover:bg-gray-50 text-woo-text"
+                  : "bg-woo-card border-woo-border hover:bg-gray-50 text-woo-text",
               )}
             >
               <Paperclip

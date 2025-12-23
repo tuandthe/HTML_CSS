@@ -14,7 +14,7 @@ export const ticketApi = {
 
   create: async (data: CreateTicketDTO): Promise<Ticket> => {
     const newTicket: Ticket = {
-      id: `TKT-${Math.floor(Math.random() * 10000)}`, 
+      id: `TKT-${Math.floor(Math.random() * 10000)}`,
       subject: data.subject,
       category: data.category,
       message: data.message,
@@ -25,12 +25,12 @@ export const ticketApi = {
       updatedDate: new Date().toLocaleString(),
       messagesCount: 0,
     };
-    
+
     mockDb = [newTicket, ...mockDb];
     return newTicket;
   },
 
   getMessages: async (ticketId: string): Promise<Message[]> => {
     return mockMessagesDb[ticketId] || [];
-  }
+  },
 };

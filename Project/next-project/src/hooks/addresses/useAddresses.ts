@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Address } from "@/lib/types/address";
 import { addressApi } from "@/lib/api-client/addressApi";
+import { NotFoundError } from "@/lib/errors";
 
 export function useAddresses() {
   const [addresses, setAddresses] = useState<Address[]>([]);
@@ -18,7 +19,14 @@ export function useAddresses() {
       const data = await addressApi.getAll();
       setAddresses(data);
     } catch (error) {
-      console.error("Failed to fetch addresses:", error);
+      if (error instanceof NotFoundError) {
+        return Response.json({ message: error.message }, { status: 404 });
+      }
+      console.error(error);
+      return Response.json(
+        { message: "Internal Server Error" },
+        { status: 500 },
+      );
     } finally {
       setIsLoading(false);
     }
@@ -50,22 +58,22 @@ export function useAddresses() {
   };
 
   const saveAddress = async (data: Omit<Address, "id">) => {
-    setIsLoading(true); 
+    setIsLoading(true);
     try {
       if (editingId) {
         await addressApi.update(editingId, data);
       } else {
         await addressApi.create(data);
       }
-      
+
       await fetchAddresses();
-      
+
       setIsAdding(false);
       setEditingId(null);
     } catch (error) {
       console.error("Failed to save:", error);
       alert("Failed to save address");
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 

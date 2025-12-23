@@ -1,4 +1,3 @@
-
 export type TabType = "dashboard" | "referral-links" | "marketing" | "payments";
 export type LinkStatus = "Active" | "Pending" | "Paused" | "Rejected";
 export type PaymentStatus = "Paid" | "Pending";
@@ -6,7 +5,12 @@ export type MarketingAction = "copy" | "download";
 export type MarketingLinkType = "text" | "email";
 export type BannerType = "banner";
 export type StatIconType = "dollar" | "chart" | "users" | "target";
-export type SocialIconType = "instagram" | "facebook" | "twitter" | "direct" | "other";
+export type SocialIconType =
+  | "instagram"
+  | "facebook"
+  | "twitter"
+  | "direct"
+  | "other";
 
 export interface AffiliateStat {
   label: string;
@@ -102,7 +106,6 @@ export interface LinkDetailFull extends ReferralLinkDetail {
   chartData: ChartDataPoint[];
   trafficSources: TrafficSource[];
 }
-
 
 export interface DashboardData {
   stats: AffiliateStat[];

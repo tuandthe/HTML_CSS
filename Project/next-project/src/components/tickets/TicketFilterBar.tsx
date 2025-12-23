@@ -50,7 +50,7 @@ export default function TicketFilterBar({
                 "px-4 py-1.5 rounded-full text-sm font-medium transition-colors border",
                 selectedCategory === cat
                   ? "bg-woo-primary text-white border-woo-primary"
-                  : "bg-woo-card text-woo-text-secondary border-woo-border hover:bg-woo-bg"
+                  : "bg-woo-card text-woo-text-secondary border-woo-border hover:bg-woo-bg",
               )}
             >
               {cat}

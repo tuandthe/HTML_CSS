@@ -1,16 +1,9 @@
-import Link from "next/link";
 import { Card } from "@/components/common/Card";
 import { StatItem } from "@/lib/types/product";
 
 export default function StatsCard({ item }: { item: StatItem }) {
   const Icon = item.icon;
-  const Wrapper = item.href ? Link : "div";
-  const props = item.href ? { href: item.href } : {};
-
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    <Wrapper {...props} className="block h-full">
       <Card className="p-6 rounded-2xl shadow-woo hover:shadow-lg transition-all duration-200 cursor-pointer hover:scale-105 active:scale-98">
         <div className="flex items-center justify-between">
           <div>
@@ -22,6 +15,5 @@ export default function StatsCard({ item }: { item: StatItem }) {
           </div>
         </div>
       </Card>
-    </Wrapper>
   );
 }

@@ -18,7 +18,7 @@ export default function NewTicketForm({
 }: NewTicketFormProps) {
   const { formData, isValid, handleChange, handleSubmit } =
     useNewTicketForm(onSubmit);
-    
+
   return (
     <Card className="p-6 mb-6 animate-in fade-in slide-in-from-top-4 duration-300 bg-woo-card border border-woo-border">
       {/* Header Form */}

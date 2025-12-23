@@ -2,20 +2,20 @@
 
 import { useState, useEffect } from "react";
 import { CreateTicketDTO } from "@/lib/types/ticket";
+import { NotFoundError } from "@/lib/errors/NotFoundError";
 
 const defaultValues: CreateTicketDTO = {
   subject: "",
   message: "",
   priority: "Medium Priority",
-  orderId: "", 
+  orderId: "",
 };
 
 export function useNewTicketForm(
-  onSubmit: (data: CreateTicketDTO) => Promise<void> | void
+  onSubmit: (data: CreateTicketDTO) => Promise<void> | void,
 ) {
   const [formData, setFormData] = useState<CreateTicketDTO>(defaultValues);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
@@ -27,38 +27,39 @@ export function useNewTicketForm(
     setIsValid(isFormFilled);
   }, [formData]);
 
-  const handleChange = (
-    field: keyof CreateTicketDTO, 
-    value: string
-  ) => {
+  const handleChange = (field: keyof CreateTicketDTO, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e?: React.FormEvent) => {
-    if (e) e.preventDefault(); 
+    if (e) e.preventDefault();
 
     if (!isValid) return;
 
-    setError(null);
-    setIsSubmitting(true); 
+    setIsSubmitting(true);
 
     try {
       await onSubmit(formData);
-      
+
       setFormData(defaultValues);
     } catch (err) {
-      console.error("Submit error:", err);
-      setError("Failed to create ticket");
+      if (err instanceof NotFoundError) {
+        return Response.json({ message: err.message }, { status: 404 });
+      }
+      console.error("Ticket submission error:", err);
+      return Response.json(
+        { message: "Internal Server Error" },
+        { status: 500 },
+      );
     } finally {
-      setIsSubmitting(false); 
+      setIsSubmitting(false);
     }
   };
 
   return {
     formData,
     isValid,
-    isSubmitting, 
-    error,        
+    isSubmitting,
     handleChange,
     handleSubmit,
   };

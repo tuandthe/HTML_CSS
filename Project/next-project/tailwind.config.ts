@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme"; // Import cái này để giữ các font mặc định
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: [
@@ -14,16 +14,23 @@ const config: Config = {
       },
       colors: {
         woo: {
-          bg: 'var(--woo-bg)',
-          card: 'var(--woo-card)',
-          text: 'var(--woo-text)',
-          secondary: 'var(--woo-text-secondary)',
-          muted: 'var(--woo-text-muted)', 
-          border: 'var(--woo-border)',
-          primary: 'var(--woo-primary)',
-          'primary-hover': 'var(--woo-primary-hover)',
-          'primary-light': 'var(--woo-primary-light)',
-          'secondary-light': 'var(--woo-secondary-light)', 
+          bg: "var(--woo-bg)",
+          card: "var(--woo-card)",
+          border: "var(--woo-border)",
+
+          text: {
+            DEFAULT: "var(--woo-text)",
+            secondary: "var(--woo-text-secondary)",
+            muted: "var(--woo-text-muted)",
+            inverse: "var(--woo-text-inverse)",
+          },
+
+          primary: "var(--woo-primary)",
+          "primary-hover": "var(--woo-primary-hover)",
+          "primary-light": "var(--woo-primary-light)",
+
+          error: "var(--woo-error)",
+          success: "var(--woo-success)",
         },
       },
     },

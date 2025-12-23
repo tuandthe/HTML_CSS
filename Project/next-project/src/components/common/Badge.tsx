@@ -2,13 +2,19 @@ import { cn } from "@/lib/utils/utils";
 import { ReactNode } from "react";
 
 // Định nghĩa các loại màu (intent) mà hệ thống hỗ trợ
-type BadgeVariant = "default" | "success" | "warning" | "danger" | "info" | "neutral";
+type BadgeVariant =
+  | "default"
+  | "success"
+  | "warning"
+  | "danger"
+  | "info"
+  | "neutral";
 
 interface BadgeProps {
   children: ReactNode;
   variant?: BadgeVariant;
-  className?: string; 
-  icon?: ReactNode; 
+  className?: string;
+  icon?: ReactNode;
 }
 
 const variants: Record<BadgeVariant, string> = {
@@ -20,13 +26,18 @@ const variants: Record<BadgeVariant, string> = {
   info: "bg-blue-100 text-blue-700",
 };
 
-export function Badge({ children, variant = "default", className, icon }: BadgeProps) {
+export function Badge({
+  children,
+  variant = "default",
+  className,
+  icon,
+}: BadgeProps) {
   return (
     <span
       className={cn(
         "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors",
         variants[variant],
-        className
+        className,
       )}
     >
       {icon && <span className="shrink-0">{icon}</span>}

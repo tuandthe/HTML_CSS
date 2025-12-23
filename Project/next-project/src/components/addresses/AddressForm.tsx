@@ -43,7 +43,7 @@ export default function AddressForm({
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <div onSubmit={handleSubmit} className="space-y-4">
         {/* Radio Type */}
         <div className="flex gap-6 mb-4">
           <label className="flex items-center gap-2 cursor-pointer">
@@ -157,7 +157,7 @@ export default function AddressForm({
             Cancel
           </button>
         </div>
-      </form>
+      </div>
     </Card>
   );
 }

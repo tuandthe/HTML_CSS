@@ -14,7 +14,7 @@ export default function OrderList({ orders }: { orders: Order[] }) {
   }
   return (
     <Card className="divide-y divide-woo-border overflow-hidden bg-woo-card border border-woo-border">
-      <div className="p-4 font-semibold text-woo-text border-b border-woo-border bg-woo-bg/50">
+      <div className="p-6 font-semibold text-woo-text border-b border-woo-border bg-woo-bg/50">
         Order History
       </div>
       {orders.map((order) => (
@@ -31,14 +31,15 @@ export default function OrderList({ orders }: { orders: Order[] }) {
             </div>
             <p className="text-sm text-woo-text-secondary mb-1 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
               <span className="flex items-center">
-                 <Calendar size={14} className="mr-1 inline-block" /> {order.date}
+                <Calendar size={14} className="mr-1 inline-block" />{" "}
+                {order.date}
               </span>
               <span className="hidden sm:inline mx-2">•</span>
               <span>{order.items}</span>
             </p>
             <p className="font-semibold text-woo-text mt-2">{order.total}</p>
           </div>
-          
+
           <Link
             href={`/orders/${order.id}`}
             className="flex items-center gap-2 px-4 py-2 border border-woo-border bg-woo-bg rounded-3xl text-sm font-medium text-woo-text hover:bg-woo-border hover:shadow-sm transition-all"

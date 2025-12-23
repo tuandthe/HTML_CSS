@@ -9,7 +9,7 @@ export default function OrderStatusCard() {
         <h3 className="font-bold text-woo-text">Order Status</h3>
         <OrderBadge status="Processing" />
       </div>
-      
+
       {/* Timeline */}
       <div className="relative pl-4 border-l-2 border-woo-border space-y-8 ml-2">
         {/* Step 1: Active */}
@@ -22,7 +22,7 @@ export default function OrderStatusCard() {
             </p>
           </div>
         </div>
-        
+
         {/* Step 2: Active */}
         <div className="relative">
           <div className="absolute -left-[23px] top-0 bg-woo-primary w-5 h-5 rounded-full border-4 border-woo-card shadow-sm"></div>
@@ -33,7 +33,7 @@ export default function OrderStatusCard() {
             </p>
           </div>
         </div>
-        
+
         {/* Step 3: Inactive */}
         <div className="relative opacity-40">
           <div className="absolute -left-[23px] top-0 bg-gray-300 w-5 h-5 rounded-full border-4 border-woo-card"></div>

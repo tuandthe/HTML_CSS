@@ -26,7 +26,6 @@ export default function ProfileEditForm({
     // bg-white -> bg-woo-card, border-gray-200 -> border-woo-border
     <Card className="p-8 bg-woo-card shadow-sm border border-woo-border rounded-xl">
       <form onSubmit={handleSubmit} className="space-y-8">
-        
         {/* Personal Information */}
         <div>
           {/* text-gray-900 -> text-woo-text */}

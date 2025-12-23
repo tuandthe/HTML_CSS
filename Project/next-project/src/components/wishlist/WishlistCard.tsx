@@ -11,7 +11,6 @@ interface WishlistCardProps {
 export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
   return (
     <Card className="overflow-hidden group flex flex-col h-full bg-woo-card border border-woo-border">
-      
       {/* Product Image */}
       <div className="relative h-56 bg-woo-bg flex items-center justify-center overflow-hidden">
         <Image
@@ -27,7 +26,7 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
             {product.discountLabel}
           </span>
         )}
-        
+
         {/* Badges: Out of Stock */}
         {product.stockStatus === "Out of Stock" && (
           <div className="absolute inset-0 bg-woo-card/60 flex items-center justify-center">
@@ -36,7 +35,7 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
             </span>
           </div>
         )}
-        
+
         {/* Delete Button */}
         <button
           onClick={() => onDelete(product.id)}
@@ -51,7 +50,7 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
         <h3 className="font-bold text-woo-text mb-1 line-clamp-1">
           {product.name}
         </h3>
-        
+
         {/* Rating */}
         <div className="flex items-center gap-1 mb-3">
           <div className="flex text-yellow-400">
@@ -66,9 +65,11 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
               />
             ))}
           </div>
-          <span className="text-xs text-woo-text-muted">({product.reviews})</span>
+          <span className="text-xs text-woo-text-muted">
+            ({product.reviews})
+          </span>
         </div>
-        
+
         {/* Price & Category */}
         <div className="flex items-center justify-between mb-4 mt-auto">
           <div className="flex items-center gap-2">
@@ -85,7 +86,7 @@ export default function WishlistCard({ product, onDelete }: WishlistCardProps) {
             {product.category}
           </span>
         </div>
-        
+
         {/* Action Button */}
         {product.stockStatus === "In Stock" ? (
           <button className="w-full flex items-center justify-center gap-2 bg-woo-primary hover:bg-woo-primary-hover text-white py-2.5 rounded-2xl font-bold text-sm transition-colors">

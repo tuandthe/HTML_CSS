@@ -13,10 +13,11 @@ export default function ProfileView({ data }: { data: UserProfile }) {
     // bg-white -> bg-woo-card, border-gray-200 -> border-woo-border
     <Card className="p-8 bg-woo-card shadow-sm border border-woo-border rounded-xl">
       <div className="space-y-8">
-        
         {/* Personal Information */}
         <div>
-          <h3 className="text-lg font-semibold text-woo-text mb-4">Personal Information</h3>
+          <h3 className="text-lg font-semibold text-woo-text mb-4">
+            Personal Information
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
             <InfoField label="First Name*" value={data.firstName} />
             <InfoField label="Last Name*" value={data.lastName} />
@@ -25,7 +26,9 @@ export default function ProfileView({ data }: { data: UserProfile }) {
 
         {/* Contact Information */}
         <div>
-          <h3 className="text-lg font-semibold text-woo-text mb-4">Contact Information</h3>
+          <h3 className="text-lg font-semibold text-woo-text mb-4">
+            Contact Information
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
             <InfoField label="Email Address*" value={data.email} />
             <InfoField label="Phone Number*" value={data.phone} />
@@ -34,7 +37,9 @@ export default function ProfileView({ data }: { data: UserProfile }) {
 
         {/* Address Information */}
         <div>
-          <h3 className="text-lg font-semibold text-woo-text mb-4">Address Information</h3>
+          <h3 className="text-lg font-semibold text-woo-text mb-4">
+            Address Information
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mb-6">
             <InfoField label="Country" value={data.country} />
             <InfoField label="City" value={data.city} />

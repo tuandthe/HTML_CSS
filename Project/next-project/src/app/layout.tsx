@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter", // Tạo biến CSS để Tailwind dùng
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased bg-woo-bg`}>
         {children}
       </body>
     </html>

@@ -60,10 +60,12 @@ export default function TicketDetailInfo({ ticket }: { ticket: Ticket }) {
         <h3 className="font-bold text-woo-text mb-4 text-base">Actions</h3>
         <div className="space-y-3">
           <button className="w-full flex items-center gap-3 px-4 py-2.5 bg-woo-card border border-woo-border rounded-lg text-sm font-semibold text-woo-text hover:bg-woo-bg hover:border-woo-border-hover transition-all shadow-sm">
-            <CheckCircle2 size={18} className="text-woo-text-secondary" /> Mark as Resolved
+            <CheckCircle2 size={18} className="text-woo-text-secondary" /> Mark
+            as Resolved
           </button>
           <button className="w-full flex items-center gap-3 px-4 py-2.5 bg-woo-card border border-woo-border rounded-lg text-sm font-semibold text-woo-text hover:bg-woo-bg hover:border-woo-border-hover transition-all shadow-sm">
-            <XCircle size={18} className="text-woo-text-secondary" /> Close Ticket
+            <XCircle size={18} className="text-woo-text-secondary" /> Close
+            Ticket
           </button>
         </div>
       </Card>

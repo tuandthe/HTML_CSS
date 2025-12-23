@@ -20,8 +20,10 @@ export default function AffiliateStats({ stats }: { stats: AffiliateStat[] }) {
           >
             <div className="flex items-center justify-start">
               <div>
-                <p className="text-sm">{stat.label}</p>
-                <p className="text-2xl font-medium ">{stat.value}</p>
+                <p className="text-sm text-woo-text-secondary">{stat.label}</p>
+                <p className="text-2xl font-medium text-woo-text">
+                  {stat.value}
+                </p>
               </div>
               {stat.icon === "target" ? (
                 <div className="p-2  text-purple-600">
@@ -36,7 +38,7 @@ export default function AffiliateStats({ stats }: { stats: AffiliateStat[] }) {
                   <Icon size={32} />
                 </div>
               ) : stat.icon === "dollar" ? (
-                <div className="p-2  text-green-600">
+                <div className="p-2  text-woo-primary">
                   <Icon size={32} />
                 </div>
               ) : null}

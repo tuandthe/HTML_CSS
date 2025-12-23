@@ -21,7 +21,7 @@ export function useLogin() {
     } else if (!isValidEmail(email)) {
       newError.email = "Email is invalid";
     }
-   if (!password) {
+    if (!password) {
       newError.password = "Password is required";
     } else if (password.length < 6) {
       newError.password = "Password must be at least 6 characters";

@@ -28,33 +28,33 @@ export default function RegisterPage() {
   } = useRegister();
 
   return (
-    <div className={styles['register__container']}>
-      
+    <div className={styles["register__container"]}>
       {/* Header */}
-      <div className={styles['register__header']}>
-        <div className={styles['register__logo']}>
-          <span className={styles['register__logo-text']}>W</span>
+      <div className={styles["register__header"]}>
+        <div className={styles["register__logo"]}>
+          <span className={styles["register__logo-text"]}>W</span>
         </div>
-        <h1 className={styles['register__title']}>Create Account</h1>
-        <p className={styles['register__subtitle']}>Join us and start shopping</p>
+        <h1 className={styles["register__title"]}>Create Account</h1>
+        <p className={styles["register__subtitle"]}>
+          Join us and start shopping
+        </p>
       </div>
 
       {/* Form Card */}
-      <div className={styles['register__card']}>
-        <form className={styles['register__form']} onSubmit={handleSubmit}>
-          
+      <div className={styles["register__card"]}>
+        <form className={styles["register__form"]} onSubmit={handleSubmit}>
           {/* Full Name */}
           <div>
-            <label className={styles['register__label']}>Full Name</label>
+            <label className={styles["register__label"]}>Full Name</label>
             <div
               className={`
-                ${styles['register__input-group']} 
-                ${errors.fullName ? styles['register__input-group--error'] : ""}
+                ${styles["register__input-group"]} 
+                ${errors.fullName ? styles["register__input-group--error"] : ""}
               `}
             >
-              <User className={styles['register__icon']} size={20} />
+              <User className={styles["register__icon"]} size={20} />
               <input
-                className={styles['register__input']}
+                className={styles["register__input"]}
                 type="text"
                 placeholder="John Doe"
                 value={fullName}
@@ -62,43 +62,47 @@ export default function RegisterPage() {
               />
             </div>
             {errors.fullName && (
-              <p className={styles['register__error-text']}>{errors.fullName}</p>
+              <p className={styles["register__error-text"]}>
+                {errors.fullName}
+              </p>
             )}
           </div>
 
           {/* Email */}
           <div>
-            <label className={styles['register__label']}>Email Address</label>
+            <label className={styles["register__label"]}>Email Address</label>
             <div
               className={`
-                ${styles['register__input-group']} 
-                ${errors.email ? styles['register__input-group--error'] : ""}
+                ${styles["register__input-group"]} 
+                ${errors.email ? styles["register__input-group--error"] : ""}
               `}
             >
-              <Mail className={styles['register__icon']} size={20} />
+              <Mail className={styles["register__icon"]} size={20} />
               <input
-                className={styles['register__input']}
+                className={styles["register__input"]}
                 type="text"
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            {errors.email && <p className={styles['register__error-text']}>{errors.email}</p>}
+            {errors.email && (
+              <p className={styles["register__error-text"]}>{errors.email}</p>
+            )}
           </div>
 
           {/* Password */}
           <div>
-            <label className={styles['register__label']}>Password</label>
+            <label className={styles["register__label"]}>Password</label>
             <div
               className={`
-                ${styles['register__input-group']} 
-                ${errors.password ? styles['register__input-group--error'] : ""}
+                ${styles["register__input-group"]} 
+                ${errors.password ? styles["register__input-group--error"] : ""}
               `}
             >
-              <Lock className={styles['register__icon']} size={20} />
+              <Lock className={styles["register__icon"]} size={20} />
               <input
-                className={styles['register__input']}
+                className={styles["register__input"]}
                 type={showPassword ? "text" : "password"}
                 placeholder="Create a password"
                 value={password}
@@ -106,7 +110,7 @@ export default function RegisterPage() {
               />
               <button
                 type="button"
-                className={styles['register__eye-btn']}
+                className={styles["register__eye-btn"]}
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -115,10 +119,10 @@ export default function RegisterPage() {
 
             {/* Password Strength Bar */}
             {password && (
-              <div className={styles['register__strength-container']}>
-                <div className={styles['register__strength-bar']}>
+              <div className={styles["register__strength-container"]}>
+                <div className={styles["register__strength-bar"]}>
                   <div
-                    className={styles['register__strength-fill']}
+                    className={styles["register__strength-fill"]}
                     style={{
                       width: strengthInfo.width,
                       backgroundColor: strengthInfo.color,
@@ -126,21 +130,23 @@ export default function RegisterPage() {
                   />
                 </div>
                 <span
-                  className={styles['register__strength-label']}
+                  className={styles["register__strength-label"]}
                   style={{ color: strengthInfo.color }}
                 >
                   {strengthInfo.label}
                 </span>
               </div>
             )}
-            
+
             {errors.password && (
-              <p className={styles['register__error-text']}>{errors.password}</p>
+              <p className={styles["register__error-text"]}>
+                {errors.password}
+              </p>
             )}
 
             {/* Password Requirements */}
             {password && (
-              <p className={styles['register__requirement-text']}>
+              <p className={styles["register__requirement-text"]}>
                 Password must contain uppercase, lowercase, and number
               </p>
             )}
@@ -148,16 +154,18 @@ export default function RegisterPage() {
 
           {/* Confirm Password */}
           <div>
-            <label className={styles['register__label']}>Confirm Password</label>
+            <label className={styles["register__label"]}>
+              Confirm Password
+            </label>
             <div
               className={`
-                ${styles['register__input-group']} 
-                ${errors.confirmPassword ? styles['register__input-group--error'] : ""}
+                ${styles["register__input-group"]} 
+                ${errors.confirmPassword ? styles["register__input-group--error"] : ""}
               `}
             >
-              <Lock className={styles['register__icon']} size={20} />
+              <Lock className={styles["register__icon"]} size={20} />
               <input
-                className={styles['register__input']}
+                className={styles["register__input"]}
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm your password"
                 value={confirmPassword}
@@ -165,61 +173,65 @@ export default function RegisterPage() {
               />
               <button
                 type="button"
-                className={styles['register__eye-btn']}
+                className={styles["register__eye-btn"]}
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
                 {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
-            
+
             {/* Password Match Indicator */}
             {passwordsMatch && (
-              <p className={styles['register__match-text']}>
+              <p className={styles["register__match-text"]}>
                 <Check size={16} />
                 Passwords match
               </p>
             )}
             {errors.confirmPassword && (
-              <p className={styles['register__error-text']}>{errors.confirmPassword}</p>
+              <p className={styles["register__error-text"]}>
+                {errors.confirmPassword}
+              </p>
             )}
           </div>
 
           {/* Terms */}
-          <div className={styles['register__terms-row']}>
+          <div className={styles["register__terms-row"]}>
             <input
               type="checkbox"
               id="terms"
-              className={styles['register__checkbox']}
+              className={styles["register__checkbox"]}
               checked={termsAccepted}
               onChange={(e) => setTermsAccepted(e.target.checked)}
             />
-            <label htmlFor="terms" className={styles['register__terms-text']}>
+            <label htmlFor="terms" className={styles["register__terms-text"]}>
               I agree to the{" "}
-              <Link href="#" className={styles['register__terms-link']}>
+              <Link href="#" className={styles["register__terms-link"]}>
                 Terms and Conditions
               </Link>{" "}
               and{" "}
-              <Link href="#" className={styles['register__terms-link']}>
+              <Link href="#" className={styles["register__terms-link"]}>
                 Privacy Policy
               </Link>
             </label>
           </div>
-          {errors.terms && <p className={styles['register__error-text']}>{errors.terms}</p>}
-          
+          {errors.terms && (
+            <p className={styles["register__error-text"]}>{errors.terms}</p>
+          )}
+
           {/* Submit Button */}
-          <button type="submit" className={styles['register__submit-btn']}>
+          <button type="submit" className={styles["register__submit-btn"]}>
             Create Account
           </button>
         </form>
 
         {/* Divider */}
-        <div className={styles['register__divider']}>
+        <div className={styles["register__divider"]}>
           <span>Or sign up with</span>
         </div>
 
         {/* Social Buttons */}
-        <div className={styles['register__social-group']}>
-          <button type="button" className={styles['register__social-btn']}>
+        <div className={styles["register__social-group"]}>
+          <button type="button" className={styles["register__social-btn"]}>
             <svg width="20" height="20" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
@@ -240,7 +252,7 @@ export default function RegisterPage() {
             </svg>
             <span>Google</span>
           </button>
-          <button type="button" className={styles['register__social-btn']}>
+          <button type="button" className={styles["register__social-btn"]}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
             </svg>
@@ -250,9 +262,9 @@ export default function RegisterPage() {
       </div>
 
       {/* Footer */}
-      <p className={styles['register__footer']}>
+      <p className={styles["register__footer"]}>
         Already have an account?{" "}
-        <Link href="/login" className={styles['register__link']}>
+        <Link href="/login" className={styles["register__link"]}>
           Sign in
         </Link>
       </p>

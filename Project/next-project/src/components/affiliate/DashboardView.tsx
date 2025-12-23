@@ -56,9 +56,7 @@ export default function DashboardView({
 
       {/* Recent Performance Section */}
       <Card className="p-6 bg-white border border-gray-100 shadow-sm rounded-2xl">
-        <h3 className="text-gray-900 font-medium text-lg mb-4">
-          Recent Performance
-        </h3>
+        <h4 className="mb-4">Recent Performance</h4>
         <div className="space-y-4">
           {performance.map((item) => (
             <div key={item.id} className="bg-gray-50 p-4 rounded-xl">

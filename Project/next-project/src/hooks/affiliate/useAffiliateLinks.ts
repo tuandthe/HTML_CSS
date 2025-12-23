@@ -1,6 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
-import { LinkStatus, ReferralLinkDetail, LinkStats } from "@/lib/types/affiliate";
+import {
+  LinkStatus,
+  ReferralLinkDetail,
+  LinkStats,
+} from "@/lib/types/affiliate";
 import { affiliateApi } from "@/lib/api-client/affiliateApi";
+import { NotFoundError } from "@/lib/errors/NotFoundError";
 
 const initialStats: LinkStats = {
   clicks: 0,
@@ -24,7 +29,14 @@ export function useAffiliateLinks() {
         setLinks(data.links);
         setStats(data.stats);
       } catch (error) {
-        console.error("Failed to fetch links:", error);
+        if (error instanceof NotFoundError) {
+          return Response.json({ message: error.message }, { status: 404 });
+        }
+        console.error(error);
+        return Response.json(
+          { message: "Internal Server Error" },
+          { status: 500 },
+        );
       } finally {
         setIsLoading(false);
       }
@@ -45,7 +57,7 @@ export function useAffiliateLinks() {
 
       return matchesSearch && matchesFilter;
     });
-  }, [links, searchQuery, activeFilter]); 
+  }, [links, searchQuery, activeFilter]);
 
   const counts = useMemo(() => {
     const tempCounts: Record<string, number> = {
@@ -66,13 +78,13 @@ export function useAffiliateLinks() {
   }, [links]);
 
   return {
-    links: filteredLinks, 
-    stats,                
+    links: filteredLinks,
+    stats,
     searchQuery,
     setSearchQuery,
     activeFilter,
     setActiveFilter,
     counts,
-    isLoading,            
+    isLoading,
   };
 }

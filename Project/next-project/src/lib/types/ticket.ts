@@ -1,5 +1,12 @@
-export type TicketStatus = "Open" | "Waiting for Customer" | "Resolved" | "Closed";
-export type TicketPriority = "High Priority" | "Medium Priority" | "Low Priority";
+export type TicketStatus =
+  | "Open"
+  | "Waiting for Customer"
+  | "Resolved"
+  | "Closed";
+export type TicketPriority =
+  | "High Priority"
+  | "Medium Priority"
+  | "Low Priority";
 
 export const CATEGORIES_LIST = [
   "Payments",

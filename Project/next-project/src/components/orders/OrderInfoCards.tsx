@@ -22,7 +22,9 @@ export default function OrderInfoCards() {
           <div className="flex items-start gap-3">
             <Truck size={18} className="text-woo-text-muted mt-0.5" />
             <div>
-              <p className="text-xs text-woo-text-secondary">Estimated Delivery</p>
+              <p className="text-xs text-woo-text-secondary">
+                Estimated Delivery
+              </p>
               <p className="text-sm font-semibold text-woo-text">
                 Jan 20, 2024
               </p>

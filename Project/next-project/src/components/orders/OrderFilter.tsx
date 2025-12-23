@@ -21,10 +21,10 @@ export default function OrderFilter({
           key={tab}
           onClick={() => onTabChange(tab)}
           className={cn(
-            "px-4 py-2 rounded-3xl text-sm font-medium transition-colors border",
+            "px-4 py-2 rounded-3xl font-medium transition-colors border",
             activeTab === tab
               ? "bg-woo-primary text-white border-woo-primary"
-              : "bg-woo-card text-woo-text-secondary border-woo-border hover:bg-woo-bg"
+              : "bg-woo-card text-woo-text-secondary border-woo-border hover:bg-woo-bg",
           )}
         >
           {tab === "All"

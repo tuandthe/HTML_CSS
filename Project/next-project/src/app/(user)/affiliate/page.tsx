@@ -21,41 +21,47 @@ export default function AffiliatePage() {
   } = useAffiliate();
 
   return (
-     <div className="lg:ml-64 !w-full">
-    <div className="p-4 lg:p-8">
-    <div className=" space-y-6">
-      {/* Page Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">
-          Affiliate Dashboard
-        </h1>
-        <p className="text-gray-500 mt-1">
-          Track your earnings and manage your affiliate links.
-        </p>
-      </div>
-      {/* Top Stats*/}
-      <AffiliateStats stats={stats} />
+    <div className="lg:ml-64">
+      <div className="p-4 lg:p-8">
+        <div className=" space-y-6">
+          {/* Page Header */}
+          <div>
+            <h1 className="text-3xl font-bold text-woo-text">
+              Affiliate Dashboard
+            </h1>
+            <p className="text-gray-500 mt-1">
+              Track your earnings and manage your affiliate links.
+            </p>
+          </div>
+          {/* Top Stats*/}
+          <AffiliateStats stats={stats} />
 
-      {/* Navigation Tabs */}
-      <AffiliateTabs activeTab={activeTab} onChange={setActiveTab} />
+          {/* Navigation Tabs */}
+          <AffiliateTabs activeTab={activeTab} onChange={setActiveTab} />
 
-      {/* Dynamic Content */}
-      <div>
-        {activeTab === "dashboard" && (
-          <DashboardView payment={payment} performance={recentPerformance} />
-        )}
-        {activeTab === "referral-links" && (
-          <ReferralLinksView links={referralLinks} />
-        )}
-        {activeTab === "marketing" && (
-          <MarketingView
-            banners={marketingAssets.banners}
-            links={marketingAssets.links}
-          />
-        )}
-        {activeTab === "payments" && <PaymentsView history={paymentHistory} />}
+          {/* Dynamic Content */}
+          <div>
+            {activeTab === "dashboard" && (
+              <DashboardView
+                payment={payment}
+                performance={recentPerformance}
+              />
+            )}
+            {activeTab === "referral-links" && (
+              <ReferralLinksView links={referralLinks} />
+            )}
+            {activeTab === "marketing" && (
+              <MarketingView
+                banners={marketingAssets.banners}
+                links={marketingAssets.links}
+              />
+            )}
+            {activeTab === "payments" && (
+              <PaymentsView history={paymentHistory} />
+            )}
+          </div>
+        </div>
       </div>
     </div>
-    </div></div>
   );
 }

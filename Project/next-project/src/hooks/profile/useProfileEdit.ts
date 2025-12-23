@@ -1,5 +1,6 @@
 "use client";
 
+import { NotFoundError } from "@/lib/errors/NotFoundError";
 import { UserProfile } from "@/lib/types/user";
 import { useState } from "react";
 
@@ -8,7 +9,6 @@ export function useProfileEdit(
   onSave: (newData: UserProfile) => Promise<void> | void,
 ) {
   const [formData, setFormData] = useState<UserProfile>(initialData);
-  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (field: keyof UserProfile, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -16,8 +16,6 @@ export function useProfileEdit(
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    setError(null);
 
     try {
       if (!formData.firstName || !formData.lastName) {
@@ -25,16 +23,20 @@ export function useProfileEdit(
       }
 
       await onSave(formData);
-      
     } catch (err) {
-      console.error("Profile update error:", err);
-      setError("Failed to update profile.");
-    } 
+      if (err instanceof NotFoundError) {
+        return Response.json({ message: err.message }, { status: 404 });
+      }
+      console.log("Failed to save profile:", err);
+      return Response.json(
+        { message: "Internal Server Error" },
+        { status: 500 },
+      );
+    }
   };
 
   return {
     formData,
-    error,        
     handleChange,
     handleSubmit,
   };

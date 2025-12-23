@@ -11,11 +11,11 @@ export default function ShoppingCartWidget() {
           <ShoppingCart size={20} className="text-woo-primary" />
           <h3 className="font-semibold text-woo-text">Shopping Cart</h3>
         </div>
-        
+
         <div className="space-y-4 mb-4">
           {/* Mock Cart Items */}
           {recentProducts.slice(0, 2).map((item) => (
-             <div key={item.id} className="flex items-center gap-3">
+            <div key={item.id} className="flex items-center gap-3">
               <div className="w-12 h-12 relative border border-woo-border rounded-lg overflow-hidden">
                 <Image
                   src={item.image}
@@ -48,7 +48,7 @@ export default function ShoppingCartWidget() {
         <button className="w-full bg-woo-primary text-white py-2.5 rounded-2xl font-medium hover:bg-woo-primary-hover mb-2 transition-colors">
           Checkout &rarr;
         </button>
-        
+
         {/* View Cart Button */}
         <button className="w-full bg-gray-100 text-woo-text py-2.5 rounded-2xl font-medium hover:bg-gray-200 transition-colors">
           View Cart

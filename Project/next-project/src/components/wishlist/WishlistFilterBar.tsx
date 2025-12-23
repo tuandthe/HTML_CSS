@@ -20,7 +20,6 @@ export default function WishlistFilterBar({
 }: WishlistFilterBarProps) {
   return (
     <Card className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-woo-card border border-woo-border">
-      
       {/* Category Filter */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2 text-woo-text">

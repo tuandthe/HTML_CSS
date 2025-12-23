@@ -8,9 +8,15 @@ import {
   referralLinksData,
   mockLinkDetail,
   mockLinks,
-  mockStats
+  mockStats,
 } from "@/lib/data/affiliate";
-import { DashboardData, LinkDetailFull, LinkStats, ReferralLinkDetail } from "@/lib/types/affiliate";
+import {
+  DashboardData,
+  LinkDetailFull,
+  LinkStats,
+  ReferralLinkDetail,
+} from "@/lib/types/affiliate";
+import { NotFoundError } from "../errors";
 
 // const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -31,12 +37,14 @@ export const affiliateApi = {
   },
 
   getLinkDetail: async (id: string): Promise<LinkDetailFull> => {
-
     if (id === "AFL-001") return mockLinkDetail;
-    throw new Error("Link not found");
+    throw new NotFoundError(`Link with id ${id} not found`);
   },
 
-  getLinksPageData: async (): Promise<{ links: ReferralLinkDetail[]; stats: LinkStats }> => {
+  getLinksPageData: async (): Promise<{
+    links: ReferralLinkDetail[];
+    stats: LinkStats;
+  }> => {
     return {
       links: mockLinks,
       stats: mockStats,

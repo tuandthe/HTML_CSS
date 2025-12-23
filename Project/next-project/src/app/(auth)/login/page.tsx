@@ -17,33 +17,33 @@ export default function LoginPage() {
   } = useLogin();
 
   return (
-    <div className={styles['login-container']}>
-      
+    <div className={styles["login-container"]}>
       {/* Header */}
-      <div className={styles['login__header']}>
-        <div className={styles['login__logo']}>
-          <span className={styles['login__logo-text']}>W</span>
+      <div className={styles["login__header"]}>
+        <div className={styles["login__logo"]}>
+          <span className={styles["login__logo-text"]}>W</span>
         </div>
-        <h1 className={styles['login__title']}>Welcome Back</h1>
-        <p className={styles['login__subtitle']}>Sign in to access your account</p>
+        <h1 className={styles["login__title"]}>Welcome Back</h1>
+        <p className={styles["login__subtitle"]}>
+          Sign in to access your account
+        </p>
       </div>
 
       {/* Card */}
-      <div className={styles['login__card']}>
-        <form className={styles['login__form']} onSubmit={handleSubmit}>
-          
+      <div className={styles["login__card"]}>
+        <form className={styles["login__form"]} onSubmit={handleSubmit}>
           {/* Email Field */}
           <div>
-            <label className={styles['login__label']}>Email Address</label>
+            <label className={styles["login__label"]}>Email Address</label>
             <div
               className={`
-                ${styles['login__input-group']} 
-                ${errors.email ? styles['login__input-group--error'] : ""}
+                ${styles["login__input-group"]} 
+                ${errors.email ? styles["login__input-group--error"] : ""}
               `}
             >
-              <Mail className={styles['login__icon']} size={20} />
+              <Mail className={styles["login__icon"]} size={20} />
               <input
-                className={styles['login__input']}
+                className={styles["login__input"]}
                 type="email"
                 placeholder="your@email.com"
                 value={email}
@@ -51,22 +51,22 @@ export default function LoginPage() {
               />
             </div>
             {errors.email && (
-              <p className={styles['login__error-text']}>{errors.email}</p>
+              <p className={styles["login__error-text"]}>{errors.email}</p>
             )}
           </div>
 
           {/* Password Field */}
           <div>
-            <label className={styles['login__label']}>Password</label>
+            <label className={styles["login__label"]}>Password</label>
             <div
               className={`
-                ${styles['login__input-group']} 
-                ${errors.password ? styles['login__input-group--error'] : ""}
+                ${styles["login__input-group"]} 
+                ${errors.password ? styles["login__input-group--error"] : ""}
               `}
             >
-              <Lock className={styles['login__icon']} size={20} />
+              <Lock className={styles["login__icon"]} size={20} />
               <input
-                className={styles['login__input']}
+                className={styles["login__input"]}
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 value={password}
@@ -74,42 +74,45 @@ export default function LoginPage() {
               />
               <button
                 type="button"
-                className={styles['login__toggle-btn']}
+                className={styles["login__toggle-btn"]}
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
             {errors.password && (
-              <p className={styles['login__error-text']}>{errors.password}</p>
+              <p className={styles["login__error-text"]}>{errors.password}</p>
             )}
           </div>
 
           {/* Remember & Forgot */}
-          <div className={styles['login__form-row']}>
-            <label className={styles['login__checkbox-label']}>
-              <input type="checkbox" className={styles['login__checkbox']} />
+          <div className={styles["login__form-row"]}>
+            <label className={styles["login__checkbox-label"]}>
+              <input type="checkbox" className={styles["login__checkbox"]} />
               <span>Remember me</span>
             </label>
-            <Link href="/forgot-password" className={styles['login__forgot-link']}>
+            <Link
+              href="/forgot-password"
+              className={styles["login__forgot-link"]}
+            >
               Forgot password?
             </Link>
           </div>
 
           {/* Submit Button */}
-          <button type="submit" className={styles['login__submit-btn']}>
+          <button type="submit" className={styles["login__submit-btn"]}>
             Sign In
           </button>
         </form>
 
         {/* Divider */}
-        <div className={styles['login__divider']}>
+        <div className={styles["login__divider"]}>
           <span>Or continue with</span>
         </div>
 
         {/* Social Buttons */}
-        <div className={styles['login__social-group']}>
-          <button type="button" className={styles['login__social-btn']}>
+        <div className={styles["login__social-group"]}>
+          <button type="button" className={styles["login__social-btn"]}>
             <svg width="20" height="20" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
@@ -130,7 +133,7 @@ export default function LoginPage() {
             </svg>
             <span>Google</span>
           </button>
-          <button type="button" className={styles['login__social-btn']}>
+          <button type="button" className={styles["login__social-btn"]}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
             </svg>
@@ -140,9 +143,9 @@ export default function LoginPage() {
       </div>
 
       {/* Footer */}
-      <p className={styles['login__footer']}>
+      <p className={styles["login__footer"]}>
         Don&apos;t have an account?{" "}
-        <Link href="/register" className={styles['login__link']}>
+        <Link href="/register" className={styles["login__link"]}>
           Sign up
         </Link>
       </p>

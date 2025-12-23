@@ -1,11 +1,12 @@
 import { useState, useEffect, useMemo } from "react";
 import { Order } from "@/lib/types/order";
 import { orderApi } from "@/lib/api-client/orderApi";
+import { NotFoundError } from "@/lib/errors/NotFoundError";
 
 export function useOrders() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const [activeTab, setActiveTab] = useState<string>("All");
 
   useEffect(() => {
@@ -15,7 +16,14 @@ export function useOrders() {
         const data = await orderApi.getAll();
         setOrders(data);
       } catch (error) {
-        console.error("Failed to fetch orders:", error);
+        if (error instanceof NotFoundError) {
+          return Response.json({ message: error.message }, { status: 404 });
+        }
+        console.error(error);
+        return Response.json(
+          { message: "Internal Server Error" },
+          { status: 500 },
+        );
       } finally {
         setIsLoading(false);
       }
@@ -40,10 +48,10 @@ export function useOrders() {
   }, [orders]);
 
   return {
-    filteredOrders, 
+    filteredOrders,
     activeTab,
     setActiveTab,
     counts,
-    isLoading,      
+    isLoading,
   };
 }

@@ -26,12 +26,10 @@ export default function LinkStatsCards({ stats }: { stats: LinkStats }) {
       {/* Earnings */}
       <Card className="p-6 bg-white border border-gray-100 shadow-sm rounded-xl">
         <div className="flex items-center justify-between mb-2">
-          <p className="text-gray-500 text-sm font-medium mb-1">
-            Total Earnings
-          </p>
-          <DollarSign size={20} className="text-green-800" />
+          <p className="text-woo-text-secondary text-sm mb-1">Total Earnings</p>
+          <DollarSign size={20} className="text-woo-primary" />
         </div>
-        <p className="text-3xl font-bold text-gray-900">{stats.earnings}</p>
+        <p className="text-3xl font-bold text-woo-text">{stats.earnings}</p>
       </Card>
     </div>
   );

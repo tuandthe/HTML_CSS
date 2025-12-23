@@ -1,8 +1,8 @@
-import { 
-  EMAIL_REGEX, 
-  HAS_LOWER_CASE_REGEX, 
-  HAS_NUMBER_REGEX, 
-  HAS_UPPER_CASE_REGEX 
+import {
+  EMAIL_REGEX,
+  HAS_LOWER_CASE_REGEX,
+  HAS_NUMBER_REGEX,
+  HAS_UPPER_CASE_REGEX,
 } from "@/constants/regex";
 
 export const isValidEmail = (email: string): boolean => {

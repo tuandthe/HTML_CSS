@@ -31,7 +31,9 @@ export default function TicketCard({ ticket }: { ticket: Ticket }) {
             {ticket.orderId && (
               <div className="flex items-center gap-1">
                 <span>Order:</span>
-                <span className="font-medium text-woo-text">{ticket.orderId}</span>
+                <span className="font-medium text-woo-text">
+                  {ticket.orderId}
+                </span>
               </div>
             )}
             {/* Priority */}

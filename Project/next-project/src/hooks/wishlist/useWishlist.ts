@@ -3,11 +3,12 @@
 import { useState, useEffect, useMemo } from "react";
 import { Product } from "@/lib/types/product";
 import { productApi } from "@/lib/api-client/productApi";
+import { NotFoundError } from "@/lib/errors/NotFoundError";
 
 export function useWishlist() {
   const [items, setItems] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [sortOption, setSortOption] = useState("newest");
 
@@ -19,7 +20,14 @@ export function useWishlist() {
         const data = await productApi.getWishlist();
         setItems(data);
       } catch (error) {
+        if (error instanceof NotFoundError) {
+          return Response.json({ message: error.message }, { status: 404 });
+        }
         console.error("Failed to fetch wishlist:", error);
+        return Response.json(
+          { message: "Internal Server Error" },
+          { status: 500 },
+        );
       } finally {
         setIsLoading(false);
       }
@@ -31,7 +39,7 @@ export function useWishlist() {
   // --- ACTIONS ---
   const handleDelete = async (id: number) => {
     if (!confirm("Remove this item from wishlist?")) return;
-    
+
     const prevItems = [...items];
     setItems((prev) => prev.filter((item) => item.id !== id));
 
@@ -61,9 +69,13 @@ export function useWishlist() {
     return [...filtered].sort((a, b) => {
       switch (sortOption) {
         case "newest":
-          return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
+          return (
+            new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+          );
         case "oldest":
-          return new Date(a.dateAdded).getTime() - new Date(b.dateAdded).getTime();
+          return (
+            new Date(a.dateAdded).getTime() - new Date(b.dateAdded).getTime()
+          );
         case "price-low":
           return a.price - b.price;
         case "price-high":
@@ -77,14 +89,14 @@ export function useWishlist() {
   }, [items, selectedCategory, sortOption]);
 
   return {
-    items,              
-    processedItems,     
-    categories,         
-    
+    items,
+    processedItems,
+    categories,
+
     selectedCategory,
     sortOption,
-    isLoading,          
-    
+    isLoading,
+
     setSelectedCategory,
     setSortOption,
     handleDelete,

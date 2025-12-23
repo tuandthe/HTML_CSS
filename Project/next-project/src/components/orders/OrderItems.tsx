@@ -15,7 +15,9 @@ export default function OrderItems() {
             </div>
             <div>
               <p className="font-bold text-woo-text">Wireless Headphones</p>
-              <p className="text-sm text-woo-text-secondary mt-1">Quantity: 1</p>
+              <p className="text-sm text-woo-text-secondary mt-1">
+                Quantity: 1
+              </p>
             </div>
           </div>
           <div className="text-right">
@@ -23,7 +25,7 @@ export default function OrderItems() {
             <p className="text-xs text-woo-text-muted">$79.99 each</p>
           </div>
         </div>
-        
+
         {/* Item 2 */}
         <div className="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-4">
@@ -32,7 +34,9 @@ export default function OrderItems() {
             </div>
             <div>
               <p className="font-bold text-woo-text">Phone Case</p>
-              <p className="text-sm text-woo-text-secondary mt-1">Quantity: 2</p>
+              <p className="text-sm text-woo-text-secondary mt-1">
+                Quantity: 2
+              </p>
             </div>
           </div>
           <div className="text-right">

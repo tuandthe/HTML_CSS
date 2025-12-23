@@ -23,7 +23,7 @@ export function useRegister() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
-const getStrengthLabel = (pwd: string): PasswordStrength => {
+  const getStrengthLabel = (pwd: string): PasswordStrength => {
     const score = getPasswordScore(pwd);
     if (!pwd) return "";
     if (score <= 2) return "weak";
@@ -32,7 +32,8 @@ const getStrengthLabel = (pwd: string): PasswordStrength => {
   };
 
   const passwordStrength = getStrengthLabel(password);
-  const passwordsMatch = password && confirmPassword && password === confirmPassword;
+  const passwordsMatch =
+    password && confirmPassword && password === confirmPassword;
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
@@ -49,7 +50,7 @@ const getStrengthLabel = (pwd: string): PasswordStrength => {
       newErrors.email = "Please enter a valid email";
     }
 
-   if (!password) {
+    if (!password) {
       newErrors.password = "Password is required";
     } else if (password.length < 8) {
       newErrors.password = "Password must be at least 8 characters";

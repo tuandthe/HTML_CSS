@@ -15,27 +15,33 @@ export default function ProductCard({ product }: { product: Product }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      
+
       <h4 className="font-medium text-woo-text mb-2 line-clamp-2 leading-tight">
         {product.name}
       </h4>
-      
+
       {/* Rating */}
       <div className="flex items-center gap-1 mb-2">
         <div className="flex items-center gap-1">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            size={12}
-            fill={i < Math.floor(product.rating) ? "currentColor" : "none"}
-            stroke="currentColor"
-            className={i >= Math.floor(product.rating) ? "text-gray-300" : "text-yellow-400"}
-          />
-        ))}
+          {[...Array(5)].map((_, i) => (
+            <Star
+              key={i}
+              size={12}
+              fill={i < Math.floor(product.rating) ? "currentColor" : "none"}
+              stroke="currentColor"
+              className={
+                i >= Math.floor(product.rating)
+                  ? "text-gray-300"
+                  : "text-yellow-400"
+              }
+            />
+          ))}
         </div>
-        <span className="text-sm text-woo-text-secondary ml-1">({product.reviews})</span>
+        <span className="text-sm text-woo-text-secondary ml-1">
+          ({product.reviews})
+        </span>
       </div>
-      
+
       {/* Price & Action */}
       <div className="flex items-center justify-between mt-2">
         <div className="flex items-center gap-2">
@@ -46,7 +52,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </span>
           )}
         </div>
-        
+
         {/* Nút giỏ hàng dùng màu Primary */}
         <button className="p-2 bg-woo-primary text-white rounded-xl hover:bg-woo-primary-hover transition-colors">
           <ShoppingCart size={16} />

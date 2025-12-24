@@ -32,12 +32,18 @@ export default function OrderList({ orders }: { orders: Order[] }) {
             <p className="text-sm text-woo-text-secondary mb-1 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0">
               <span className="flex items-center">
                 <Calendar size={14} className="mr-1 inline-block" />{" "}
-                {order.date}
+                {order.date.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
               </span>
               <span className="hidden sm:inline mx-2">•</span>
               <span>{order.items}</span>
             </p>
-            <p className="font-semibold text-woo-text mt-2">{order.total}</p>
+            <p className="font-semibold text-woo-text mt-2">
+              ${order.total.toFixed(2)}
+            </p>
           </div>
 
           <Link

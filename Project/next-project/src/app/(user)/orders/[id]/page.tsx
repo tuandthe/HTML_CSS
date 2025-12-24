@@ -4,14 +4,31 @@ import OrderStatusCard from "@/components/orders/OrderStatusCard";
 import { Card } from "@/components/common/Card";
 import { ArrowLeft, Download, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import { orderService } from "@/services/order.service";
+import { Order } from "@/lib/types/order";
+import { notFound } from "next/navigation";
 
 export default async function OrderDetailsPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const orderId = (await params).id || "ORD-001";
+  const orderId = (await params).id;
 
+  const rawOrder = await orderService.getOrderById(orderId);
+  if (!rawOrder) {
+    return notFound();
+  }
+
+  const order: Order = {
+    id: rawOrder.id,
+    date: new Date(rawOrder.date), 
+    items: rawOrder.items,
+    total: Number(rawOrder.total), 
+    status: rawOrder.status, 
+    createdAt: new Date(rawOrder.createdAt),
+    updatedAt: new Date(rawOrder.updatedAt),
+  };
   return (
     <div className="lg:ml-64 !w-full max-w-7xl">
       <div className="p-4 lg:p-8">
@@ -38,8 +55,8 @@ export default async function OrderDetailsPage({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Column (2/3) */}
           <div className="lg:col-span-2 space-y-6">
-            <OrderStatusCard />
-            <OrderItems />
+            <OrderStatusCard status={order?.status} />
+            <OrderItems order={order} />
 
             {/* Need Help Widget */}
             <Card className="p-4 flex items-center justify-between bg-woo-card border border-woo-border">
@@ -62,7 +79,7 @@ export default async function OrderDetailsPage({
 
           {/* Right Column (1/3) */}
           <div className="space-y-6">
-            <OrderInfoCards />
+            <OrderInfoCards order={order} />
           </div>
         </div>
       </div>

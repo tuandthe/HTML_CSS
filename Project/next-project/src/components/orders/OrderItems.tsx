@@ -1,6 +1,8 @@
+
+import { Order } from "@/lib/types/order";
 import { Card } from "../common/Card";
 
-export default function OrderItems() {
+export default function OrderItems({ order }: { order: Order | null }) {
   return (
     <Card className="overflow-hidden bg-woo-card border border-woo-border">
       <div className="p-4 border-b border-woo-border font-semibold bg-woo-bg/50 text-woo-text">
@@ -11,18 +13,18 @@ export default function OrderItems() {
         <div className="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 bg-woo-bg rounded-lg shrink-0 overflow-hidden relative flex items-center justify-center text-woo-text-muted text-xs border border-woo-border">
-              Img
+              img
             </div>
             <div>
-              <p className="font-bold text-woo-text">Wireless Headphones</p>
+              <p className="font-bold text-woo-text">{order?.items}</p>
               <p className="text-sm text-woo-text-secondary mt-1">
                 Quantity: 1
               </p>
             </div>
           </div>
           <div className="text-right">
-            <p className="font-bold text-woo-text">$79.99</p>
-            <p className="text-xs text-woo-text-muted">$79.99 each</p>
+            <p className="font-bold text-woo-text">${order?.total?.toString()}</p>
+            <p className="text-xs text-woo-text-muted">${order?.total?.toString()} each</p>
           </div>
         </div>
 
@@ -33,15 +35,15 @@ export default function OrderItems() {
               Img
             </div>
             <div>
-              <p className="font-bold text-woo-text">Phone Case</p>
+              <p className="font-bold text-woo-text">{order?.items}</p>
               <p className="text-sm text-woo-text-secondary mt-1">
                 Quantity: 2
               </p>
             </div>
           </div>
           <div className="text-right">
-            <p className="font-bold text-woo-text">$39.98</p>
-            <p className="text-xs text-woo-text-muted">$19.99 each</p>
+            <p className="font-bold text-woo-text">${order?.total?.toString()}</p>
+            <p className="text-xs text-woo-text-muted">${order?.total?.toString()} each</p>
           </div>
         </div>
       </div>

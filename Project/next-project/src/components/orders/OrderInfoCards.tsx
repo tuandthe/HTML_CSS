@@ -1,7 +1,8 @@
 import { Calendar, Truck, MapPin } from "lucide-react";
 import { Card } from "@/components/common/Card";
+import { Order } from "@/lib/types/order";
 
-export default function OrderInfoCards() {
+export default function OrderInfoCards({ order }: { order: Order }) {
   return (
     <div className="space-y-6">
       {/* Info Box */}
@@ -15,7 +16,11 @@ export default function OrderInfoCards() {
             <div>
               <p className="text-xs text-woo-text-secondary">Order Date</p>
               <p className="text-sm font-semibold text-woo-text">
-                Jan 15, 2024
+                {order.date.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
               </p>
             </div>
           </div>
@@ -26,7 +31,11 @@ export default function OrderInfoCards() {
                 Estimated Delivery
               </p>
               <p className="text-sm font-semibold text-woo-text">
-                Jan 20, 2024
+                {order.date.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
               </p>
             </div>
           </div>

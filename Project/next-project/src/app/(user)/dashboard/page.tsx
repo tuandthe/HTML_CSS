@@ -11,12 +11,10 @@ export default function DashboardPage() {
         <div className="space-y-6">
           {/* Header */}
           <div className="mb-8">
-              <h1 className="text-3xl font-bold text-woo-text mb-2">
-                Dashboard
-              </h1>
-              <p className="text-woo-text-secondary">
-                Welcome back! Here&apos;s your account overview.
-              </p>
+            <h1 className="text-3xl font-bold text-woo-text mb-2">Dashboard</h1>
+            <p className="text-woo-text-secondary">
+              Welcome back! Here&apos;s your account overview.
+            </p>
           </div>
 
           {/* Stats Section */}
@@ -31,9 +29,9 @@ export default function DashboardPage() {
             {/* Left Column (Products) */}
             <div className="xl:col-span-3">
               <div className="mb-6">
-              <h2 className="text-xl font-semibold text-woo-text">
-                Recently Viewed
-              </h2>
+                <h2 className="text-xl font-semibold text-woo-text">
+                  Recently Viewed
+                </h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {recentProducts.map((product) => (

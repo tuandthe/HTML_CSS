@@ -1,13 +1,14 @@
 import { Truck } from "lucide-react";
 import { Card } from "../common/Card";
 import { OrderBadge } from "./OrderBadge";
+import { orderStatus } from "@/lib/types/order";
 
-export default function OrderStatusCard() {
+export default function OrderStatusCard({ status }: { status: orderStatus }) {
   return (
     <Card className="p-6 bg-woo-card border border-woo-border">
       <div className="flex justify-between items-center mb-6">
         <h3 className="font-bold text-woo-text">Order Status</h3>
-        <OrderBadge status="Processing" />
+        <OrderBadge status={status} />
       </div>
 
       {/* Timeline */}

@@ -3,6 +3,7 @@ import { Card } from "../common/Card";
 import Link from "next/link";
 import { Calendar, Eye } from "lucide-react";
 import { OrderBadge } from "./OrderBadge";
+import { getOrderSummaryString } from "@/lib/utils/order.utils";
 
 export default function OrderList({ orders }: { orders: Order[] }) {
   if (orders.length === 0) {
@@ -39,7 +40,7 @@ export default function OrderList({ orders }: { orders: Order[] }) {
                 })}
               </span>
               <span className="hidden sm:inline mx-2">•</span>
-              <span>{order.items}</span>
+              <span>{getOrderSummaryString(order.items)}</span>
             </p>
             <p className="font-semibold text-woo-text mt-2">
               ${order.total.toFixed(2)}

@@ -1,11 +1,21 @@
-"use client";
-
 import OrderFilter from "@/components/orders/OrderFilter";
 import OrderList from "@/components/orders/OrderList";
-import { useOrders } from "@/hooks/orders/useOrders";
+// import { useOrders } from "@/hooks/orders/useOrders";
+import { orderStatusWithAll } from "@/lib/types/order";
+import { orderService } from "@/services/order.service";
 
-export default function OrderPage() {
-  const { filteredOrders, activeTab, setActiveTab, counts } = useOrders();
+export default async function OrderPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  // const { filteredOrders, activeTab, setActiveTab, counts } = useOrders();
+  const statusParam = (await searchParams).status || orderStatusWithAll.All;
+
+  const [orders, counts] = await Promise.all([
+    orderService.getAllOrders(statusParam),
+    orderService.getOrderCounts(),
+  ]);
 
   return (
     <div className="lg:ml-64">
@@ -20,14 +30,10 @@ export default function OrderPage() {
           </div>
 
           <div>
-            <OrderFilter
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-              counts={counts}
-            />
+            <OrderFilter counts={counts} />
           </div>
 
-          <OrderList orders={filteredOrders} />
+          <OrderList orders={orders} />
         </div>
       </div>
     </div>

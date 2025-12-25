@@ -8,7 +8,10 @@ export async function GET() {
     return NextResponse.json(orders);
   } catch (error) {
     console.error("Error fetching orders:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }
 
@@ -21,4 +24,3 @@ export async function POST(data: Request) {
     return NextResponse.json({ error: error }, { status: 500 });
   }
 }
-

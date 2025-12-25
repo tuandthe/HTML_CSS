@@ -19,16 +19,25 @@ export default async function OrderDetailsPage({
   if (!rawOrder) {
     return notFound();
   }
-
   const order: Order = {
     id: rawOrder.id,
-    date: new Date(rawOrder.date), 
-    items: rawOrder.items,
-    total: Number(rawOrder.total), 
-    status: rawOrder.status, 
-    createdAt: new Date(rawOrder.createdAt),
-    updatedAt: new Date(rawOrder.updatedAt),
+    status: rawOrder.status,
+    date: rawOrder.date,
+    total: Number(rawOrder.total),
+    items: rawOrder.items.map((item) => ({
+      id: item.id,
+      quantity: item.quantity,
+      price: Number(item.price),
+      productId: item.productId,
+      product: {
+        id: item.product.id,
+        name: item.product.name,
+      },
+    })),
+    createdAt: rawOrder.createdAt,
+    updatedAt: rawOrder.updatedAt,
   };
+
   return (
     <div className="lg:ml-64 !w-full max-w-7xl">
       <div className="p-4 lg:p-8">

@@ -12,7 +12,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
     if (!order) {
       return NextResponse.json(
         { error: `Order with id ${id} not found` },
-        { status: 404 }
+        { status: 404 },
       );
     }
     return NextResponse.json(order);
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
     console.error("Error fetching order:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -33,7 +33,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
     if (!updatedOrder) {
       return NextResponse.json(
         { error: `Order with id ${id} not found` },
-        { status: 404 }
+        { status: 404 },
       );
     }
     return NextResponse.json(updatedOrder);
@@ -41,7 +41,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
     console.error("Error updating order:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -53,7 +53,7 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     if (!deletedOrder) {
       return NextResponse.json(
         { error: `Order with id ${id} not found` },
-        { status: 404 }
+        { status: 404 },
       );
     }
     return NextResponse.json({
@@ -63,7 +63,7 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     console.error("Error deleting order:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

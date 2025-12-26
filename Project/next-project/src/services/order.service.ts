@@ -1,6 +1,7 @@
 import { Prisma } from "@/generated/prisma/browser";
+import { mapOrderToDTO, orderInclude } from "@/lib/mappers/order.mapper";
 import { prisma } from "@/lib/prisma";
-import { Order, orderStatus, orderStatusWithAll } from "@/lib/types/order";
+import { orderStatus, orderStatusWithAll } from "@/lib/types/order";
 
 export const orderService = {
   getAllOrders: async (statusFilter?: string) => {
@@ -14,34 +15,10 @@ export const orderService = {
       orderBy: {
         date: "desc",
       },
-      include: {
-        items: {
-          include: {
-            product: true,
-          },
-        },
-      },
+      include: orderInclude,
     });
 
-    const mappedOrders: Order[] = rawOrder.map((order) => ({
-      id: order.id,
-      date: order.date,
-      status: order.status,
-      total: Number(order.total),
-      createdAt: order.createdAt,
-      updatedAt: order.updatedAt,
-      items: order.items.map((item) => ({
-        id: item.id,
-        quantity: item.quantity,
-        price: Number(item.price),
-        productId: item.productId,
-        product: {
-          id: item.product.id,
-          name: item.product.name,
-        },
-      })),
-    }));
-    return mappedOrders;
+    return rawOrder.map(mapOrderToDTO);
   },
 
   getOrderCounts: async () => {
@@ -73,16 +50,10 @@ export const orderService = {
     const rawOrder = await prisma.order.findUnique({
       where: { id },
 
-      include: {
-        items: {
-          include: {
-            product: true,
-          },
-        },
-      },
+      include: orderInclude,
     });
     if (!rawOrder) return null;
-    return rawOrder;
+    return mapOrderToDTO(rawOrder);
   },
 
   createOrder: async (data: {
@@ -99,22 +70,22 @@ export const orderService = {
       const product = products.find((p) => p.id === item.productId);
       if (!product) throw new Error(`Product ${item.productId} not found`);
 
-      const price = Number(product.price); 
+      const price = Number(product.price);
       calculatedTotal += price * item.quantity;
 
       return {
         productId: item.productId,
         quantity: item.quantity,
-        price: price, 
+        price: price,
       };
     });
 
     const newOrder = await prisma.order.create({
       data: {
         status: data.status || orderStatusWithAll.Processing,
-        total: calculatedTotal, 
+        total: calculatedTotal,
         items: {
-          create: orderItemsData, 
+          create: orderItemsData,
         },
       },
       include: {
@@ -138,11 +109,14 @@ export const orderService = {
     });
     if (!existingOrder) return null;
 
-    return await prisma.order.delete({
-      where: { id },
-      include: {
-        items: true,
-      },
+    return await prisma.$transaction(async (prisma) => {
+      await prisma.orderItem.deleteMany({
+        where: { orderId: id },
+      });
+
+      return await prisma.order.delete({
+        where: { id },
+      });
     });
   },
 };

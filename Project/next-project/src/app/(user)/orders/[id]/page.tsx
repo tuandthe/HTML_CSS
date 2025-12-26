@@ -5,7 +5,6 @@ import { Card } from "@/components/common/Card";
 import { ArrowLeft, Download, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { orderService } from "@/services/order.service";
-import { Order } from "@/lib/types/order";
 import { notFound } from "next/navigation";
 
 export default async function OrderDetailsPage({
@@ -15,28 +14,10 @@ export default async function OrderDetailsPage({
 }) {
   const orderId = (await params).id;
 
-  const rawOrder = await orderService.getOrderById(orderId);
-  if (!rawOrder) {
+  const order = await orderService.getOrderById(orderId);
+  if (!order) {
     return notFound();
   }
-  const order: Order = {
-    id: rawOrder.id,
-    status: rawOrder.status,
-    date: rawOrder.date,
-    total: Number(rawOrder.total),
-    items: rawOrder.items.map((item) => ({
-      id: item.id,
-      quantity: item.quantity,
-      price: Number(item.price),
-      productId: item.productId,
-      product: {
-        id: item.product.id,
-        name: item.product.name,
-      },
-    })),
-    createdAt: rawOrder.createdAt,
-    updatedAt: rawOrder.updatedAt,
-  };
 
   return (
     <div className="lg:ml-64 !w-full max-w-7xl">

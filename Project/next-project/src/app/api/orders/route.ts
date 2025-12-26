@@ -1,26 +1,32 @@
+import { ApiResponse } from "@/lib/utils/api-response";
+import { createOrderSchema } from "@/lib/validations/order.schema";
 import { orderService } from "@/services/order.service";
-import { console } from "inspector";
-import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 
 export async function GET() {
   try {
     const orders = await orderService.getAllOrders();
-    return NextResponse.json(orders);
+    return ApiResponse.success(orders);
   } catch (error) {
     console.error("Error fetching orders:", error);
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 },
-    );
+    return ApiResponse.error();
   }
 }
 
-export async function POST(data: Request) {
+export async function POST(request: Request) {
   try {
-    const body = await data.json();
-    const newOrder = await orderService.createOrder(body);
-    return NextResponse.json(newOrder, { status: 201 });
+    const body = await request.json();
+    const validatedData = createOrderSchema.parse(body);
+    const newOrder = await orderService.createOrder(validatedData);
+
+    return ApiResponse.success(newOrder);
   } catch (error) {
-    return NextResponse.json({ error: error }, { status: 500 });
+
+    if (error instanceof ZodError) {
+      return ApiResponse.badRequest("Invalid order data");
+    }
+    console.error("Create Order Error:", error);
+    return ApiResponse.error();
   }
+  
 }
